@@ -1,0 +1,6 @@
+.bundle
+.cache
+.vagrant
+Berksfile.lock
+Gemfile.lock
+\#*#
