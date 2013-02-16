@@ -51,8 +51,8 @@ Attribute | Description | Type | Default
 ----------|-------------|------|--------
 arch | architecture for Confluence installer - "x64" or "x32" | String | auto-detected (see attributes/default.rb)
 checksum | SHA256 checksum for Confluence install | String | auto-detected (see attributes/default.rb)
-home_path | home directory for Confluence user | String | `/home/#{node['confluence']['user']}`
-install_path | location to install Confluence | String | /opt/atlassian-confluence
+home_path | home directory for Confluence user | String | /var/atlassian/application-data/confluence
+install_path | location to install Confluence | String | /opt/atlassian/confluence
 install_type | Confluence install type - "cluster-standalone", "cluster-war", "installer", "standalone", "war" | String | installer
 url_base | URL base for Confluence install | String | http://www.atlassian.com/software/confluence/downloads/binary/atlassian-confluence
 url | URL for Confluence install | String | auto-detected (see attributes/default.rb)
