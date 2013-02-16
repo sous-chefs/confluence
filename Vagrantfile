@@ -40,7 +40,7 @@ Vagrant::Config.run do |config|
 
       chef.run_list = %w{
         recipe[java]
-        recipe[confluence::apache2]
+        recipe[confluence]
       }
     end
   end
@@ -76,7 +76,7 @@ Vagrant::Config.run do |config|
 
       chef.run_list = %w{
         recipe[java]
-        recipe[confluence::apache2]
+        recipe[confluence]
       }
     end
   end

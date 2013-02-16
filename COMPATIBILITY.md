@@ -1,13 +1,46 @@
-## Confluence 4.x ##
+## chef-confluence Compatibility ##
 
-Cookbook Versions: 0.1+
+Cookbook compatibility based on platform, installation type (`node['confluence']['install_type']`), architecture (`node['confluence']['arch']`), and Confluence version (`node['confluence']['version']`)
 
-Tested OSes:
-* CentOS 6.3
-* RHEL 6.3
-* Ubuntu 12.04
+### Linux Installer x64 ###
 
-### Confluence 4.3.7 ###
+Cookbook Compatibility
 
-* `node['confluence']['version']`: "4.3.7"
-* `node['confluence']['checksum']`: "03bb665b6abdc96495fca3f12683083d5e4633152f0c5cb4464779dcdd869f71"
+Confluence Version | CentOS 6 | RHEL 6 | Ubuntu 12.04
+-------------------|----------|--------|-------------
+4.3.X              | 1.0+     | 1.0+   | 1.0+
+
+Test Matrix
+
+Confluence Version | CentOS 6 | RHEL 6 | Ubuntu 12.04
+-------------------|----------|--------|-------------
+4.3.7              | 1.0      | 1.0    | 1.0
+
+### Linux Installer x32 ###
+
+Cookbook Compatibility
+
+Confluence Version | CentOS 6 | RHEL 6 | Ubuntu 12.04
+-------------------|----------|--------|-------------
+4.3.X              | 1.0+     | 1.0+   | 1.0+
+
+Test Matrix
+
+Confluence Version | CentOS 6 | RHEL 6 | Ubuntu 12.04
+-------------------|----------|--------|-------------
+4.3.7              | -        | -      | -
+
+### Linux Standalone Install ###
+
+Cookbook Compatibility
+
+Confluence Version | CentOS 6 | RHEL 6 | Ubuntu 12.04
+-------------------|----------|--------|-------------
+4.3.X              | 1.0+     | 1.0+   | 1.0+
+
+Test Matrix
+
+Confluence Version | CentOS 6 | RHEL 6 | Ubuntu 12.04
+-------------------|----------|--------|-------------
+4.3.7              | 1.0      | 1.0    | 1.0
+

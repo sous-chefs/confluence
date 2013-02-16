@@ -2,7 +2,7 @@
 # Cookbook Name:: confluence
 # Recipe:: apache2
 #
-# Copyright 2013
+# Copyright 2013, Brian Flad
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -16,8 +16,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-
-include_recipe "confluence"
 
 node.set['apache']['listen_ports'] = node['apache']['listen_ports'] + [ node['confluence']['apache2']['port'] ] unless node['apache']['listen_ports'].include?(node['confluence']['apache2']['port'])
 node.set['apache']['listen_ports'] = node['apache']['listen_ports'] + [ node['confluence']['apache2']['ssl']['port'] ] unless node['apache']['listen_ports'].include?(node['confluence']['apache2']['ssl']['port'])

@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: confluence
-# Recipe:: default
+# Recipe:: configuration
 #
 # Copyright 2013, Brian Flad
 #
@@ -17,16 +17,19 @@
 # limitations under the License.
 #
 
-platform = "windows" if node['platform_family'] == "windows"
-platform ||= "linux"
-settings = Confluence.settings(node)
+#settings = Confluence.settings(node)
 
-include_recipe "confluence::database" if settings['database']['host'] == "localhost"
-include_recipe "confluence::#{platform}_#{node['confluence']['install_type']}"
-
-unless node['confluence']['install_type'].match("war")
-  include_recipe "confluence::tomcat_configuration"
-  include_recipe "confluence::apache2"
+template "#{node['confluence']['install_path']}/confluence/WEB-INF/classes/confluence-init.properties" do
+  source "confluence-init.properties.erb"
+  owner  node['confluence']['user']
+  mode   "0644"
+  notifies :restart, "service[confluence]", :delayed
 end
 
-include_recipe "confluence::configuration"
+#template "#{node['confluence']['home_path']}/confluence.cfg.xml" do
+#  source "confluence.cfg.xml.erb"
+#  owner  node['confluence']['user']
+#  mode   "0644"
+#  variables :database => settings['database']
+#  notifies :restart, "service[confluence]", :delayed
+#end
