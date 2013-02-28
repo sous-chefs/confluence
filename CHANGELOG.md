@@ -1,3 +1,7 @@
+## v1.1.0
+
+* Bump default version of Confluence to 5.0.1
+
 ## v1.0.0
 
 * Production ready with Linux installer/standalone installs
