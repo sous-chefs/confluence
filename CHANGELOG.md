@@ -1,8 +1,8 @@
-## v1.1.0
+## 1.1.0
 
 * Bump default version of Confluence to 5.0.1
 
-## v1.0.0
+## 1.0.0
 
 * Production ready with Linux installer/standalone installs
 * Split out individual recipes for installation and configuration
@@ -10,6 +10,6 @@
 * Built-in checksum handling
 * Moved apache2 attributes into default attributes
 
-## v0.1.0
+## 0.1.0
 
 * Initial beta release
