@@ -37,26 +37,31 @@ when "windows"
     default['confluence']['url']      = "#{node['confluence']['url_base']}-#{node['confluence']['version']}-cluster.zip"
     default['confluence']['checksum'] = case node['confluence']['version']
     when "4.3.7"; "c9f9213a787d76151ef133d75247707300cb55e93c28961276b8c6c4f702b3bf"
+    when "5.0.1"; "58cfd477deba06d2d3c87be37a69ac75b9f6b463f011b4586b4ab1b64d2dd3b2"
     end
   when "cluster-war"
     default['confluence']['url']      = "#{node['confluence']['url_base']}-#{node['confluence']['version']}-cluster-war.zip"
     default['confluence']['checksum'] = case node['confluence']['version']
     when "4.3.7"; "92176b0f398cc6b2c6fc9def18268bb82e85361ae297de1a4380d10d0b55c4a6"
+    when "5.0.1"; "0abaadb03af9b3c5aeb784da7cc98f8e63123995cbd741b63d1a003059efd1f5"
     end
   when "installer"
     default['confluence']['url']      = "#{node['confluence']['url_base']}-#{node['confluence']['version']}-#{node['confluence']['arch']}.exe"
     default['confluence']['checksum'] = case node['confluence']['version']
     when "4.3.7"; node['confluence']['arch'] == "x64" ? "5cc58d87f82afae574f053135ee214719c5e46f689affc1bdb819f69c69ed216" : "5316a2a4b35efc0342fee27044ca65f3eff1103ac4f09fb3d11596941dd00b55"
+    when "5.0.1"; node['confluence']['arch'] == "x64" ? "f2766ee08ffa5a5d6662f150848f4fbc6aba3bc785679f146a4c94dbfcb59f6b" : "31ebe313124b95dd37981cc9d4b76bae25a4029fa33ac0779bc89162f12a2aa3"
     end
   when "standalone"
     default['confluence']['url']      = "#{node['confluence']['url_base']}-#{node['confluence']['version']}.zip"
     default['confluence']['checksum'] = case node['confluence']['version']
     when "4.3.7"; "726053c9ed8f56100bb5b3eb0ca9430e1beab73c3e26488cda1d23a42dd52dd7"
+    when "5.0.1"; "43e4e80de5d1f32c73fd5829855b5a10f6d114e91e62c32caced2212a57fc2c5"
     end
   when "war"
     default['confluence']['url']      = "#{node['confluence']['url_base']}-#{node['confluence']['version']}-war.zip"
     default['confluence']['checksum'] = case node['confluence']['version']
     when "4.3.7"; "f97cb7ca185a975769c787248784fb36d65645bc4ed70dbbac4a5b7c7ce4fc59"
+    when "5.0.1"; "84130989e8dee53e6b651519667e533ac1d9676a2cac190b43f5a57222c31201"
     end
   end
 else
