@@ -1,3 +1,8 @@
+## 1.2.0
+
+* Bump default version of Confluence to 5.1.0
+* Update Vagrant box URLs to Chef 11.2.0 since its tested and works
+
 ## 1.1.0
 
 * Bump default version of Confluence to 5.0.1

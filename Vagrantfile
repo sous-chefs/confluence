@@ -13,7 +13,7 @@ Vagrant::Config.run do |config|
   config.vm.define :centos6 do |dist_config|
     dist_config.vm.host_name = 'confluence-centos-6'
     dist_config.vm.box       = 'opscode-centos-6.3'
-    dist_config.vm.box_url   = 'https://opscode-vm.s3.amazonaws.com/vagrant/opscode_centos-6.3_chef-10.18.2.box'
+    dist_config.vm.box_url   = 'https://opscode-vm.s3.amazonaws.com/vagrant/opscode_centos-6.3_chef-11.2.0.box'
     
     dist_config.vm.customize ["modifyvm", :id, "--memory", 1024]
     dist_config.vm.network :hostonly, '33.33.33.10'
@@ -49,7 +49,7 @@ Vagrant::Config.run do |config|
   config.vm.define :ubuntu1204 do |dist_config|
     dist_config.vm.host_name = 'confluence-ubuntu-1204'
     dist_config.vm.box       = 'opscode-ubuntu-12.04'
-    dist_config.vm.box_url   = 'https://opscode-vm.s3.amazonaws.com/vagrant/opscode_ubuntu-12.04_chef-10.18.2.box'
+    dist_config.vm.box_url   = 'https://opscode-vm.s3.amazonaws.com/vagrant/opscode_ubuntu-12.04_chef-11.2.0.box'
     
     dist_config.vm.customize ["modifyvm", :id, "--memory", 1024]
     dist_config.vm.network :hostonly, '33.33.33.11'
