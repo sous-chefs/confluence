@@ -14,8 +14,8 @@
 	<% end -%>
 	DocumentRoot <%= node['confluence']['install_path'] %>
 	
-	CustomLog <%= node['confluence']['apache2']['access_log'].empty? ? node['apache']['log_dir']+"/stash-access.log" : node['confluence']['apache2']['access_log'] %> combined
-	ErrorLog <%= node['confluence']['apache2']['error_log'].empty? ? node['apache']['log_dir']+"/stash-error.log" : node['confluence']['apache2']['error_log'] %>
+	CustomLog <%= node['confluence']['apache2']['access_log'].empty? ? node['apache']['log_dir']+"/confluence-access.log" : node['confluence']['apache2']['access_log'] %> combined
+	ErrorLog <%= node['confluence']['apache2']['error_log'].empty? ? node['apache']['log_dir']+"/confluence-error.log" : node['confluence']['apache2']['error_log'] %>
 	LogLevel warn
 
 	<Proxy *>
@@ -38,8 +38,8 @@
 	<% end -%>
 	DocumentRoot <%= node['confluence']['install_path'] %>
 
-	CustomLog <%= node['confluence']['apache2']['ssl']['access_log'].empty? ? node['apache']['log_dir']+"/stash-ssl-access.log" : node['confluence']['apache2']['ssl']['access_log'] %> combined
-	ErrorLog <%= node['confluence']['apache2']['ssl']['error_log'].empty? ? node['apache']['log_dir']+"/stash-ssl-error.log" : node['confluence']['apache2']['ssl']['error_log'] %>
+	CustomLog <%= node['confluence']['apache2']['ssl']['access_log'].empty? ? node['apache']['log_dir']+"/confluence-ssl-access.log" : node['confluence']['apache2']['ssl']['access_log'] %> combined
+	ErrorLog <%= node['confluence']['apache2']['ssl']['error_log'].empty? ? node['apache']['log_dir']+"/confluence-ssl-error.log" : node['confluence']['apache2']['ssl']['error_log'] %>
 	LogLevel warn
 
 	<Proxy *>

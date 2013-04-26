@@ -1,3 +1,7 @@
+## 1.2.1
+
+* Fix Apache log file names 
+
 ## 1.2.0
 
 * Bump default version of Confluence to 5.1.0
