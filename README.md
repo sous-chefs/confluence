@@ -178,11 +178,10 @@ Using individual recipes, you can use this cookbook to configure Confluence to f
 
 Here's how you can quickly get testing or developing against the cookbook thanks to [Vagrant](http://vagrantup.com/) and [Berkshelf](http://berkshelf.com/).
 
-    gem install bundler --no-ri --no-rdoc
+    vagrant plugin install vagrant-berkshelf
     git clone git://github.com/bflad/chef-confluence.git
     cd chef-confluence
-    bundle install
-    bundle exec vagrant up BOX # BOX being centos6 or ubuntu1204
+    vagrant up BOX # BOX being centos6 or ubuntu1204
 
 You may need to add the following hosts entries:
 
