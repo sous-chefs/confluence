@@ -198,7 +198,7 @@ Ubuntu 12.04 Box:
 
 You can then SSH into the running VM using the `vagrant ssh` command.
 The VM can easily be stopped and deleted with the `vagrant destroy`
-command. Please see the official [Vagrant documentation](http://vagrantup.com/v1/docs/commands.html)
+command. Please see the official [Vagrant documentation](http://docs.vagrantup.com/v2/cli/index.html)
 for a more in depth explanation of available commands.
 
 ## Contributing
