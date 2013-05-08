@@ -1,5 +1,3 @@
-require 'berkshelf/vagrant'
-
 # We'll mount the Chef::Config[:file_cache_path] so it persists between
 # Vagrant VMs
 host_cache_path = File.expand_path("../.cache", __FILE__)
@@ -9,6 +7,7 @@ guest_cache_path = "/tmp/vagrant-cache"
 FileUtils.mkdir(host_cache_path) unless File.exist?(host_cache_path)
 
 Vagrant.configure("2") do |config|
+  config.berkshelf.enabled = true
 
   config.vm.define :centos6 do |dist_config|
     dist_config.vm.host_name = 'confluence-centos-6'
