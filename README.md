@@ -185,16 +185,16 @@ Here's how you can quickly get testing or developing against the cookbook thanks
 
 You may need to add the following hosts entries:
 
-* 33.33.33.10 confluence-centos-6
-* 33.33.33.11 confluence-ubuntu-1204
+* 192.168.50.10 confluence-centos-6
+* 192.168.50.11 confluence-ubuntu-1204
 
 The running Confluence server is accessible from the host machine:
 
 CentOS 6 Box:
-* Web UI: https://33.33.33.10/
+* Web UI: https://192.168.50.10/
 
 Ubuntu 12.04 Box:
-* Web UI: https://33.33.33.11/
+* Web UI: https://192.168.50.11/
 
 You can then SSH into the running VM using the `vagrant ssh BOX` # BOX being centos6 or ubuntu1204 command.
 The VM can easily be stopped and deleted with the `vagrant destroy`

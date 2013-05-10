@@ -18,7 +18,7 @@ Vagrant.configure("2") do |config|
       v.customize ["modifyvm", :id, "--memory", 1024]
     end
 
-    dist_config.vm.network :private_network, ip: '33.33.33.11'
+    dist_config.vm.network :private_network, ip: '192.168.50.10'
 
     config.vm.synced_folder host_cache_path, guest_cache_path
 
@@ -57,7 +57,7 @@ Vagrant.configure("2") do |config|
       v.customize ["modifyvm", :id, "--memory", 1024]
     end
     
-    dist_config.vm.network :private_network, ip: '33.33.33.11'
+    dist_config.vm.network :private_network, ip: '192.168.50.11'
 
     config.vm.synced_folder host_cache_path, guest_cache_path
 
