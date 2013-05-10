@@ -178,11 +178,10 @@ Using individual recipes, you can use this cookbook to configure Confluence to f
 
 Here's how you can quickly get testing or developing against the cookbook thanks to [Vagrant](http://vagrantup.com/) and [Berkshelf](http://berkshelf.com/).
 
-    gem install bundler --no-ri --no-rdoc
+    vagrant plugin install vagrant-berkshelf
     git clone git://github.com/bflad/chef-confluence.git
     cd chef-confluence
-    bundle install
-    bundle exec vagrant up BOX # BOX being centos6 or ubuntu1204
+    vagrant up BOX # BOX being centos6 or ubuntu1204
 
 You may need to add the following hosts entries:
 
@@ -197,9 +196,9 @@ CentOS 6 Box:
 Ubuntu 12.04 Box:
 * Web UI: https://33.33.33.11/
 
-You can then SSH into the running VM using the `vagrant ssh` command.
+You can then SSH into the running VM using the `vagrant ssh BOX` # BOX being centos6 or ubuntu1204 command.
 The VM can easily be stopped and deleted with the `vagrant destroy`
-command. Please see the official [Vagrant documentation](http://vagrantup.com/v1/docs/commands.html)
+command. Please see the official [Vagrant documentation](http://docs.vagrantup.com/v2/cli/index.html)
 for a more in depth explanation of available commands.
 
 ## Contributing
