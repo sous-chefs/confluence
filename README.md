@@ -207,9 +207,11 @@ Please use standard Github issues/pull requests and if possible, in combination 
 
 ## License and Author
 
-Author:: Brian Flad (<bflad@wharton.upenn.edu>)
-
-Copyright:: 2013
+* Author:: Brian Flad (<bflad417@gmail.com>, @bflad)
+* Author:: Denny Schäfer (<trash4you@online.de>, @tuxinaut)
+* Copyright:: 2013, Brian Flad
+* Copyright:: 2013, University of Pennsylvania
+* Copyright:: 2013, Denny Schäfer
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
