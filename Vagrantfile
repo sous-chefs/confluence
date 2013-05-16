@@ -10,7 +10,7 @@ Vagrant.configure("2") do |config|
   config.berkshelf.enabled = true
 
   config.vm.define :centos6 do |dist_config|
-    dist_config.vm.host_name = 'confluence-centos-6'
+    dist_config.vm.hostname = 'confluence-centos-6'
     dist_config.vm.box       = 'opscode-centos-6.3'
     dist_config.vm.box_url   = 'https://opscode-vm.s3.amazonaws.com/vagrant/opscode_centos-6.3_chef-11.2.0.box'
     
