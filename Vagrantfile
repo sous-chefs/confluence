@@ -8,11 +8,12 @@ FileUtils.mkdir(host_cache_path) unless File.exist?(host_cache_path)
 
 Vagrant.configure("2") do |config|
   config.berkshelf.enabled = true
+  config.omnibus.chef_version = :latest
 
   config.vm.define :centos6 do |dist_config|
     dist_config.vm.hostname = 'confluence-centos-6'
     dist_config.vm.box       = 'opscode-centos-6.3'
-    dist_config.vm.box_url   = 'https://opscode-vm.s3.amazonaws.com/vagrant/opscode_centos-6.3_chef-11.2.0.box'
+    dist_config.vm.box_url   = 'https://opscode-vm.s3.amazonaws.com/vagrant/opscode_centos-6.3_chef-provisionerless.box'
     
     config.vm.provider "virtualbox" do |v|
       v.customize ["modifyvm", :id, "--memory", 1024]
@@ -51,7 +52,7 @@ Vagrant.configure("2") do |config|
   config.vm.define :ubuntu1204 do |dist_config|
     dist_config.vm.hostname = 'confluence-ubuntu-1204'
     dist_config.vm.box       = 'opscode-ubuntu-12.04'
-    dist_config.vm.box_url   = 'https://opscode-vm.s3.amazonaws.com/vagrant/opscode_ubuntu-12.04_chef-11.2.0.box'
+    dist_config.vm.box_url   = 'https://opscode-vm.s3.amazonaws.com/vagrant/opscode_ubuntu-12.04_provisionerless.box'
 
     config.vm.provider "virtualbox" do |v|
       v.customize ["modifyvm", :id, "--memory", 1024]
