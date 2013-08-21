@@ -44,6 +44,7 @@ when "windows"
     when "5.1.3"; "0d21727b22c5dfe1b7d130f2a5e5469df7fa3aa8f200d67b4979ff32fc022c37"
     when "5.1.4"; "1eec6f1404228945ee131b080c0755baf4682dcfb1d9c6d4a8ead2645b1d28cb"
     when "5.1.5"; "dc8e9b7e903850c073071c41dfd01eca55a147a8a6aa94400b62fd3cf0a25de0"
+    when "5.2.3"; "7b674bc4936b11c9f8607b9f23a50660e1ca0b3d5422d3ae531fef4438d13301"
     end
   when "cluster-war"
     default['confluence']['url']      = "#{node['confluence']['url_base']}-#{node['confluence']['version']}-cluster-war.zip"
@@ -56,6 +57,7 @@ when "windows"
     when "5.1.3"; "4385f649e122f3997df632e6a485669bde031e07988755daf7602b34a69a7255"
     when "5.1.4"; "2aaa3bc668dbfa27b565fdfe629fd619003bc529890bdb8f1c1c34eb0d4be5ba"
     when "5.1.5"; "9120c01d5cf7d40bfc60a02f573f844ad8dcb0357c3193de0f6c1ec048171b5b"
+    when "5.2.3"; "aeaadfb4ea47fabf8d8fc83bce6e91f0616d0d621af4476cb862a1612a22ae4f"
     end
   when "installer"
     default['confluence']['url']      = "#{node['confluence']['url_base']}-#{node['confluence']['version']}-#{node['confluence']['arch']}.exe"
@@ -68,6 +70,7 @@ when "windows"
     when "5.1.3"; node['confluence']['arch'] == "x64" ? "15ceb8421a7238993eaecb7a22cffd705d365d5a3bf57b72432552978695a5a9" : "5c8bd96bd5ab1c7316592ed91e4181551265f588b93c04c6f111206fff9cc912"
     when "5.1.4"; node['confluence']['arch'] == "x64" ? "a3663067b0521910e128cd28776eb10fee4694b957a7999be8a9971997643ff6" : "6de497bc8d680fba5258c91ca39fb619f3500a2d8324968a19cb0e83b8a44729"
     when "5.1.5"; node['confluence']['arch'] == "x64" ? "be8422e0c18711945e5b9e266fe7432579457d0bf150f251b890839d19e92ed3" : "94d36a8721c6ea2d8f94d4e1e83059789d202e57fa43b23997f3630e6819811d"
+    when "5.2.3"; node['confluence']['arch'] == "x64" ? "f9a1a39f5ed945c81423209063d04e31259a00323144f2ded1aa2d467ea833a9" : "ae82a88cc5dabdc85eade09248b3090beaed72481923da57befeb65c5f6c6f91"
     end
   when "standalone"
     default['confluence']['url']      = "#{node['confluence']['url_base']}-#{node['confluence']['version']}.zip"
@@ -80,6 +83,7 @@ when "windows"
     when "5.1.3"; "251638b244a7a0813ddac5099ccc89012169b82c255b674a956c31b74ff00cd1"
     when "5.1.4"; "e4e4e79202c0f949426702050b5bc6e4dd3577da35cccec04149485938f0fb25"
     when "5.1.5"; "ae71ffc0a145d13369a13726234e73080675d9d936ebad8c106e2b63cc35bf0e"
+    when "5.2.3"; "6ae70fe6a629dbc345870b09ed3acef512d6c21b45aeb10e9d3323ecc0a19393"
     end
   when "war"
     default['confluence']['url']      = "#{node['confluence']['url_base']}-#{node['confluence']['version']}-war.zip"
@@ -92,6 +96,7 @@ when "windows"
     when "5.1.3"; "2f692293ee90f14248cf2da03e81733ba6f35d3c434c2ae63c117ccc233f9eca"
     when "5.1.4"; "df6f179fa528812f334f2f9246d62cf6d9a70f7f1c4dc0c724f30c59102b43dc"
     when "5.1.5"; "7521ac50b50dad993fa8a9dd234b1fdd106c54e8842892e6a36f5b572db8bed6"
+    when "5.2.3"; "9cf6bb41cbfde9c3a903499dd2c3521ec52eeef83cf2c77411ae95d6d30a29bb"
     end
   end
 else
@@ -107,6 +112,7 @@ else
     when "5.1.3"; "12c6643698a63da7bd427b95732fa1c56e1beb1c00b6143efca397c075a91c67"
     when "5.1.4"; "f69d25a4b3fd2a3de361000b6459d5897503e93ee84fa22f6f078139ab1fd119"
     when "5.1.5"; "f242afe95a68e6941e543cb19a73d85f8d2423a75b076282304b33998174266c"
+    when "5.2.3"; "74f1ecf6c46584eddd617ee5228d3363c1affa64eba9327fc237bbe9a705a46b"
     end
   when "cluster-war"
     default['confluence']['url']      = "#{node['confluence']['url_base']}-#{node['confluence']['version']}-cluster-war.tar.gz"
@@ -119,6 +125,7 @@ else
     when "5.1.3"; "4c20aa89c2a595fa5954901df2ea7cad298c9a6e34aca6d07ebf2ef697169ba3"
     when "5.1.4"; "a10cd22e4944558b8aa6135c57cf945f9a6375acc068c4bdf46fbf976c79c8b7"
     when "5.1.5"; "d87088c13026b8c6d2708f20af1020ad58e88042aa5428ec3a7169d587a5d723"
+    when "5.2.3"; "6eae4e3956c9979139b71f4a8294dedd136a0bef4216ad47c33702ec4646a31b"
     end
   when "installer"
     default['confluence']['url']      = "#{node['confluence']['url_base']}-#{node['confluence']['version']}-#{node['confluence']['arch']}.bin"
@@ -131,6 +138,7 @@ else
     when "5.1.3"; node['confluence']['arch'] == "x64" ? "68ca52ad18a354ac721f38832088420591ebf4b7392b0e405194d7ebdc5b0e3f" : "d2f674befaa4935c553616999efa6966e9ec0455f41026187ba50c38e05beb36"
     when "5.1.4"; node['confluence']['arch'] == "x64" ? "5e055daf9a29c055b400df2d99aad8420433accd54a95b5c1067682ac393f25a" : "3262bb80a1e7a6df3c66b5dbbd5e26b7d3ab5941a6fb904f4ed890651933aa36"
     when "5.1.5"; node['confluence']['arch'] == "x64" ? "df477559705b72891385b38defa54032e1593bcf5271b3612fbcfbda86aac98e" : "3183183be7b5f0e0c5ea9af9dd562d0964abfa47d46e4720349c5b3e9339f80c"
+    when "5.2.3"; node['confluence']['arch'] == "x64" ? "5c518d54bcd06792a5eb7c62cbc031515c242fd944a0c6be64964b6d7f163bdc" : "09387b29824c507cc97fb662ff8b80dcf912c617b12420eed7b5cab3d0fa137f"
     end
   when "standalone"
     default['confluence']['url']      = "#{node['confluence']['url_base']}-#{node['confluence']['version']}.tar.gz"
@@ -143,6 +151,7 @@ else
     when "5.1.3"; "e400dadebe14a956d086dcb36deae2e6e12e0204ec9af49c176d62054c167903"
     when "5.1.4"; "e615b1105c5a8a6cd16481d0e4467bd393b0a2065504a04975c5216cfd72d524"
     when "5.1.5"; "6dfbbc3404d8f96f203b01997fa7211cbf9eee491252d9f1cc5b2e84eb97f1ab"
+    when "5.2.3"; "83b50558fa0f7c514b56ca56e73dbb337e725e1936b4cf2dd9c8a44b43a5e25e"
     end
   when "war"
     default['confluence']['url']      = "#{node['confluence']['url_base']}-#{node['confluence']['version']}-war.tar.gz"
@@ -155,6 +164,7 @@ else
     when "5.1.3"; "74ab320751ac9236e3d2a291cfc123b174890c68a970db06711bc1850d7aef0f"
     when "5.1.4"; "3f307d81074b347ff8ccc96538322f21644a10e74a4539f512f55d6de5471d51"
     when "5.1.5"; "cf6773fefe2983eb961df4ca36a9c8110adc4b70690136ba39db229b8e76173b"
+    when "5.2.3"; "cad77f72fdb77f6260698c6f2d888ae2b47f5fac43ac008d3ea473af12e73218"
     end
   end
 end
