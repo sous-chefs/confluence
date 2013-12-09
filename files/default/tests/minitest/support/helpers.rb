@@ -1,4 +1,6 @@
+# Helpers module
 module Helpers
+  # Helpers::Confluence module
   module Confluence
     include MiniTest::Chef::Assertions
     include MiniTest::Chef::Context
@@ -6,11 +8,10 @@ module Helpers
 
     def apache_service
       service(case node['platform']
-              when "debian","ubuntu" then "apache2"
-              when "freebsd" then "apache22"
-              else "httpd"
+              when 'debian', 'ubuntu' then 'apache2'
+              when 'freebsd' then 'apache22'
+              else 'httpd'
               end)
     end
-
   end
 end

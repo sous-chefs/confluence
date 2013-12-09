@@ -20,23 +20,23 @@
 settings = Confluence.settings(node)
 
 directory File.dirname(node['confluence']['home_path']) do
-  owner "root"
-  group "root"
+  owner 'root'
+  group 'root'
   mode 00755
   action :create
   recursive true
 end
 
 user node['confluence']['user'] do
-  comment "Confluence Service Account"
+  comment 'Confluence Service Account'
   home    node['confluence']['home_path']
-  shell   "/bin/bash"
+  shell   '/bin/bash'
   supports :manage_home => true
   system  true
-  action  :create 
+  action  :create
 end
 
-execute "Generating Self-Signed Java Keystore" do
+execute 'Generating Self-Signed Java Keystore' do
   command <<-COMMAND
     #{node['java']['java_home']}/bin/keytool -genkey \
       -alias #{settings['tomcat']['keyAlias']} \
@@ -54,7 +54,7 @@ end
 remote_file "#{Chef::Config[:file_cache_path]}/atlassian-confluence-#{node['confluence']['version']}.tar.gz" do
   source    node['confluence']['url']
   checksum  node['confluence']['checksum']
-  mode      "0644"
+  mode      '0644'
   action    :create_if_missing
 end
 
@@ -76,19 +76,19 @@ execute "Extracting Confluence #{node['confluence']['version']}" do
   creates "#{node['confluence']['install_path']}/confluence"
 end
 
-if settings['database']['type'] == "mysql"
-  include_recipe "mysql_connector"
+if settings['database']['type'] == 'mysql'
+  include_recipe 'mysql_connector'
   mysql_connector_j "#{node['confluence']['install_path']}/lib"
 end
 
-template "/etc/init.d/confluence" do
-  source "confluence.init.erb"
-  mode   "0755"
-  notifies :restart, "service[confluence]", :delayed
+template '/etc/init.d/confluence' do
+  source 'confluence.init.erb'
+  mode   '0755'
+  notifies :restart, 'service[confluence]', :delayed
 end
 
-service "confluence" do
+service 'confluence' do
   supports :status => true, :restart => true
   action :enable
-  subscribes :restart, resources("java_ark[jdk]")
+  subscribes :restart, resources('java_ark[jdk]')
 end

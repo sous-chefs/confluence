@@ -17,16 +17,16 @@
 # limitations under the License.
 #
 
-platform = "windows" if node['platform_family'] == "windows"
-platform ||= "linux"
+platform = 'windows' if node['platform_family'] == 'windows'
+platform ||= 'linux'
 settings = Confluence.settings(node)
 
-include_recipe "confluence::database" if settings['database']['host'] == "localhost"
+include_recipe 'confluence::database' if settings['database']['host'] == 'localhost'
 include_recipe "confluence::#{platform}_#{node['confluence']['install_type']}"
 
-unless node['confluence']['install_type'].match("war")
-  include_recipe "confluence::tomcat_configuration"
-  include_recipe "confluence::apache2"
+unless node['confluence']['install_type'].match('war')
+  include_recipe 'confluence::tomcat_configuration'
+  include_recipe 'confluence::apache2'
 end
 
-include_recipe "confluence::configuration"
+include_recipe 'confluence::configuration'

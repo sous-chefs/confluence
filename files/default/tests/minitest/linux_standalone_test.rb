@@ -1,6 +1,6 @@
 require File.expand_path('../support/helpers', __FILE__)
 
-describe_recipe "confluence::linux_standalone" do
+describe_recipe 'confluence::linux_standalone' do
   include Helpers::Confluence
 
   it 'has confluence user' do
@@ -8,11 +8,11 @@ describe_recipe "confluence::linux_standalone" do
   end
 
   it 'starts Confluence' do
-    service("confluence").must_be_running
+    service('confluence').must_be_running
   end
 
   it 'enables Confluence' do
-    service("confluence").must_be_enabled
+    service('confluence').must_be_enabled
   end
-  
+
 end

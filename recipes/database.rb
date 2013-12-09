@@ -25,41 +25,41 @@ database_connection = {
 }
 
 case settings['database']['type']
-when "mysql"
-  include_recipe "mysql::server"
-  include_recipe "database::mysql"
-  database_connection.merge!({ :username => 'root', :password => node['mysql']['server_root_password'] })
-  
+when 'mysql'
+  include_recipe 'mysql::server'
+  include_recipe 'database::mysql'
+  database_connection.merge!(:username => 'root', :password => node['mysql']['server_root_password'])
+
   mysql_database settings['database']['name'] do
     connection database_connection
-    collation "utf8_bin"
-    encoding "utf8"
+    collation 'utf8_bin'
+    encoding 'utf8'
     action :create
   end
 
   # See this MySQL bug: http://bugs.mysql.com/bug.php?id=31061
-  mysql_database_user "" do
+  mysql_database_user '' do
     connection database_connection
-    host "localhost"
+    host 'localhost'
     action :drop
   end
 
   mysql_database_user settings['database']['user'] do
     connection database_connection
-    host "%"
+    host '%'
     password settings['database']['password']
     database_name settings['database']['name']
     action [:create, :grant]
   end
-when "postgresql"
-  include_recipe "postgresql::server"
-  include_recipe "database::postgresql"
-  database_connection.merge!({ :username => 'postgres', :password => node['postgresql']['password']['postgres'] })
-  
+when 'postgresql'
+  include_recipe 'postgresql::server'
+  include_recipe 'database::postgresql'
+  database_connection.merge!(:username => 'postgres', :password => node['postgresql']['password']['postgres'])
+
   postgresql_database settings['database']['name'] do
     connection database_connection
-    connection_limit "-1"
-    encoding "utf8"
+    connection_limit '-1'
+    encoding 'utf8'
     action :create
   end
 
