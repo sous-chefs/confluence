@@ -68,5 +68,5 @@ end
 service 'confluence' do
   supports :status => true, :restart => true
   action :enable
-  subscribes :restart, resources('java_ark[jdk]')
+  subscribes :restart, 'java_ark[jdk]'
 end
