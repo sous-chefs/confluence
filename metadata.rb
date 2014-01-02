@@ -4,7 +4,7 @@ maintainer_email  'bflad@wharton.upenn.edu'
 license           'Apache 2.0'
 description       'Installs/Configures Atlassian Confluence'
 long_description  IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-version           '1.7.0'
+version           '1.7.1'
 recipe            'confluence', 'Installs/configures Atlassian Confluence'
 recipe            'confluence::apache2', 'Installs/configures Apache 2 as proxy (ports 80/443)'
 recipe            'confluence::database', 'Installs/configures MySQL/Postgres server, database, and user for Confluence'

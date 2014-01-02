@@ -1,3 +1,7 @@
+## 1.7.1
+
+* Bugfix: [GH-2] Remove requirement for java cookbook
+
 ## 1.7.0
 
 * Bump default version of Confluence to 5.3
