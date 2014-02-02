@@ -17,6 +17,7 @@
 # limitations under the License.
 #
 
+# Chef::Recipe::Confluence class
 class Chef::Recipe::Confluence
   def self.settings(node)
     begin
