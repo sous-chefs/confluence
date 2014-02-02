@@ -93,6 +93,16 @@ Vagrant.configure("2") do |config|
         "server_root_password" => "iloverandompasswordsbutthiswilldo",
         "server_repl_password" => "iloverandompasswordsbutthiswilldo",
         "server_debian_password" => "iloverandompasswordsbutthiswilldo"
+      },
+      "postgresql" => {
+        "password" => {
+          "postgres" => "iloverandompasswordsbutthiswilldo"
+        }
+      },
+      "confluence" => {
+        "database" => {
+          "type" => "postgresql"
+        }
       }
     }
     chef.run_list = [
