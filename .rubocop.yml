@@ -13,6 +13,8 @@ AlignParameters:
   Enabled: false
 Encoding:
   Enabled: false
+FileName:
+  Enabled: false
 HashSyntax:
   Enabled: false
 LineLength:
