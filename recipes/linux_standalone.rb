@@ -29,11 +29,11 @@ end
 
 user node['confluence']['user'] do
   comment 'Confluence Service Account'
-  home    node['confluence']['home_path']
-  shell   '/bin/bash'
+  home node['confluence']['home_path']
+  shell '/bin/bash'
   supports :manage_home => true
-  system  true
-  action  :create
+  system true
+  action :create
 end
 
 execute 'Generating Self-Signed Java Keystore' do
@@ -52,10 +52,10 @@ execute 'Generating Self-Signed Java Keystore' do
 end
 
 remote_file "#{Chef::Config[:file_cache_path]}/atlassian-confluence-#{node['confluence']['version']}.tar.gz" do
-  source    node['confluence']['url']
-  checksum  node['confluence']['checksum']
-  mode      '0644'
-  action    :create_if_missing
+  source node['confluence']['url']
+  checksum node['confluence']['checksum']
+  mode '0644'
+  action :create_if_missing
 end
 
 directory File.dirname(node['confluence']['install_path']) do
@@ -83,7 +83,7 @@ end
 
 template '/etc/init.d/confluence' do
   source 'confluence.init.erb'
-  mode   '0755'
+  mode '0755'
   notifies :restart, 'service[confluence]', :delayed
 end
 

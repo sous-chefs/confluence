@@ -27,10 +27,10 @@ template "#{Chef::Config[:file_cache_path]}/atlassian-confluence-response.varfil
 end
 
 remote_file "#{Chef::Config[:file_cache_path]}/atlassian-confluence-#{node['confluence']['version']}-#{node['confluence']['arch']}.bin" do
-  source    node['confluence']['url']
-  checksum  node['confluence']['checksum']
-  mode      '0755'
-  action    :create_if_missing
+  source node['confluence']['url']
+  checksum node['confluence']['checksum']
+  mode '0755'
+  action :create_if_missing
 end
 
 execute "Installing Confluence #{node['confluence']['version']}" do
@@ -61,7 +61,7 @@ end
 
 template '/etc/init.d/confluence' do
   source 'confluence.init.erb'
-  mode   '0755'
+  mode '0755'
   notifies :restart, 'service[confluence]', :delayed
 end
 
