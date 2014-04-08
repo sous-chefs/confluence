@@ -16,7 +16,6 @@ tmp/
 *#
 .#*
 \#*#
-.idea
 .*.sw[a-z]
 *.sublime-project
 *.sublime-workspace
