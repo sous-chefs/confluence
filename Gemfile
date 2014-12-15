@@ -7,10 +7,10 @@ group :test, :integration do
 end
 
 group :test do
-  gem 'chefspec', '~> 3.4'
+  gem 'chefspec', '~> 4.0.1'
   gem 'cucumber'
-  gem 'foodcritic', '~> 3.0.3'
-  gem 'rubocop', '~> 0.20'
+  gem 'foodcritic', '~> 4.0.0'
+  gem 'rubocop', '~> 0.28.0'
 end
 
 group :integration do
