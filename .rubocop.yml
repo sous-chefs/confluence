@@ -11,6 +11,8 @@ AllCops:
 
 AlignParameters:
   Enabled: false
+Style/EmptyLinesAroundBlockBody:
+  Enabled: false
 Encoding:
   Enabled: false
 FileName:
