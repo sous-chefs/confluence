@@ -19,6 +19,8 @@ FileName:
   Enabled: false
 HashSyntax:
   Enabled: false
+Metrics/AbcSize:
+  Enabled: false
 LineLength:
   Enabled: false
 MethodLength:
