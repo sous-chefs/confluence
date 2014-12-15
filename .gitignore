@@ -29,7 +29,6 @@ tmp/
 
 # Test Kitchen
 .kitchen/
-.kitchen.local.yml
 
 # Vagrant
 .vagrant
