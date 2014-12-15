@@ -1,12 +1,12 @@
-require 'cucumber'
+# require 'cucumber'
 
-begin
-  require 'rspec-expectations'
-rescue LoadError
-  require 'rubygems/dependency_installer'
-  Gem::DependencyInstaller.new.install('rspec-expectations')
-  require 'rspec-expectations'
-end
+# begin
+#   require 'rspec-expectations'
+# rescue LoadError
+#   require 'rubygems/dependency_installer'
+#   Gem::DependencyInstaller.new.install('rspec-expectations')
+#   require 'rspec-expectations'
+# end
 
 begin
   require 'faraday'
