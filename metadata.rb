@@ -25,9 +25,12 @@ recipe 'confluence::windows_war', 'Deploys Confluence WAR on Windows'
   supports os
 end
 
-%w(apache2 database mysql mysql_connector postgresql).each do |cb|
+%w(apache2 mysql_connector postgresql).each do |cb|
   depends cb
 end
+
+depends 'database', '~> 2.3'
+depends 'mysql', '~> 5.0' 
 
 %w(java).each do |cb|
   suggests cb
