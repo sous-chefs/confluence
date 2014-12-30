@@ -1,0 +1,36 @@
+# Shamelessly copied from https://github.com/opscode-cookbooks/tomcat/blob/master/.kitchen.cloud.yml
+---
+driver:
+  aws_access_key_id: <%= ENV['AWS_ACCESS_KEY_ID'] %>
+  aws_secret_access_key: <%= ENV['AWS_SECRET_ACCESS_KEY'] %>
+  aws_ssh_key_id: <%= ENV['AWS_KEYPAIR_NAME'] %>
+  region: <%= ENV['AWS_REGION'] %>
+  availability_zone: <%= ENV['AWS_AVAILABILITY_ZONE'] %>
+
+provisioner:
+  name: chef_zero
+  require_chef_omnibus: true
+  chef_omnibus_url: http://www.getchef.com/chef/install.sh
+
+platforms:
+- name: ubuntu-12.04
+  driver:
+    name: ec2
+    image_id: ami-60a10117
+    flavor_id: t2.micro
+    security_group_ids: sg-16e62d73
+    vpc_mode: true
+    vpc: vpc-6648a303
+    subnet_id: subnet-0a935c6f
+    username: ubuntu
+    ssh_key: <%= ENV['EC2_SSH_KEY_PATH'] %>
+    tags: 
+      created-by: test-kitchen
+      Name: test-kitchen-confluence-ubuntu-12.04
+  run_list:
+    - recipe[apt]
+    
+suites:
+- name: confluence-installer-mysql-no-java
+  run_list:
+  - recipe[confluence]

@@ -9,12 +9,18 @@ require 'faraday'
 require 'socket'
 
 Given(/^the url of Confluences home page$/) do
-  # the following code is really awful and really need to find out how to change it.
-  @local_ip = Socket.ip_address_list[2].ip_address
+  # TODO the following code is really awful and really need to find out how to change it.
+  # Possible way : use ohai localy.
+  local_ip = Socket.ip_address_list[2].ip_address
+  if local_ip == '::1' 
+    local_ip = Socket.ip_address_list[1].ip_address
+  end 
+  @confluence_url = "https://#{local_ip}"
+  puts "Confluence's Home Page Url: #{@confluence_url}"
 end
 
 When(/^a web user browses to the url$/) do
-  connection = Faraday.new(:url => "https://#{@local_ip}",
+  connection = Faraday.new(:url => @confluence_url,
                            :ssl => { :verify => false }) do |faraday|
     faraday.adapter Faraday.default_adapter
   end
