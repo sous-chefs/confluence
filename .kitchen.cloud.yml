@@ -16,13 +16,9 @@ platforms:
 - name: ubuntu-12.04
   driver:
     name: ec2
-    image_id: ami-60a10117
-    flavor_id: t2.micro
-    security_group_ids: sg-16e62d73
-    vpc_mode: true
-    vpc: vpc-6648a303
-    subnet_id: subnet-0a935c6f
-    username: ubuntu
+    image_id: ami-7aa1010d
+    flavor_id: t1.micro
+    #security_group_ids: sg-xxxxxxxx <= to set if your default SG is not opened for ssh
     ssh_key: <%= ENV['EC2_SSH_KEY_PATH'] %>
     tags: 
       created-by: test-kitchen
