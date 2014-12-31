@@ -20,6 +20,7 @@ tmp/
 *.sublime-project
 *.sublime-workspace
 *.un~
+.idea/
 
 # OS files
 .DS_Store
@@ -29,7 +30,6 @@ tmp/
 
 # Test Kitchen
 .kitchen/
-.kitchen.local.yml
 
 # Vagrant
 .vagrant

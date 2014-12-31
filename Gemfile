@@ -3,20 +3,21 @@ source 'https://rubygems.org'
 gem 'rake'
 
 group :test, :integration do
-  gem 'berkshelf', '~> 2.0.14'
+  gem 'berkshelf', '~> 3.2.2'
 end
 
 group :test do
-  gem 'chefspec', '~> 3.4'
+  gem 'chefspec', '~> 4.0.1'
   gem 'cucumber'
-  gem 'foodcritic', '~> 3.0.3'
-  gem 'rubocop', '~> 0.20.0'
+  gem 'foodcritic', '~> 4.0.0'
+  gem 'rubocop', '~> 0.28.0'
 end
 
 group :integration do
   gem 'busser-serverspec', '~> 0.2.6'
   gem 'busser-cucumber'
   gem 'kitchen-vagrant', '~> 0.14'
+  gem 'kitchen-ec2'
   gem 'test-kitchen', '~> 1.1'
 end
 
