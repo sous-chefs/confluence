@@ -30,7 +30,7 @@ end
 end
 
 depends 'database', '~> 2.3'
-depends 'mysql', '~> 5.0' 
+depends 'mysql', '~> 5.0'
 
 %w(java).each do |cb|
   suggests cb
