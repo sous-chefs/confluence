@@ -38,16 +38,6 @@ when 'mysql'
     ::Chef::Recipe.send(:include, MysqlCookbook::Helpers::Ubuntu)
   end
 
-<<<<<<< Updated upstream
-  cnf_filename = 'mysqld_confluence_tuning.cnf'
-  template "#{include_dir}/#{cnf_filename}" do
-    source "#{cnf_filename}.erb"
-    owner 'mysql'
-    group 'mysql'
-    mode '0600'
-    action :create
-    notifies :restart, "mysql_service[#{node['mysql']['service_name']}]"
-=======
   %w(mysqld_confluence_tuning.cnf mysqld_confluence_utf8.cnf).each do |cnf_filename|
     template "#{include_dir}/#{cnf_filename}" do
       source "#{cnf_filename}.erb"
@@ -57,7 +47,6 @@ when 'mysql'
       action :create
       notifies :restart, "mysql_service[#{node['mysql']['service_name']}]"
     end
->>>>>>> Stashed changes
   end
 
   mysql_database settings['database']['name'] do
