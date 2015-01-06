@@ -227,12 +227,13 @@ else
   default['confluence']['apache2']['ssl']['key_file']         = '/etc/ssl/private/ssl-cert-snakeoil.key'
 end
 
-default['confluence']['database']['host']     = 'localhost'
-default['confluence']['database']['name']     = 'confluence'
-default['confluence']['database']['password'] = 'changeit'
-default['confluence']['database']['port']     = 3306
-default['confluence']['database']['type']     = 'mysql'
-default['confluence']['database']['user']     = 'confluence'
+default['confluence']['database']['host']      = 'localhost'
+default['confluence']['database']['name']      = 'confluence'
+default['confluence']['database']['password']  = 'changeit'
+default['confluence']['database']['port']      = 3306
+default['confluence']['database']['type']      = 'mysql'
+default['confluence']['database']['user']      = 'confluence'
+default['confluence']['database']['collation'] = 'utf8_bin'
 
 default['confluence']['jvm']['minimum_memory']  = '256m'
 default['confluence']['jvm']['maximum_memory']  = '512m'

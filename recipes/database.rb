@@ -30,9 +30,28 @@ when 'mysql'
   include_recipe 'database::mysql'
   database_connection.merge!(:username => 'root', :password => node['mysql']['server_root_password'])
 
+  # use helpers to obtain mysql's include_dir
+  case node['platform']
+  when 'amazon', 'redhat', 'centos', 'scientific'
+    ::Chef::Recipe.send(:include, MysqlCookbook::Helpers::Rhel)
+  when 'ubuntu'
+    ::Chef::Recipe.send(:include, MysqlCookbook::Helpers::Ubuntu)
+  end
+
+  %w(mysqld_confluence_tuning.cnf mysqld_confluence_utf8.cnf).each do |cnf_filename|
+    template "#{include_dir}/#{cnf_filename}" do
+      source "#{cnf_filename}.erb"
+      owner 'mysql'
+      group 'mysql'
+      mode '0600'
+      action :create
+      notifies :restart, "mysql_service[#{node['mysql']['service_name']}]"
+    end
+  end
+
   mysql_database settings['database']['name'] do
     connection database_connection
-    collation 'utf8_bin'
+    collation node['confluence']['database']['collation']
     encoding 'utf8'
     action :create
   end
