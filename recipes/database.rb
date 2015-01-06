@@ -51,7 +51,7 @@ when 'mysql'
 
   mysql_database settings['database']['name'] do
     connection database_connection
-    collation 'utf8_bin'
+    collation node['confluence']['database']['collation']
     encoding 'utf8'
     action :create
   end

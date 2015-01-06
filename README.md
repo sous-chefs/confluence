@@ -72,6 +72,7 @@ password | Confluence database user password | String | changeit
 port | Confluence database port | Fixnum | 3306
 type | Confluence database type - "mysql" or "postgresql" | String | mysql
 user | Confluence database user | String | confluence
+collation | Confluence database UTF8 collation | String | utf8-bin
 
 ### Confluence JVM Attributes
 
