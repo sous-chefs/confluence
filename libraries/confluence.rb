@@ -27,19 +27,20 @@ class Chef
         begin
           if Chef::Config[:solo]
             begin
-              settings = Chef::DataBagItem.load('confluence', 'confluence')['local']
+              databag_item = Chef::DataBagItem.load('confluence', 'confluence')['local']
             rescue
               Chef::Log.info('No confluence data bag found')
             end
           else
             begin
-              settings = Chef::EncryptedDataBagItem.load('confluence', 'confluence')[node.chef_environment]
+              databag_item = Chef::EncryptedDataBagItem.load('confluence', 'confluence')[node.chef_environment]
             rescue
               Chef::Log.info('No confluence encrypted data bag found')
             end
           end
         ensure
-          settings ||= node['confluence']
+          databag_item ||= {}
+          settings = Chef::Mixin::DeepMerge.deep_merge(databag_item, node['confluence'].to_hash)
 
           case settings['database']['type']
           when 'mysql'
