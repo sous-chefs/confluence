@@ -80,7 +80,7 @@ when 'windows'
       when '5.6.3' then 'c9e7f1ea06e562375a91fb161dd2015fc57661748d39f4b278677f77782d481d'
       when '5.6.5' then 'a63694bb7847c135570fc82f8c83c00d7d1fc6e5eaf2e357ea6aa6a68027a3ef'
       when '5.7' then '1c81780d5172812f1b6dea0ce3cd8c4b3ddb0277d19f4b4f629b5dddf10feb50'
-      when '5.7.1' then ''
+      when '5.7.1' then '29f8a38f0d7752852e082f7e9efb19009cd0133f39e2bc08ed246127735c9f17'
       end
   when 'installer'
     default['confluence']['url']      = "#{node['confluence']['url_base']}-#{node['confluence']['version']}-#{node['confluence']['arch']}.exe"
