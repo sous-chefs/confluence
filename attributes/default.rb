@@ -240,4 +240,4 @@ default['confluence']['tomcat']['port']         = '8090'
 default['confluence']['tomcat']['ssl_port']     = '8443'
 
 # enable/disable Crowd SSO
-default['confluence']['crowd']['sso'] = true
+default['confluence']['crowd']['sso'] = false
