@@ -238,3 +238,6 @@ default['confluence']['tomcat']['keystoreFile'] = "#{node['confluence']['home_pa
 default['confluence']['tomcat']['keystorePass'] = 'changeit'
 default['confluence']['tomcat']['port']         = '8090'
 default['confluence']['tomcat']['ssl_port']     = '8443'
+
+# enable/disable Crowd SSO
+default['confluence']['crowd']['sso'] = true

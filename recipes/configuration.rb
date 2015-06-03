@@ -33,3 +33,10 @@ end
 #  variables :database => settings['database']
 #  notifies :restart, "service[confluence]", :delayed
 # end
+
+template 'seraph-config.xml' do
+  path "#{node['confluence']['install_path']}/confluence/WEB-INF/classes/seraph-config.xml"
+  source 'seraph-config.xml.erb'
+  mode 0644
+  notifies :restart, 'service[confluence]', :delayed
+end
