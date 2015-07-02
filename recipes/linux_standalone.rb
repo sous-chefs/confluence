@@ -38,7 +38,7 @@ end
 
 execute 'Generating Self-Signed Java Keystore' do
   command <<-COMMAND
-    #{node['java']['java_home']}/bin/keytool -genkey \
+    #{node['confluence']['jre_home']}/bin/keytool -genkey \
       -alias #{settings['tomcat']['keyAlias']} \
       -keyalg RSA \
       -dname 'CN=#{node['fqdn']}, OU=Example, O=Example, L=Example, ST=Example, C=US' \

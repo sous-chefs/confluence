@@ -1,0 +1,64 @@
+<%
+@in_travis_env = false
+ENV['TRAVIS'].nil? ? () : (ENV['TRAVIS'].downcase == 'true' ? (@in_travis_env = true) : ())
+
+if @in_travis_env
+  puts "Detected Travis. Skipping content of .kitchen.local.yml"
+else
+  puts "No Travis detected. Running content of .kitchen.local.yml"
+
+  require 'socket'
+
+  def local_ip
+    @local_ip ||= begin
+      # turn off reverse DNS resolution temporarily
+      orig, Socket.do_not_reverse_lookup = Socket.do_not_reverse_lookup, true
+
+      UDPSocket.open do |s|
+        s.connect '64.233.187.99', 1
+        s.addr.last
+      end
+    ensure
+      Socket.do_not_reverse_lookup = orig
+    end
+  end
+
+  def local_port ; 8123 ; end
+  def http_proxy_url ; "http://#{local_ip}:#{local_port}" ; end
+
+  def proxy_running?
+    socket = TCPSocket.new(local_ip, local_port)
+    true
+  rescue SocketError, Errno::ECONNREFUSED,
+    Errno::EHOSTUNREACH, Errno::ENETUNREACH, IOError
+    false
+  rescue Errno::EPERM, Errno::ETIMEDOUT
+    false
+  ensure
+    socket && socket.close
+  end
+%>
+---
+  <% if not proxy_running? %>
+    <% puts ".kitchen.local.yml : Proxy *NOT* running. Skipping proxy setup." %>
+  <% else %>
+    <% puts ".kitchen.local.yml : Proxy running on http_proxy_url=#{http_proxy_url} => using it." %>
+
+driver:
+  http_proxy: <%= http_proxy_url %>
+  https_proxy: <%= http_proxy_url %>
+  provision_command: "env http_proxy=<%= http_proxy_url %> bash -c 'curl -L http://www.getchef.com/chef/install.sh | bash'"
+  vagrantfile_erb: Vagrantfile.erb
+
+provisioner:
+  chef_omnibus_url: http://www.getchef.com/chef/install.sh
+  solo_rb:
+    http_proxy: <%= http_proxy_url %>
+    https_proxy: <%= http_proxy_url %>
+    no_proxy: localhost,127.0.0.1
+  client_rb:
+    http_proxy: <%= http_proxy_url %>
+    https_proxy: <%= http_proxy_url %>
+    no_proxy: localhost,127.0.0.1
+  <% end %>
+<% end # End if @in_travis_env %>

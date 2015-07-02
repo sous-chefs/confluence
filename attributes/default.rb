@@ -24,6 +24,12 @@ default['confluence']['url_base']       = 'http://www.atlassian.com/software/con
 default['confluence']['user']           = 'confluence'
 default['confluence']['version']        = '5.7'
 
+if node['java'] && node['java']['java_home']
+  default['confluence']['jre_home'] = "#{node['java']['java_home']}/jre/"
+else
+  default['confluence']['jre_home'] = "#{node['confluence']['install_path']}/jre/"
+end
+
 if node['kernel']['machine'] == 'x86_64'
   default['confluence']['arch'] = 'x64'
 else
