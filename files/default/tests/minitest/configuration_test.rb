@@ -4,5 +4,4 @@ describe_recipe 'confluence::configuration' do
   include Helpers::Confluence
 
   # do work, son.
-
 end

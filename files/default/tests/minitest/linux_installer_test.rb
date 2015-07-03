@@ -14,5 +14,4 @@ describe_recipe 'confluence::linux_installer' do
   it 'enables Confluence' do
     service('confluence').must_be_enabled
   end
-
 end

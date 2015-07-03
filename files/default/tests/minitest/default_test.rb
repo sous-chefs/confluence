@@ -4,5 +4,4 @@ describe_recipe 'confluence::default' do
   include Helpers::Confluence
 
   # check other recipe tests
-
 end

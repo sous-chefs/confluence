@@ -4,5 +4,4 @@ describe_recipe 'confluence::windows_installer' do
   include Helpers::Confluence
 
   # do work, son.
-
 end
