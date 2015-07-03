@@ -304,7 +304,6 @@ end
 default['confluence']['database']['host']     = 'localhost'
 default['confluence']['database']['name']     = 'confluence'
 default['confluence']['database']['password'] = 'changeit'
-default['confluence']['database']['port']     = 3306
 default['confluence']['database']['type']     = 'mysql'
 default['confluence']['database']['user']     = 'confluence'
 
