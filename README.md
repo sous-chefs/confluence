@@ -54,7 +54,7 @@ arch | architecture for Confluence installer - "x64" or "x32" | String | auto-de
 checksum | SHA256 checksum for Confluence install | String | auto-detected (see attributes/default.rb)
 home_path | home directory for Confluence user | String | /var/atlassian/application-data/confluence
 install_path | location to install Confluence | String | /opt/atlassian/confluence
-install_type | Confluence install type - "cluster-standalone", "cluster-war", "installer", "standalone", "war" | String | installer
+install_type | Confluence install type - "installer", "standalone" | String | installer
 url_base | URL base for Confluence install | String | http://www.atlassian.com/software/confluence/downloads/binary/atlassian-confluence
 url | URL for Confluence install | String | auto-detected (see attributes/default.rb)
 user | user running Confluence | String | confluence
@@ -103,17 +103,9 @@ ssl_port | Tomcat HTTPS port | Fixnum | 8443
 * `recipe[confluence]` Installs/configures Atlassian Confluence
 * `recipe[confluence::apache2]` Installs/configures Apache 2 as proxy (ports 80/443)
 * `recipe[confluence::database]` Installs/configures MySQL/Postgres server, database, and user for Confluence
-* `recipe[confluence::linux_cluster-standalone]` Installs/configures Confluence Cluster via Linux standalone archive"
-* `recipe[confluence::linux_cluster-war]` Deploys Confluence Cluster WAR on Linux"
 * `recipe[confluence::linux_installer]` Installs/configures Confluence via Linux installer"
 * `recipe[confluence::linux_standalone]` Installs/configures Confluence via Linux standalone archive"
-* `recipe[confluence::linux_war]` Deploys Confluence WAR on Linux"
 * `recipe[confluence::tomcat_configuration]` Configures Confluence's built-in Tomcat
-* `recipe[confluence::windows_cluster-standalone]` Installs/configures Confluence Cluster via Windows standalone archive"
-* `recipe[confluence::windows_cluster-war]` Deploys Confluence Cluster WAR on Windows"
-* `recipe[confluence::windows_installer]` Installs/configures Confluence via Windows installer"
-* `recipe[confluence::windows_standalone]` Installs/configures Confluence via Windows standalone archive"
-* `recipe[confluence::windows_war]` Deploys Confluence WAR on Windows"
 
 ## Usage
 
