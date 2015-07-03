@@ -4,5 +4,4 @@ describe_recipe 'confluence::linux_cluster-standalone' do
   include Helpers::Confluence
 
   # do work, son.
-
 end

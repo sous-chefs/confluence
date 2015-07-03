@@ -4,5 +4,4 @@ describe_recipe 'confluence::linux_cluster-war' do
   include Helpers::Confluence
 
   # do work, son.
-
 end

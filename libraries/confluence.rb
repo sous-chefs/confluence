@@ -23,6 +23,7 @@ class Chef
   class Recipe
     # Chef::Recipe::Confluence class
     class Confluence
+      # rubocop:disable Metrics/AbcSize
       def self.settings(node)
         begin
           if Chef::Config[:solo]
@@ -54,6 +55,7 @@ class Chef
 
         settings
       end
+      # rubocop:enable Metrics/AbcSize
     end
   end
 end

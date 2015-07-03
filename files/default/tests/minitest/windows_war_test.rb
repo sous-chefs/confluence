@@ -4,5 +4,4 @@ describe_recipe 'confluence::windows_war' do
   include Helpers::Confluence
 
   # do work, son.
-
 end
