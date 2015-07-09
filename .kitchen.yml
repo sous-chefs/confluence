@@ -53,6 +53,14 @@ platforms:
     require_chef_omnibus: latest
 
 suites:
+- name: confluence-installer-mysql-no-java
+  run_list:
+  - recipe[confluence]
+  attributes:
+    mysql:
+      server_root_password: iloverandompasswordsbutthiswilldo
+      server_repl_password: iloverandompasswordsbutthiswilldo
+      server_debian_password: iloverandompasswordsbutthiswilldo
 - name: confluence-installer-mysql
   run_list:
   - recipe[java]

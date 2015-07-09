@@ -41,8 +41,4 @@ cd $PUSHED_DIR
 echo ""
 echo "Server startup logs are located in $LOGBASEABS/logs/catalina.out"
 
-<% if node['java'] && node['java']['java_home'] -%>
-JRE_HOME="<%= node['java']['java_home'] %>/jre/"; export JRE_HOME
-<% else -%>
-JRE_HOME="<%= node['confluence']['install_path'] %>/jre/"; export JRE_HOME
-<% end -%>
+JRE_HOME="<%= node['confluence']['jre_home'] %>"; export JRE_HOME

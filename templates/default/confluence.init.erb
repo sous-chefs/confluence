@@ -65,7 +65,7 @@ case "$1" in
     <% when 'rhel' -%>
     status -p $BASE/work/catalina.pid $APP
     <% else -%>
-    status_of_proc -p $BASE/work/catalina.pid $JAVA_HOME/bin/java $APP
+    status_of_proc -p $BASE/work/catalina.pid <%= node['confluence']['jre_home'] %>bin/java $APP
     <% end -%>
     RETVAL=$?
     ;;
