@@ -13,17 +13,16 @@ recipe 'confluence::linux_installer', 'Installs/configures Confluence via Linux 
 recipe 'confluence::linux_standalone', 'Installs/configures Confluence via Linux standalone archive'
 recipe 'confluence::tomcat_configuration', "Configures Confluence's built-in Tomcat"
 
-%w(amazon centos redhat scientific ubuntu).each do |os|
-  supports os
-end
+supports 'amazon'
+supports 'centos'
+supports 'redhat'
+supports 'scientific'
+supports 'ubuntu'
 
-%w(apache2 mysql_connector postgresql).each do |cb|
-  depends cb
-end
-
+depends 'apache2'
 depends 'database', '~> 2.3'
 depends 'mysql', '~> 5.0'
+depends 'mysql_connector'
+depends 'postgresql'
 
-%w(java).each do |cb|
-  suggests cb
-end
+suggests 'jave'
