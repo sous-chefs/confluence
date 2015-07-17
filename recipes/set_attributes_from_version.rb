@@ -1,8 +1,6 @@
 #
 # Cookbook Name:: confluence
-# Recipe:: default
-#
-# Copyright 2013, Brian Flad
+# Library:: set_attributes_from_version
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -17,12 +15,18 @@
 # limitations under the License.
 #
 
-include_recipe 'confluence::set_attributes_from_version'
+# Calculate variables that depend on ['confluence']['version'] attribute.
+# If you need to override this in an attribute file you should use
+# 'force_default' or higher precedence.
 
-settings = Confluence.settings(node)
+node.default['confluence']['url'] = get_artifact_url(
+  node['confluence']['version'],
+  node['confluence']['install_type'],
+  node['confluence']['arch']
+)
 
-include_recipe 'confluence::database' if settings['database']['host'] == 'localhost'
-include_recipe "confluence::linux_#{node['confluence']['install_type']}"
-include_recipe 'confluence::tomcat_configuration'
-include_recipe 'confluence::apache2'
-include_recipe 'confluence::configuration'
+node.default['confluence']['checksum'] = get_artifact_checksum(
+  node['confluence']['version'],
+  node['confluence']['install_type'],
+  node['confluence']['arch']
+)
