@@ -17,7 +17,7 @@
 # limitations under the License.
 #
 
-# settings = Confluence.settings(node)
+# settings = merge_confluence_settings
 
 template "#{node['confluence']['install_path']}/confluence/WEB-INF/classes/confluence-init.properties" do
   source 'confluence-init.properties.erb'

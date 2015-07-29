@@ -18,6 +18,48 @@
 module Confluence
   # Confluence::Helpers module
   module Helpers
+    # Merges Confluence settings from data bag and node attributes.
+    # Data dag settings always has a higher priority.
+    #
+    # @return [Hash] Settings hash
+    def merge_confluence_settings
+      @settings_from_data_bag ||= settings_from_data_bag
+      settings = Chef::Mixin::DeepMerge.deep_merge(
+        @settings_from_data_bag,
+        node['confluence'].to_hash
+      )
+
+      case settings['database']['type']
+      when 'mysql'
+        settings['database']['port'] ||= 3306
+      when 'postgresql'
+        settings['database']['port'] ||= 5432
+      else
+        fail "Unsupported database type: #{settings['database']['type']}"
+      end
+
+      settings
+    end
+
+    # Fetchs Confluence settings from the data bag
+    #
+    # @return [Hash] Settings hash
+    def settings_from_data_bag
+      item =
+      begin
+        if Chef::Config[:solo]
+          Chef::DataBagItem.load('confluence', 'confluence')['local']
+        else
+          Chef::EncryptedDataBagItem.load('confluence', 'confluence')[node.chef_environment]
+        end
+      rescue
+        Chef::Log.info('No confluence data bag found')
+        nil
+      end
+
+      item || {}
+    end
+
     # Returns download URL for Confluence artifact
     #
     # @param [String] version Confluence version.

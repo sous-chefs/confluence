@@ -17,7 +17,7 @@
 # limitations under the License.
 #
 
-settings = Confluence.settings(node)
+settings = merge_confluence_settings
 
 template "#{node['confluence']['install_path']}/bin/setenv.sh" do
   source 'setenv.sh.erb'

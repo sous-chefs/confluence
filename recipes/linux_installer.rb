@@ -17,7 +17,7 @@
 # limitations under the License.
 #
 
-settings = Confluence.settings(node)
+settings = merge_confluence_settings
 
 template "#{Chef::Config[:file_cache_path]}/atlassian-confluence-response.varfile" do
   source 'response.varfile.erb'
