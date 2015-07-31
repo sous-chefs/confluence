@@ -13,5 +13,7 @@ HashSyntax:
   Enabled: false
 LineLength:
   Enabled: false
+ModuleLength:
+  Enabled: false
 MethodLength:
   Max: 30

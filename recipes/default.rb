@@ -19,7 +19,7 @@
 
 include_recipe 'confluence::set_attributes_from_version'
 
-settings = Confluence.settings(node)
+settings = merge_confluence_settings
 
 include_recipe 'confluence::database' if settings['database']['host'] == 'localhost'
 include_recipe "confluence::linux_#{node['confluence']['install_type']}"
