@@ -32,7 +32,7 @@ if confluence_version != node['confluence']['version']
     source node['confluence']['url']
     checksum node['confluence']['checksum']
     mode '0755'
-    action :create_if_missing
+    action :create
   end
 
   execute "Installing Confluence #{node['confluence']['version']}" do
