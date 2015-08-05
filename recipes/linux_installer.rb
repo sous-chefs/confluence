@@ -26,17 +26,19 @@ template "#{Chef::Config[:file_cache_path]}/atlassian-confluence-response.varfil
   mode '0644'
 end
 
-remote_file "#{Chef::Config[:file_cache_path]}/atlassian-confluence-#{node['confluence']['version']}-#{node['confluence']['arch']}.bin" do
-  source node['confluence']['url']
-  checksum node['confluence']['checksum']
-  mode '0755'
-  action :create_if_missing
-end
+# Install or upgrade confluence
+if confluence_version != node['confluence']['version']
+  remote_file "#{Chef::Config[:file_cache_path]}/atlassian-confluence-#{node['confluence']['version']}-#{node['confluence']['arch']}.bin" do
+    source node['confluence']['url']
+    checksum node['confluence']['checksum']
+    mode '0755'
+    action :create_if_missing
+  end
 
-execute "Installing Confluence #{node['confluence']['version']}" do
-  cwd Chef::Config[:file_cache_path]
-  command "./atlassian-confluence-#{node['confluence']['version']}-#{node['confluence']['arch']}.bin -q -varfile atlassian-confluence-response.varfile"
-  creates node['confluence']['install_path']
+  execute "Installing Confluence #{node['confluence']['version']}" do
+    cwd Chef::Config[:file_cache_path]
+    command "./atlassian-confluence-#{node['confluence']['version']}-#{node['confluence']['arch']}.bin -q -varfile atlassian-confluence-response.varfile"
+  end
 end
 
 execute 'Generating Self-Signed Java Keystore' do
