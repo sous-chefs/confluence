@@ -18,6 +18,24 @@
 module Confluence
   # Confluence::Helpers module
   module Helpers
+    # Detects current Confluence version.
+    # Returns nil if Confluence isn't installed.
+    #
+    # @return [String] Confluence version
+    def confluence_version
+      pom_file = File.join(
+        node['confluence']['install_path'],
+        '/confluence/META-INF/maven/com.atlassian.confluence/confluence-webapp/pom.properties'
+      )
+
+      begin
+        return Regexp.last_match(1) if File.read(pom_file) =~ /^version=(.*)$/
+      rescue Errno::ENOENT
+        # Confluence is not installed
+        return nil
+      end
+    end
+
     # Merges Confluence settings from data bag and node attributes.
     # Data dag settings always has a higher priority.
     #
