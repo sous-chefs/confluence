@@ -36,12 +36,13 @@ Suggested [Opscode Cookbooks](https://github.com/opscode-cookbooks/)
 
 ### JDK/JRE
 
-The Atlassian Confluence Linux installer will automatically configure a bundled JRE. If you wish to use your own JDK/JRE, with say the `java` cookbook, then as of this writing it must be Oracle JDK 7 ([Supported Platforms](https://confluence.atlassian.com/display/DOC/Supported+Platforms))
+The Atlassian Confluence Linux installer will automatically configure a bundled JRE.
 
-Necessary configuration with `java` cookbook:
-* `node['java']['install_flavor'] = "oracle"`
-* `node['java']['jdk_version'] = "7"`
-* `node['java']['oracle']['accept_oracle_download_terms'] = true`
+If you prefer Confluence stadalone installation, then you have to manage JDK/JRE 8
+([Supported Platforms](https://confluence.atlassian.com/display/DOC/Supported+Platforms))
+on this node. It can be done with `java` cookbook and appropricate attributes:
+
+* `node['java']['jdk_version'] = "8"`
 * `recipe[java]`
 
 ## Attributes

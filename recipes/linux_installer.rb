@@ -41,7 +41,7 @@ end
 
 execute 'Generating Self-Signed Java Keystore' do
   command <<-COMMAND
-    #{node['java']['java_home']}/bin/keytool -genkey \
+    #{node['confluence']['install_path']}/jre/bin/keytool -genkey \
       -alias #{settings['tomcat']['keyAlias']} \
       -keyalg RSA \
       -dname 'CN=#{node['fqdn']}, OU=Example, O=Example, L=Example, ST=Example, C=US' \
@@ -68,5 +68,4 @@ end
 service 'confluence' do
   supports :status => true, :restart => true
   action :enable
-  subscribes :restart, 'java_ark[jdk]'
 end
