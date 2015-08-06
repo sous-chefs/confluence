@@ -58,7 +58,7 @@ install_type | Confluence install type - "installer", "standalone" | String | in
 url_base | URL base for Confluence install | String | http://www.atlassian.com/software/confluence/downloads/binary/atlassian-confluence
 url | URL for Confluence install | String | auto-detected (see attributes/default.rb)
 user | user running Confluence | String | confluence
-version | Confluence version to install | String | 5.3
+version | Confluence version to install | String | 5.8.8
 
 ### Confluence Database Attributes
 

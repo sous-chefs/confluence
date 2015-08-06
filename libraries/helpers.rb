@@ -209,6 +209,11 @@ module Confluence
           'x32' => 'aae6f2b955225c7e31d6d2ce392d0c4c5f778fa62e4ceb43b22dab8c46344ee1',
           'x64' => '9d8128257593a032c5882bdf08e009d0bdce8a924601d367ac966b9e43c209cf',
           'tar' => '5def693857255bd9e890ab2b621b80aa188c37f0a48dd1b44ef73b7d9d852e2a'
+        },
+        '5.8.8' => {
+          'x32' => 'c447a6f915607ce257c4375d15750810cae9dd2c6bfd22fefb724478f930e2c0',
+          'x64' => '8c813671b17bbae0c0e74c8e23e39bb6db9b9171207bff2adcecb6115abdef40',
+          'tar' => '9459e357c8090588b06ab23f01954567f7167061731d4eada76b9bdf27d91ca6'
         }
       }
     end
