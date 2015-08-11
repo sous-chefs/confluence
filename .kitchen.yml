@@ -32,7 +32,6 @@ provisioner:
 suites:
 - name: confluence-installer-mysql
   run_list:
-  - recipe[java]
   - recipe[confluence]
   attributes:
     mysql:
@@ -41,7 +40,6 @@ suites:
       server_debian_password: iloverandompasswordsbutthiswilldo
 - name: confluence-installer-postgresql
   run_list:
-  - recipe[java]
   - recipe[confluence]
   attributes:
     confluence:
