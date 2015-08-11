@@ -8,16 +8,21 @@ driver:
 platforms:
 - name: centos-6
   driver:
-    box: chef/centos-6.6
+    box: chef/centos-6.6  # vagrant
+    image: centos-6-5-x64 # digitalocean
 - name: centos-7
   driver:
     box: chef/centos-7.1
+    image: centos-7-0-x64
+
 - name: ubuntu-12.04
   driver:
     box: chef/ubuntu-12.04
+    image: ubuntu-12-04-x64
 - name: ubuntu-14.04
   driver:
     box: chef/ubuntu-14.04
+    image: ubuntu-14-04-x64
 
 provisioner:
   name: chef_zero

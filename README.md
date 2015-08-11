@@ -196,6 +196,23 @@ The VM can easily be stopped and deleted with the `vagrant destroy`
 command. Please see the official [Vagrant documentation](http://docs.vagrantup.com/v2/cli/index.html)
 for a more in depth explanation of available commands.
 
+#### Test-Kitchen
+
+Test-Kitchen is preconfigured to work with Vagrant to integration
+testing.
+
+If your system isn't powerful enough for speedy local testing, this
+cookbook is pre-configured to easily use remote servers with
+DigitalOcean:
+
+```
+ln -s .kitchen.digitalocean.yml .kitchen.local.yml
+# Get key ID by inspecting DOM of web dashboard on keys page
+export DIGITALOCEAN_ACCESS_TOKEN=xxxxxxxxxxxx DIGITALOCEAN_SSH_KEY_IDS=123456
+bundle install
+bundle exec kitchen list
+```
+
 ## Contributing
 
 Please use standard Github issues/pull requests and if possible, in combination with testing on the Vagrant boxes.
