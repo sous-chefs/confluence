@@ -50,3 +50,17 @@ suites:
     postgresql:
       password:
         postgres: iloverandompasswordsbutthiswilldo
+- name: confluence-standalone-postgresql
+  run_list:
+  - recipe[java]
+  - recipe[confluence]
+  attributes:
+    confluence:
+      database:
+        type: postgresql
+      install_type: standalone
+    java:
+      jdk_version: 8
+    postgresql:
+      password:
+        postgres: iloverandompasswordsbutthiswilldo
