@@ -55,7 +55,7 @@ remote_file "#{Chef::Config[:file_cache_path]}/atlassian-confluence-#{node['conf
   source node['confluence']['url']
   checksum node['confluence']['checksum']
   mode '0644'
-  action :create_if_missing
+  action :create
 end
 
 directory File.dirname(node['confluence']['install_path']) do
