@@ -6,6 +6,7 @@ Berksfile.lock
 .bundle
 bin/
 Gemfile.lock
+vendor/
 
 # Chef
 metadata.json
