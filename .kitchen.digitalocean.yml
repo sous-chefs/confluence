@@ -1,0 +1,11 @@
+driver:
+  name: digitalocean
+  private_networking: false
+  size: 2gb
+
+provisioner:
+  client_rb:
+    formatters:
+      # Keeps logs concise for parallelism.
+      # Travis CI will also cancel job if logs get over 4MB.
+    - :minimal
