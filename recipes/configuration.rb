@@ -17,19 +17,9 @@
 # limitations under the License.
 #
 
-# settings = merge_confluence_settings
-
 template "#{node['confluence']['install_path']}/confluence/WEB-INF/classes/confluence-init.properties" do
   source 'confluence-init.properties.erb'
   owner node['confluence']['user']
   mode '0644'
   notifies :restart, 'service[confluence]', :delayed
 end
-
-# template "#{node['confluence']['home_path']}/confluence.cfg.xml" do
-#  source "confluence.cfg.xml.erb"
-#  owner  node['confluence']['user']
-#  mode   "0644"
-#  variables :database => settings['database']
-#  notifies :restart, "service[confluence]", :delayed
-# end
