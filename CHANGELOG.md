@@ -2,6 +2,8 @@
 
 * Removed references to unused `confluence.cfg.xml`.
   [[GH-41]](https://github.com/bflad/chef-confluence/issues/41)
+* Implemented ark cookbook with install directory versioning.
+  [[GH-40]](https://github.com/bflad/chef-confluence/issues/40)
 
 ## 1.7.1
 
