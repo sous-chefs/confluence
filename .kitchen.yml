@@ -4,6 +4,12 @@ driver:
   require_chef_omnibus: latest
   customize:
     memory: 2048
+  network:
+    # Allow access to the Confluence tomcat ssl webui which is useful when troubleshooting
+    - - forwarded_port
+      - guest: 8443
+        host: 8443
+        auto_correct: true
 
 platforms:
 - name: centos-6
