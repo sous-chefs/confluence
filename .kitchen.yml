@@ -23,6 +23,15 @@ platforms:
   driver:
     box: chef/ubuntu-14.04
     image: ubuntu-14-04-x64
+- name: ubuntu-15.04
+  driver:
+    box: chef/ubuntu-15.04
+    image: ubuntu-15-04-x64
+  attributes:
+    postgresql:
+      # postgresql cookbook doesn't support 15.04 yet.
+      version: '9.4'
+      enable_pgdg_apt: false
 
 provisioner:
   name: chef_zero
@@ -63,6 +72,7 @@ suites:
         type: postgresql
       install_type: standalone
     java:
+      java_home: /usr/lib/jvm/java-8-oracle
       jdk_version: 8
     postgresql:
       password:
