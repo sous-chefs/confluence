@@ -19,15 +19,18 @@
 
 settings = merge_confluence_settings
 
-template "#{Chef::Config[:file_cache_path]}/atlassian-confluence-response.varfile" do
-  source 'response.varfile.erb'
-  owner 'root'
-  group 'root'
-  mode '0644'
-end
-
 # Install or upgrade confluence
 if confluence_version != node['confluence']['version']
+  template "#{Chef::Config[:file_cache_path]}/atlassian-confluence-response.varfile" do
+    source 'response.varfile.erb'
+    owner 'root'
+    group 'root'
+    mode '0644'
+    variables {
+      'update' => Dir.exist?(node['confluence']['install_path'])
+    }
+  end
+
   remote_file "#{Chef::Config[:file_cache_path]}/atlassian-confluence-#{node['confluence']['version']}-#{node['confluence']['arch']}.bin" do
     source node['confluence']['url']
     checksum node['confluence']['checksum']
