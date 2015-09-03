@@ -49,7 +49,7 @@ else
   default['confluence']['apache2']['ssl']['key_file']         = '/etc/ssl/private/ssl-cert-snakeoil.key'
 end
 
-default['confluence']['database']['host']     = 'localhost'
+default['confluence']['database']['host']     = '127.0.0.1'
 default['confluence']['database']['name']     = 'confluence'
 default['confluence']['database']['password'] = 'changeit'
 default['confluence']['database']['type']     = 'mysql'
