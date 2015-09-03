@@ -26,9 +26,9 @@ if confluence_version != node['confluence']['version']
     owner 'root'
     group 'root'
     mode '0644'
-    variables {
+    variables(
       'update' => Dir.exist?(node['confluence']['install_path'])
-    }
+    )
   end
 
   remote_file "#{Chef::Config[:file_cache_path]}/atlassian-confluence-#{node['confluence']['version']}-#{node['confluence']['arch']}.bin" do
