@@ -26,4 +26,4 @@ depends 'mysql', '~> 6.0'
 depends 'mysql_connector'
 depends 'postgresql'
 
-suggests 'jave'
+suggests 'java'
