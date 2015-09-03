@@ -26,8 +26,17 @@ database_connection = {
 
 case settings['database']['type']
 when 'mysql'
-  include_recipe 'mysql::server'
   include_recipe 'database::mysql'
+
+  mysql_service 'confluence' do
+    version settings['database']['version'] if settings['database']['version']
+    bind_address settings['database']['host']
+    port settings['database']['port'].to_s
+    data_dir node['mysql']['data_dir'] if node['mysql']['data_dir']
+    initial_root_password node['mysql']['server_root_password']
+    action [:create, :start]
+  end
+
   database_connection.merge!(:username => 'root', :password => node['mysql']['server_root_password'])
 
   mysql_database settings['database']['name'] do

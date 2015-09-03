@@ -22,7 +22,7 @@ supports 'ubuntu'
 depends 'apache2'
 depends 'ark'
 depends 'database', '~> 2.3'
-depends 'mysql', '~> 5.0'
+depends 'mysql', '~> 6.0'
 depends 'mysql_connector'
 depends 'postgresql'
 
