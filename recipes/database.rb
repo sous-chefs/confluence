@@ -26,7 +26,10 @@ database_connection = {
 
 case settings['database']['type']
 when 'mysql'
-  include_recipe 'database::mysql'
+  mysql2_chef_gem 'confluence' do
+    client_version settings['database']['version'] if settings['database']['version']
+    action :install
+  end
 
   mysql_service 'confluence' do
     version settings['database']['version'] if settings['database']['version']
