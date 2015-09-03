@@ -22,7 +22,7 @@
                    redirectPort="<%= node['confluence']['apache2']['ssl']['port'] %>"
                    secure="true"
                    scheme="https"
-                   proxyName="<%= node['confluence']['apache2']['virtual_host_alias'] %>"
+                   proxyName="<%= node['confluence']['apache2']['virtual_host_name'] %>"
                    proxyPort="<%= node['confluence']['apache2']['ssl']['port'] %>"
                    <% else -%>
                    redirectPort="<%= node['confluence']['tomcat']['ssl_port'] %>"
