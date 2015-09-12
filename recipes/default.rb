@@ -21,7 +21,7 @@ include_recipe 'confluence::set_attributes_from_version'
 
 settings = merge_confluence_settings
 
-include_recipe 'confluence::database' if settings['database']['host'] == 'localhost'
+include_recipe 'confluence::database' if settings['database']['host'] == '127.0.0.1'
 include_recipe "confluence::linux_#{node['confluence']['install_type']}"
 include_recipe 'confluence::tomcat_configuration'
 include_recipe 'confluence::apache2'
