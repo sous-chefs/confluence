@@ -62,8 +62,7 @@ ark 'confluence' do
 end
 
 if settings['database']['type'] == 'mysql'
-  include_recipe 'mysql_connector'
-  mysql_connector_j "#{node['confluence']['install_path']}/lib"
+  mysql_connector_j "#{node['confluence']['install_path']}/confluence/WEB-INF/lib"
 end
 
 if node['init_package'] == 'systemd'
