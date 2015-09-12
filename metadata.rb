@@ -24,6 +24,7 @@ depends 'ark'
 depends 'database'
 depends 'mysql', '~> 6.0'
 depends 'mysql_connector'
+depends 'mysql2_chef_gem'
 depends 'postgresql'
 
 suggests 'java'
