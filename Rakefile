@@ -55,6 +55,16 @@ namespace :unit do
   end
 end
 
+namespace :development do
+  begin
+    require 'stove/rake_task'
+    desc 'Tag and push new release to community site (stove gem)'
+    Stove::RakeTask.new
+  rescue LoadError
+    puts '>>>>> stove gem not loaded, omitting tasks' unless ENV['CI']
+  end
+end
+
 task unit: ['unit:rspec']
 
 desc 'Run all tests on Travis'
