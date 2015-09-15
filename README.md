@@ -214,6 +214,19 @@ bundle install
 bundle exec kitchen list
 ```
 
+#### Releasing
+
+To release a new version of the cookbook to the Supermarket community
+site:
+
+```
+bundle exec developement:publish
+```
+
+This will confirm that the git workspace is clean, and create a tag
+(formatted `v1.9.0`) based on metadata, then push to Supermarket. (You
+will be prompted to configure the command if you haven't already.)
+
 ## Contributing
 
 Please use standard Github issues/pull requests and if possible, in combination with testing on the Vagrant boxes.
