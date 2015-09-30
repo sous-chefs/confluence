@@ -21,7 +21,7 @@ default['confluence']['home_path']      = '/var/atlassian/application-data/confl
 default['confluence']['install_path']   = '/opt/atlassian/confluence'
 default['confluence']['install_type']   = 'installer'
 default['confluence']['user']           = 'confluence'
-default['confluence']['version']        = '5.8.8'
+default['confluence']['version']        = '5.8.13'
 
 if node['kernel']['machine'] == 'x86_64'
   default['confluence']['arch'] = 'x64'
