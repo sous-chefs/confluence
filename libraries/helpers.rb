@@ -108,10 +108,10 @@ module Confluence
     def get_artifact_checksum
       return node['confluence']['checksum'] unless node['confluence']['checksum'].nil?
 
-      sums = checksum_map[version]
       arch = get_arch
       version = node['confluence']['version']
       install_type = node['confluence']['install_type']
+      sums = checksum_map[version]
 
       fail "Confluence version #{version} is not supported by the cookbook" unless sums
 
