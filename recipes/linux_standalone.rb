@@ -51,11 +51,13 @@ execute 'Generating Self-Signed Java Keystore' do
   only_if { settings['tomcat']['keystoreFile'] == "#{node['confluence']['home_path']}/.keystore" }
 end
 
+Chef::Resource::Ark.send(:include, Confluence::Helpers)
+
 ark 'confluence' do
-  url node['confluence']['url']
+  url get_artifact_url
   prefix_root File.dirname(node['confluence']['install_path'])
   home_dir node['confluence']['install_path']
-  checksum node['confluence']['checksum']
+  checksum get_artifact_checksum
   version node['confluence']['version']
   owner node['confluence']['user']
   group node['confluence']['user']
