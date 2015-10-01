@@ -218,6 +218,15 @@ bundle exec kitchen list
 
 Please use standard Github issues/pull requests and if possible, in combination with testing on the Vagrant boxes.
 
+## Sponsors
+
+Development of this cookbook has been generously supported in part by
+the code contributions of the following organizations:
+
+* [University of Pennsylvania](http://www.upenn.edu/)
+* [Parallels Inc.](https://www.parallels.com)
+* [Blended Perspectives Inc.](http://www.blendedperspectives.com/)
+
 ## License and Author
 
 * Author:: Brian Flad (<bflad417@gmail.com>, @bflad)
