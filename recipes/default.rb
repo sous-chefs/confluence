@@ -17,8 +17,6 @@
 # limitations under the License.
 #
 
-include_recipe 'confluence::set_attributes_from_version'
-
 settings = merge_confluence_settings
 
 include_recipe 'confluence::database' if settings['database']['host'] == '127.0.0.1'
