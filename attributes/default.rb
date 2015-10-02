@@ -23,11 +23,9 @@ default['confluence']['install_type']   = 'installer'
 default['confluence']['user']           = 'confluence'
 default['confluence']['version']        = '5.8.13'
 
-if node['kernel']['machine'] == 'x86_64'
-  default['confluence']['arch'] = 'x64'
-else
-  default['confluence']['arch'] = 'x32'
-end
+# Defaults are automatically selected from version via helper functions
+default['confluence']['url']            = nil
+default['confluence']['checksum']       = nil
 
 default['confluence']['apache2']['access_log']         = ''
 default['confluence']['apache2']['error_log']          = ''
