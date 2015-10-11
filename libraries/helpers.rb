@@ -79,55 +79,43 @@ module Confluence
     end
 
     # Returns download URL for Confluence artifact
-    #
-    # @param [String] version Confluence version.
-    # @param [String] install_type Installation type: "installer" or "standalone"
-    # @param [String] arch Architecture (for "installer" type only)
-    # @return [String] Download URL for Confluence artifact
-    def get_artifact_url
+    def confluence_artifact_url
       return node['confluence']['url'] unless node['confluence']['url'].nil?
 
-      arch = get_arch
       version = node['confluence']['version']
-      install_type = node['confluence']['install_type']
 
-      case install_type
+      case node['confluence']['install_type']
       when 'installer'
-        "http://www.atlassian.com/software/confluence/downloads/binary/atlassian-confluence-#{version}-#{arch}.bin"
+        "http://www.atlassian.com/software/confluence/downloads/binary/atlassian-confluence-#{version}-#{confluence_arch}.bin"
       when 'standalone'
         "http://www.atlassian.com/software/confluence/downloads/binary/atlassian-confluence-#{version}.tar.gz"
       end
     end
 
+    # rubocop:disable Metrics/AbcSize
     # Returns SHA256 checksum of specific Confluence artifact
-    #
-    # @param [String] version Confluence version.
-    # @param [String] install_type Installation type: "installer" or "standalone"
-    # @param [String] arch Architecture (for "installer" type only): "x64" or "x32"
-    # @return [String] SHA256 checksum of specific Confluence artifact
-    def get_artifact_checksum
+    def confluence_artifact_checksum
       return node['confluence']['checksum'] unless node['confluence']['checksum'].nil?
 
-      arch = get_arch
       version = node['confluence']['version']
-      install_type = node['confluence']['install_type']
-      sums = checksum_map[version]
+      sums = confluence_checksum_map[version]
 
       fail "Confluence version #{version} is not supported by the cookbook" unless sums
 
-      case install_type
-      when 'installer' then sums[arch]
+      case node['confluence']['install_type']
+      when 'installer' then sums[confluence_arch]
       when 'standalone' then sums['tar']
       end
     end
+    # rubocop:enable Metrics/AbcSize
 
-    def get_arch
+    def confluence_arch
       (node['kernel']['machine'] == 'x86_64') ? 'x64' : 'x32'
     end
 
     # rubocop:disable Metrics/MethodLength
     # Returns SHA256 checksum map for Confluence artifacts
-    def checksum_map
+    def confluence_checksum_map
       {
         '4.3.7' => {
           'x32' => '6612ab99ae0cf3ab240f9d9413a25bfe84b3f729cbb12ee4bee4e11a424513d0',
