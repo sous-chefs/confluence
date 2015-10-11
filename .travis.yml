@@ -1,3 +1,6 @@
+# Use container-based infrastructure in Travis
+sudo: false
+
 language: ruby
 bundler_args: --without integration
 rvm:
