@@ -54,10 +54,10 @@ end
 Chef::Resource::Ark.send(:include, Confluence::Helpers)
 
 ark 'confluence' do
-  url get_artifact_url
+  url confluence_artifact_url
   prefix_root File.dirname(node['confluence']['install_path'])
   home_dir node['confluence']['install_path']
-  checksum get_artifact_checksum
+  checksum confluence_artifact_checksum
   version node['confluence']['version']
   owner node['confluence']['user']
   group node['confluence']['user']
