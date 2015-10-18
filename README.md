@@ -1,4 +1,6 @@
-# chef-confluence [![Build Status](https://secure.travis-ci.org/bflad/chef-confluence.png?branch=master)](http://travis-ci.org/bflad/chef-confluence)
+# chef-confluence
+[![Cookbook Version](https://img.shields.io/cookbook/v/confluence.svg)](https://supermarket.chef.io/cookbooks/confluence)
+[![Build Status](https://secure.travis-ci.org/parallels-cookbooks/confluence.png?branch=master)](http://travis-ci.org/parallels-cookbooks/confluence)
 
 ## Description
 
