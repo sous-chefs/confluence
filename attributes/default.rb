@@ -58,8 +58,4 @@ default['confluence']['jvm']['maximum_memory']  = '512m'
 default['confluence']['jvm']['maximum_permgen'] = '256m'
 default['confluence']['jvm']['java_opts']       = ''
 
-default['confluence']['tomcat']['keyAlias']     = 'tomcat'
-default['confluence']['tomcat']['keystoreFile'] = "#{node['confluence']['home_path']}/.keystore"
-default['confluence']['tomcat']['keystorePass'] = 'changeit'
 default['confluence']['tomcat']['port']         = '8090'
-default['confluence']['tomcat']['ssl_port']     = '8443'

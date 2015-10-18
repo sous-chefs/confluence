@@ -18,35 +18,11 @@
                    useBodyEncodingForURI="true"
                    compression="on"
                    compressableMimeType="text/html,text/xml,text/plain,text/css,application/json,application/javascript,application/x-javascript"
-                   <% if node['confluence']['apache2'] -%>
-                   redirectPort="<%= node['confluence']['apache2']['ssl']['port'] %>"
                    secure="true"
                    scheme="https"
                    proxyName="<%= node['confluence']['apache2']['virtual_host_name'] %>"
                    proxyPort="<%= node['confluence']['apache2']['ssl']['port'] %>"
-                   <% else -%>
-                   redirectPort="<%= node['confluence']['tomcat']['ssl_port'] %>"
-                   <% end -%>
-        />
-
-        <Connector port="<%= node['confluence']['tomcat']['ssl_port'] %>"
-             maxHttpHeaderSize="8192"
-             maxThreads="150"
-             minSpareThreads="25"
-             maxSpareThreads="75"
-             enableLookups="false"
-             disableUploadTimeout="true"
-             acceptCount="100"
-             scheme="https"
-             secure="true"
-             clientAuth="false"
-             SSLEnabled="true"
-             sslProtocol="TLS"
-             <%- if @tomcat %>
-             <%= "keyAlias=\"#{@tomcat['keyAlias']}\"" if @tomcat['keyAlias'] %>
-             <%= "keystoreFile=\"#{@tomcat['keystoreFile']}\"" if @tomcat['keystoreFile'] %>
-             <%= "keystorePass=\"#{@tomcat['keystorePass']}\"" if @tomcat['keystorePass'] %>
-             <%- end %>
+                   redirectPort="<%= node['confluence']['apache2']['ssl']['port'] %>"
         />
 
         <Engine name="Standalone" defaultHost="localhost" debug="0">

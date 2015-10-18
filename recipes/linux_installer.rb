@@ -17,8 +17,6 @@
 # limitations under the License.
 #
 
-settings = merge_confluence_settings
-
 # Install or upgrade confluence
 if confluence_version != node['confluence']['version']
   template "#{Chef::Config[:file_cache_path]}/atlassian-confluence-response.varfile" do
@@ -44,19 +42,4 @@ if confluence_version != node['confluence']['version']
     cwd Chef::Config[:file_cache_path]
     command "./atlassian-confluence-#{node['confluence']['version']}.bin -q -varfile atlassian-confluence-response.varfile"
   end
-end
-
-execute 'Generating Self-Signed Java Keystore' do
-  command <<-COMMAND
-    #{node['confluence']['install_path']}/jre/bin/keytool -genkey \
-      -alias #{settings['tomcat']['keyAlias']} \
-      -keyalg RSA \
-      -dname 'CN=#{node['fqdn']}, OU=Example, O=Example, L=Example, ST=Example, C=US' \
-      -keypass #{settings['tomcat']['keystorePass']} \
-      -storepass #{settings['tomcat']['keystorePass']} \
-      -keystore #{settings['tomcat']['keystoreFile']}
-    chown #{node['confluence']['user']}:#{node['confluence']['user']} #{settings['tomcat']['keystoreFile']}
-  COMMAND
-  creates settings['tomcat']['keystoreFile']
-  only_if { settings['tomcat']['keystoreFile'] == "#{node['confluence']['home_path']}/.keystore" }
 end

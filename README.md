@@ -89,15 +89,9 @@ java_opts | additional JAVA_OPTS to be passed to Confluence JVM during startup |
 
 These attributes are under the `node['confluence']['tomcat']` namespace.
 
-Any `node['confluence']['tomcat']['key*']` attributes are overridden by `confluence/confluence` encrypted data bag (Hosted Chef) or data bag (Chef Solo), if it exists
-
 Attribute | Description | Type | Default
 ----------|-------------|------|--------
-keyAlias | Tomcat SSL keystore alias | String | tomcat
-keystoreFile | Tomcat SSL keystore file - will automatically generate self-signed keystore file if left as default | String | `#{node['confluence']['home_path']}/.keystore`
-keystorePass | Tomcat SSL keystore passphrase | String | changeit
 port | Tomcat HTTP port | Fixnum | 8090
-ssl_port | Tomcat HTTPS port | Fixnum | 8443
 
 ## Recipes
 
@@ -140,11 +134,6 @@ Repeat for other Chef environments as necessary. Example:
           "name": "confluence",
           "user": "confluence",
           "password": "confluence_db_password",
-        },
-        "tomcat": {
-          "keyAlias": "not_tomcat",
-          "keystoreFile": "/etc/pki/java/wildcard_cert.jks",
-          "keystorePass": "not_changeit"
         }
       }
     }
