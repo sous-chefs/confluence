@@ -17,9 +17,47 @@
 # limitations under the License.
 #
 
+settings = merge_confluence_settings
+
 template "#{node['confluence']['install_path']}/confluence/WEB-INF/classes/confluence-init.properties" do
   source 'confluence-init.properties.erb'
   owner node['confluence']['user']
   mode '0644'
   notifies :restart, 'service[confluence]', :delayed
+end
+
+if settings['database']['type'] == 'mysql'
+  mysql_connector_j "#{node['confluence']['install_path']}/confluence/WEB-INF/lib"
+end
+
+if node['init_package'] == 'systemd'
+  execute 'systemctl-daemon-reload' do
+    command '/bin/systemctl --system daemon-reload'
+    action :nothing
+  end
+
+  template '/etc/systemd/system/confluence.service' do
+    source 'confluence.systemd.erb'
+    owner 'root'
+    group 'root'
+    mode 00755
+    action :create
+    notifies :run, 'execute[systemctl-daemon-reload]', :immediately
+    notifies :restart, 'service[confluence]', :delayed
+  end
+else
+  template '/etc/init.d/confluence' do
+    source 'confluence.init.erb'
+    owner 'root'
+    group 'root'
+    mode 00755
+    action :create
+    notifies :restart, 'service[confluence]', :delayed
+  end
+end
+
+service 'confluence' do
+  supports :status => true, :restart => true
+  action :enable
+  subscribes :restart, 'java_ark[jdk]'
 end
