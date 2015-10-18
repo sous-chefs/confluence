@@ -33,7 +33,7 @@ if confluence_version != node['confluence']['version']
 
   Chef::Resource::RemoteFile.send(:include, Confluence::Helpers)
 
-  remote_file "#{Chef::Config[:file_cache_path]}/atlassian-confluence-#{node['confluence']['version']}-#{node['confluence']['arch']}.bin" do
+  remote_file "#{Chef::Config[:file_cache_path]}/atlassian-confluence-#{node['confluence']['version']}.bin" do
     source confluence_artifact_url
     checksum confluence_artifact_checksum
     mode '0755'
@@ -42,7 +42,7 @@ if confluence_version != node['confluence']['version']
 
   execute "Installing Confluence #{node['confluence']['version']}" do
     cwd Chef::Config[:file_cache_path]
-    command "./atlassian-confluence-#{node['confluence']['version']}-#{node['confluence']['arch']}.bin -q -varfile atlassian-confluence-response.varfile"
+    command "./atlassian-confluence-#{node['confluence']['version']}.bin -q -varfile atlassian-confluence-response.varfile"
   end
 end
 

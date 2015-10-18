@@ -53,7 +53,6 @@ These attributes are under the `node['confluence']` namespace.
 
 Attribute | Description | Type | Default
 ----------|-------------|------|--------
-arch | architecture for Confluence installer - "x64" or "x32" | String | auto-detected (see attributes/default.rb)
 checksum | SHA256 checksum for Confluence install | String | auto-detected (see attributes/default.rb)
 home_path | home directory for Confluence user | String | /var/atlassian/application-data/confluence
 install_path | location to install Confluence | String | /opt/atlassian/confluence

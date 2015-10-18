@@ -1,6 +1,6 @@
 ## chef-confluence Compatibility ##
 
-Cookbook compatibility based on platform, installation type (`node['confluence']['install_type']`), architecture (`node['confluence']['arch']`), and Confluence version (`node['confluence']['version']`)
+Cookbook compatibility based on platform, installation type (`node['confluence']['install_type']`) and Confluence version (`node['confluence']['version']`)
 
 ### Linux Installer x64 ###
 
