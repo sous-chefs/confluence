@@ -17,8 +17,6 @@
 # limitations under the License.
 #
 
-settings = merge_confluence_settings
-
 template "#{node['confluence']['install_path']}/bin/setenv.sh" do
   source 'setenv.sh.erb'
   owner node['confluence']['user']
@@ -30,7 +28,6 @@ template "#{node['confluence']['install_path']}/conf/server.xml" do
   source 'server.xml.erb'
   owner node['confluence']['user']
   mode '0640'
-  variables :tomcat => settings['tomcat']
   notifies :restart, 'service[confluence]', :delayed
 end
 

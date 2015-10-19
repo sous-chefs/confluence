@@ -17,8 +17,6 @@
 # limitations under the License.
 #
 
-settings = merge_confluence_settings
-
 directory File.dirname(node['confluence']['home_path']) do
   owner 'root'
   group 'root'
@@ -34,21 +32,6 @@ user node['confluence']['user'] do
   supports :manage_home => true
   system true
   action :create
-end
-
-execute 'Generating Self-Signed Java Keystore' do
-  command <<-COMMAND
-    #{node['java']['java_home']}/bin/keytool -genkey \
-      -alias #{settings['tomcat']['keyAlias']} \
-      -keyalg RSA \
-      -dname 'CN=#{node['fqdn']}, OU=Example, O=Example, L=Example, ST=Example, C=US' \
-      -keypass #{settings['tomcat']['keystorePass']} \
-      -storepass #{settings['tomcat']['keystorePass']} \
-      -keystore #{settings['tomcat']['keystoreFile']}
-    chown #{node['confluence']['user']}:#{node['confluence']['user']} #{settings['tomcat']['keystoreFile']}
-  COMMAND
-  creates settings['tomcat']['keystoreFile']
-  only_if { settings['tomcat']['keystoreFile'] == "#{node['confluence']['home_path']}/.keystore" }
 end
 
 Chef::Resource::Ark.send(:include, Confluence::Helpers)
