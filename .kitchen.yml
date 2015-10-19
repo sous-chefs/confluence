@@ -66,6 +66,21 @@ suites:
       password:
         postgres: iloverandompasswordsbutthiswilldo
 
+- name: standalone-mysql
+  run_list:
+  - recipe[java]
+  - recipe[confluence]
+  attributes:
+    confluence:
+      database:
+        type: mysql
+      install_type: standalone
+    java:
+      java_home: /usr/lib/jvm/java-8-oracle
+      jdk_version: 8
+    mysql:
+      server_root_password: iloverandompasswordsbutthiswilldo
+
 - name: standalone-postgresql
   run_list:
   - recipe[java]
