@@ -61,6 +61,10 @@ url | URL for Confluence install | String | auto-detected by library method
 user | user running Confluence | String | confluence
 version | Confluence version to install | String | 5.8.13
 
+**Upgrade Notice:** If `['confluence']['install_type']` is set to `installer`, then the installer will try to ugrade your Confluence instance located in `['confluence']['install_path']` (if exists) up to the `['confluence']['version']`.
+
+To avoid an unexecеped upgrade, just set or override `['confluence']['version']` attribute value to your current Confluence version.
+
 ### Confluence Database Attributes
 
 All of these `node['confluence']['database']` attributes are overridden by `confluence/confluence` encrypted data bag (Hosted Chef) or data bag (Chef Solo), if it exists
