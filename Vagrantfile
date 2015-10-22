@@ -35,11 +35,6 @@ Vagrant.configure('2') do |config|
   config.vm.provision :chef_zero do |chef|
     chef.log_level = :debug
     chef.json = {
-      'mysql' => {
-        'server_root_password' => 'iloverandompasswordsbutthiswilldo',
-        'server_repl_password' => 'iloverandompasswordsbutthiswilldo',
-        'server_debian_password' => 'iloverandompasswordsbutthiswilldo'
-      },
       'postgresql' => {
         'password' => {
           'postgres' => 'iloverandompasswordsbutthiswilldo'
@@ -52,7 +47,6 @@ Vagrant.configure('2') do |config|
       }
     }
     chef.run_list = [
-      'recipe[java]',
       "recipe[#{cookbook}]"
     ]
   end

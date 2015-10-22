@@ -48,15 +48,14 @@ provisioner:
         accept_oracle_download_terms: true
 
 suites:
-- name: confluence-installer-mysql
+- name: installer-mysql
   run_list:
   - recipe[confluence]
   attributes:
     mysql:
       server_root_password: iloverandompasswordsbutthiswilldo
-      server_repl_password: iloverandompasswordsbutthiswilldo
-      server_debian_password: iloverandompasswordsbutthiswilldo
-- name: confluence-installer-postgresql
+
+- name: installer-postgresql
   run_list:
   - recipe[confluence]
   attributes:
@@ -66,7 +65,23 @@ suites:
     postgresql:
       password:
         postgres: iloverandompasswordsbutthiswilldo
-- name: confluence-standalone-postgresql
+
+- name: standalone-mysql
+  run_list:
+  - recipe[java]
+  - recipe[confluence]
+  attributes:
+    confluence:
+      database:
+        type: mysql
+      install_type: standalone
+    java:
+      java_home: /usr/lib/jvm/java-8-oracle
+      jdk_version: 8
+    mysql:
+      server_root_password: iloverandompasswordsbutthiswilldo
+
+- name: standalone-postgresql
   run_list:
   - recipe[java]
   - recipe[confluence]
