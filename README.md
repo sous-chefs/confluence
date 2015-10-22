@@ -61,9 +61,10 @@ url | URL for Confluence install | String | auto-detected by library method
 user | user running Confluence | String | confluence
 version | Confluence version to install | String | 5.8.13
 
-**Upgrade Notice:** If `['confluence']['install_type']` is set to `installer`, then the installer will try to ugrade your Confluence instance located in `['confluence']['install_path']` (if exists) up to the `['confluence']['version']`.
+**Notice:** If `['confluence']['install_type']` is set to `installer`, then the installer will try to upgrade your Confluence instance located in `['confluence']['install_path']` (if it exists) to the `['confluence']['version']`.
 
-To avoid an unexecеped upgrade, just set or override `['confluence']['version']` attribute value to your current Confluence version.
+If you want to avoid an unexpected upgrade, just set or override `['confluence']['version']` attribute value to that of your current confluence version.
+
 
 ### Confluence Database Attributes
 
