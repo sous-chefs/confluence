@@ -4,6 +4,8 @@
   [[GH-41]](https://github.com/bflad/chef-confluence/issues/41)
 * Implemented ark cookbook with install directory versioning.
   [[GH-40]](https://github.com/bflad/chef-confluence/issues/40)
+* Added Crowd SSO support.
+  [[GH-26]](https://github.com/parallels-cookbooks/confluence/pull/26)
 
 ## 1.7.1
 

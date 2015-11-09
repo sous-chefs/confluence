@@ -59,3 +59,8 @@ default['confluence']['jvm']['maximum_permgen'] = '256m'
 default['confluence']['jvm']['java_opts']       = ''
 
 default['confluence']['tomcat']['port']         = '8090'
+
+default['confluence']['crowd_sso']['enabled'] = false
+default['confluence']['crowd_sso']['app_name'] = nil
+default['confluence']['crowd_sso']['app_password'] = nil
+default['confluence']['crowd_sso']['crowd_base_url'] = 'http://crowd.example.com:8095/crowd'
