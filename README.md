@@ -106,6 +106,7 @@ port | Tomcat HTTP port | Fixnum | 8090
 * `recipe[confluence::linux_installer]` Installs/configures Confluence via Linux installer"
 * `recipe[confluence::linux_standalone]` Installs/configures Confluence via Linux standalone archive"
 * `recipe[confluence::tomcat_configuration]` Configures Confluence's built-in Tomcat
+* `recipe[confluence::crowd_sso]` Configures Crowd single sign-on
 
 ## Usage
 
