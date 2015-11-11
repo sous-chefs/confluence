@@ -63,25 +63,14 @@ module Confluence
     #
     # @return [Hash] Settings hash
     def settings_from_data_bag
-      item =
       begin
-        if Chef::Config[:solo]
-          Chef::DataBagItem.load(
-            node['confluence']['data_bag_name'],
-            node['confluence']['data_bag_name']
-          )['confluence']
-        else
-          Chef::EncryptedDataBagItem.load(
-            node['confluence']['data_bag_name'],
-            node['confluence']['data_bag_name']
-          )['confluence']
-        end
+        item = data_bag_item(node['confluence']['data_bag_name'],
+                             node['confluence']['data_bag_item'])['confluence']
+        return item if item.is_a?(Hash)
       rescue
         Chef::Log.info('No confluence data bag found')
-        nil
       end
-
-      item || {}
+      {}
     end
 
     # Returns download URL for Confluence artifact
