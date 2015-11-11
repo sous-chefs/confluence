@@ -66,9 +66,15 @@ module Confluence
       item =
       begin
         if Chef::Config[:solo]
-          Chef::DataBagItem.load('confluence', 'confluence')['local']
+          Chef::DataBagItem.load(
+            node['confluence']['data_bag_name'],
+            node['confluence']['data_bag_name']
+          )['local']
         else
-          Chef::EncryptedDataBagItem.load('confluence', 'confluence')[node.chef_environment]
+          Chef::EncryptedDataBagItem.load(
+            node['confluence']['data_bag_name'],
+            node['confluence']['data_bag_name']
+          )[node.chef_environment]
         end
       rescue
         Chef::Log.info('No confluence data bag found')
