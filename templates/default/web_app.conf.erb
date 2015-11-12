@@ -13,21 +13,14 @@
 	<% end -%>
 	<% end -%>
 	DocumentRoot <%= node['confluence']['install_path'] %>
-	
+
 	CustomLog <%= node['confluence']['apache2']['access_log'].empty? ? node['apache']['log_dir']+"/confluence-access.log" : node['confluence']['apache2']['access_log'] %> combined
 	ErrorLog <%= node['confluence']['apache2']['error_log'].empty? ? node['apache']['log_dir']+"/confluence-error.log" : node['confluence']['apache2']['error_log'] %>
 	LogLevel warn
 
-	<Proxy *>
-	<% if node['apache']['version'].to_f < 2.4 -%>
-		Order Deny,Allow
-		Allow from all
-	<% else -%>
-		Require all granted
-	<% end -%>
-	</Proxy>
-	ProxyPass        / http://localhost:<%= node['confluence']['tomcat']['port'] %>/ connectiontimeout=5 timeout=300
-	ProxyPassReverse / http://localhost:<%= node['confluence']['tomcat']['port'] %>/
+	RewriteEngine On
+	RewriteCond %{HTTPS} off
+	RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI}
 </VirtualHost>
 
 <VirtualHost *:<%= node['confluence']['apache2']['ssl']['port'] %>>
