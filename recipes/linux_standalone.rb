@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: confluence
-# Recipe:: linux_installer
+# Recipe:: linux_standalone
 #
 # Copyright 2013, Brian Flad
 #
@@ -42,6 +42,16 @@ ark 'confluence' do
   home_dir node['confluence']['install_path']
   checksum confluence_artifact_checksum
   version node['confluence']['version']
-  owner node['confluence']['user']
-  group node['confluence']['user']
+  owner 'root'
+  group 'root'
+  notifies :restart, 'service[confluence]'
+end
+
+%w(logs temp work).each do |dir|
+  directory File.join(node['confluence']['install_path'], dir) do
+    owner node['confluence']['user']
+    group 'root'
+    mode 00700
+    action :create
+  end
 end
