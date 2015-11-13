@@ -10,31 +10,19 @@ Installs/Configures Atlassian Confluence server. Please see [COMPATIBILITY.md](C
 
 ### Platforms
 
-* CentOS 6
-* RedHat 6
-* Ubuntu 12.04
-
-### Databases
-
-* MySQL
-* Postgres
+* RHEL/CentOS 6, 7
+* Ubuntu 12.04, 14.04
 
 ### Cookbooks
 
-Required [Opscode Cookbooks](https://github.com/opscode-cookbooks/)
-
-* [apache2](https://github.com/opscode-cookbooks/apache2) (if using Apache 2 proxy)
-* [database](https://github.com/opscode-cookbooks/database)
-* [mysql](https://github.com/opscode-cookbooks/mysql) (if using MySQL database)
-* [postgresql](https://github.com/opscode-cookbooks/postgresql) (if using Postgres database)
-
-Required Third-Party Cookbooks
-
-* [mysql_connector](https://github.com/bflad/chef-mysql_connector) (if using MySQL database)
-
-Suggested [Opscode Cookbooks](https://github.com/opscode-cookbooks/)
-
-* [java](https://github.com/opscode-cookbooks/java)
+* [apache2](https://github.com/svanzoest-cookbooks/apache2)
+* [ark](https://github.com/burtlo/ark)
+* [database](https://github.com/chef-cookbooks/database)
+* [java](https://github.com/agileorbit-cookbooks/java)
+* [mysql](https://github.com/chef-cookbooks/mysql)
+* [mysql_connector](https://github.com/bflad/chef-mysql_connector)
+* [mysql2_chef_gem](https://github.com/chef-cookbooks/mysql_chef_gem)
+* [postgresql](https://github.com/hw-cookbooks/postgresql)
 
 ### JDK/JRE
 
@@ -44,8 +32,10 @@ If you prefer Confluence stadalone installation, then you have to manage JDK/JRE
 ([Supported Platforms](https://confluence.atlassian.com/display/DOC/Supported+Platforms))
 on this node. It can be done with `java` cookbook and appropricate attributes:
 
-* `node['java']['jdk_version'] = "8"`
-* `recipe[java]`
+```ruby
+node.set['java']['jdk_version'] = "8"
+include_recipe 'java'
+```
 
 ## Attributes
 
@@ -65,17 +55,16 @@ version | Confluence version to install | String | 5.8.13
 
 If you want to avoid an unexpected upgrade, just set or override `['confluence']['version']` attribute value to that of your current confluence version.
 
-
 ### Confluence Database Attributes
 
-All of these `node['confluence']['database']` attributes are overridden by `confluence/confluence` encrypted data bag (Hosted Chef) or data bag (Chef Solo), if it exists
+These attributes are under the `node['confluence']['database']` namespace.
 
 Attribute | Description | Type | Default
 ----------|-------------|------|--------
-host | FQDN or "localhost" (localhost automatically installs `['database']['type']` server) | String | localhost
+host | FQDN or IP of database server ("127.0.0.1" automatically installs `['database']['type']` server) | String | "127.0.0.1"
 name | Confluence database name | String | confluence
 password | Confluence database user password | String | changeit
-port | Confluence database port | Fixnum | 3306
+port | Confluence database port | Fixnum | 3306 for MySQL, 5432 for PostgreSQL
 type | Confluence database type - "mysql" or "postgresql" | String | mysql
 user | Confluence database user | String | confluence
 
@@ -106,7 +95,7 @@ port | Tomcat HTTP port | Fixnum | 8090
 * `recipe[confluence::linux_installer]` Installs/configures Confluence via Linux installer"
 * `recipe[confluence::linux_standalone]` Installs/configures Confluence via Linux standalone archive"
 * `recipe[confluence::tomcat_configuration]` Configures Confluence's built-in Tomcat
-* `recipe[confluence::crowd_sso]` Configures Crowd single sign-on
+* `recipe[confluence::crowd_sso]` Configures user authentication with Crowd single sign-on
 
 ## Usage
 
