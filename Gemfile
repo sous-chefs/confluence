@@ -1,21 +1,38 @@
 source 'https://rubygems.org'
 
-gem 'rake'
-
-group :test, :integration do
-  gem 'berkshelf', '~> 4.0'
+group :rake do
+  gem 'rake'
 end
 
-group :test do
-  gem 'chefspec', '~> 4.0'
-  gem 'foodcritic', '~> 4.0'
-  gem 'rubocop', '~> 0.32'
+group :lint do
+  gem 'foodcritic', '~> 5.0'
+  gem 'rubocop', '~> 0.34'
 end
 
-group :integration do
-  gem 'busser-serverspec', '~> 0.2.6'
-  gem 'kitchen-digitalocean'
-  gem 'kitchen-sync'
-  gem 'kitchen-vagrant', '~> 0.18'
+group :unit do
+  gem 'berkshelf',  '~> 4.0'
+  gem 'chefspec',   '~> 4.4'
+end
+
+group :kitchen_common do
   gem 'test-kitchen', '~> 1.4'
+end
+
+group :kitchen_vagrant do
+  gem 'kitchen-vagrant', '~> 0.19'
+end
+
+group :kitchen_cloud do
+  gem 'kitchen-digitalocean'
+end
+
+group :development do
+  gem 'ruby_gntp'
+  gem 'growl'
+  gem 'rb-fsevent'
+  gem 'guard', '~> 2.4'
+  gem 'guard-kitchen'
+  gem 'guard-foodcritic'
+  gem 'guard-rspec'
+  gem 'guard-rubocop'
 end

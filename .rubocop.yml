@@ -8,6 +8,7 @@ AllCops:
     - test/**/*
     - vendor/**/*
     - ruby/**/*
+    - Guardfile
 
 HashSyntax:
   Enabled: false
