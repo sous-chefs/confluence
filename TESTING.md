@@ -1,47 +1,83 @@
-This cookbook uses a variety of testing components:
+Cookbook TESTING doc
+====================
+Testing Prerequisites
+---------------------
+Chef cookbooks require either a working ChefDK installation set as your system's default ruby or Ruby 2.0+ with bundler installed. Using ChefDK provides a consistent Ruby install, and is the suggested method. ChefDK can be downloaded at https://downloads.chef.io/chef-dk/
 
-- Unit tests: [ChefSpec](https://github.com/acrmp/chefspec)
-- Integration tests: [Test Kitchen](https://github.com/opscode/test-kitchen)
-- Chef Style lints: [Foodcritic](https://github.com/acrmp/foodcritic)
-- Ruby Style lints: [Rubocop](https://github.com/bbatsov/rubocop)
+To ensure all gems are updated to their latest releases run `bundle install; bundle update` before running any Rake testing tasks.
 
-Prerequisites
+Integration testing relies on Hashicorp's [Vagrant](https://www.vagrantup.com/downloads.html) and
+local virtualization system Oracle's [Virtualbox](https://www.virtualbox.org/wiki/Downloads), which must be installed first.
+
+You can also use Vagrant with [Parallels Desktop for Mac](http://www.parallels.com/products/desktop/)
+(with ["vagarnt-parallels"](https://github.com/Parallels/vagrant-parallels) plugin)
+
+Rakefile
+--------
+The Rakefile ships with a number of tasks, each of which can be ran
+individually, or in groups. Typing "rake" by itself will perform style
+checks with Rubocop and Foodcritic, ChefSpec with rspec, and
+integration with Test Kitchen using the Vagrant driver by
+default. Alternatively, integration tests can be ran with Test Kitchen
+cloud drivers.
+
+```
+$ rake -T
+rake integration:vagrant      # Run Test Kitchen with Vagrant
+rake spec                     # Run ChefSpec examples
+rake style                    # Run all style checks
+rake style:chef               # Run Chef style checks
+rake style:ruby               # Run Ruby style checks
+rake style:ruby:auto_correct  # Auto-correct RuboCop offenses
+rake travis                   # Run all tests on Travis
+```
+
+Style Testing
 -------------
-To develop on this cookbook, you must have a sane Ruby 1.9+ environment. Given the nature of this installation process (and it's variance across multiple operating systems), we will leave this installation process to the user.
+Ruby style tests can be performed by Rubocop by issuing either
+```
+bundle exec rubocop
+```
+or
+```
+rake style:ruby
+```
 
-You must also have `bundler` installed:
+Chef style/correctness tests can be performed with Foodcritic by issuing either
+```
+bundle exec foodcritic
+```
+or
+```
+rake style:chef
+```
 
-    $ gem install bundler
+Spec Testing
+-------------
+Unit testing is done by running Rspec examples. Rspec will test any
+libraries, then test recipes using ChefSpec. This works by compiling a
+recipe (but not converging it), and allowing the user to make
+assertions about the resource_collection.
 
-You must also have Vagrant and VirtualBox installed:
+Integration Testing
+-------------------
+Integration testing is performed by Test Kitchen. Test Kitchen will
+use either the Vagrant driver or various cloud drivers to instantiate
+machines and apply cookbooks. After a successful converge, tests are
+uploaded and ran out of band of Chef. Tests should be designed to
+ensure that a recipe has accomplished its goal.
 
-- [Vagrant](https://vagrantup.com)
-- [VirtualBox](https://virtualbox.org)
+Integration Testing using Vagrant
+---------------------------------
+Integration tests can be performed on a local workstation using
+Virtualbox or Parallels Desktop. Detailed instructions for setting this up can
+be found at the [Bento](https://github.com/chef/bento) project web site.
 
-Once installed, you must install the `vagrant-berkshelf` plugin:
-
-    $ vagrant plugin install vagrant-berkshelf
-
-Development
------------
-1. Clone the git repository from GitHub:
-
-        $ git clone git@github.com:bflad/chef-COOKBOOK.git
-
-2. Install the dependencies using bundler:
-
-        $ bundle install
-
-3. Create a branch for your changes:
-
-        $ git checkout -b my_bug_fix
-
-4. Make any changes
-5. Write tests to support those changes. It is highly recommended you write both unit and integration tests.
-6. Run the tests:
-    - `bundle exec rspec`
-    - `bundle exec foodcritic .`
-    - `bundle exec rubocop`
-    - `bundle exec kitchen test`
-
-7. Assuming the tests pass, open a Pull Request on GitHub
+Integration tests using Vagrant can be performed with either
+```
+bundle exec kitchen test
+```
+or
+```
+rake integration:vagrant
+```
