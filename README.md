@@ -110,39 +110,37 @@ port | Tomcat HTTP port | Fixnum | 8090
 
 ## Usage
 
-### Confluence Server Data Bag
+### Confluence Data Bag
 
-For securely overriding attributes on Hosted Chef, create a `confluence/confluence` encrypted data bag with the model below. Chef Solo can override the same attributes with a `confluence/confluence` unencrypted data bag of the same information.
+For security purposes it is recommended to use data bag for storing secrets
+like passwords and database credentials.
 
-_required:_
-* `['database']['type']` "mysql" or "postgresql"
-* `['database']['host']` FQDN or "localhost" (localhost automatically
-  installs `['database']['type']` server)
-* `['database']['name']` Name of Confluence database
-* `['database']['user']` Confluence database username
-* `['database']['password']` Confluence database username password
+You can override any attributes from the `['confluence']` namespace using the
+`confluence/confluence` data bag. It could be either encrypted or not
+encrypted by your choice.
 
-_optional:_
-* `['database']['port']` Database port, standard database port for
-  `['database']['type']`
-* `['tomcat']['keyAlias']` Tomcat HTTPS Java Keystore keyAlias, defaults to self-signed certifcate
-* `['tomcat']['keystoreFile']` Tomcat HTTPS Java Keystore keystoreFile, self-signed certificate
-* `['tomcat']['keystorePass']` Tomcat HTTPS Java Keystore keystorePass, self-signed certificate
-
-Repeat for other Chef environments as necessary. Example:
-
-    {
-      "id": "confluence"
-      "development": {
-        "database": {
-          "type": "postgresql",
-          "host": "localhost",
-          "name": "confluence",
-          "user": "confluence",
-          "password": "confluence_db_password",
-        }
-      }
+Example:
+```json
+{
+  "id": "confluence",
+  "confluence": {
+    "database": {
+      "type": "postgresql",
+      "host": "localhost",
+      "name": "confluence_db",
+      "user": "confluence_user",
+      "password": "confluence_db_password",
     }
+  }
+}
+```
+_(Note - `"confluence"` nesting level is required!)_
+
+These credentials will be used for your Confluence installation instead of
+appropriate attribute values.
+
+Data bag's and item's names are optional and can be changed by overriding
+attributes `['confluence']['data_bag_name']` and `['confluence']['data_bag_item']`
 
 ### Confluence Server Installation
 

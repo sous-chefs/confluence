@@ -27,6 +27,10 @@ default['confluence']['version']        = '5.8.13'
 default['confluence']['url']            = nil
 default['confluence']['checksum']       = nil
 
+# Data bag where credentials and other sensitive data could be stored (optional)
+default['confluence']['data_bag_name'] = 'confluence'
+default['confluence']['data_bag_item'] = 'confluence'
+
 default['confluence']['apache2']['access_log']         = ''
 default['confluence']['apache2']['error_log']          = ''
 default['confluence']['apache2']['port']               = 80
