@@ -63,22 +63,24 @@ when 'mysql'
     database_name settings['database']['name']
     action [:create, :grant]
   end
+
 when 'postgresql'
   include_recipe 'postgresql::server'
   include_recipe 'database::postgresql'
   database_connection.merge!(:username => 'postgres', :password => node['postgresql']['password']['postgres'])
 
+  postgresql_database_user settings['database']['user'] do
+    connection database_connection
+    password settings['database']['password']
+    action :create
+  end
+
   postgresql_database settings['database']['name'] do
     connection database_connection
     connection_limit '-1'
     encoding 'utf8'
+    owner settings['database']['user']
     action :create
   end
 
-  postgresql_database_user settings['database']['user'] do
-    connection database_connection
-    password settings['database']['password']
-    database_name settings['database']['name']
-    action [:create, :grant]
-  end
 end
