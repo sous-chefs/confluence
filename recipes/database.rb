@@ -18,7 +18,6 @@
 #
 
 settings = merge_confluence_settings
-database_connection = confluence_database_connection
 
 case settings['database']['type']
 when 'mysql'
@@ -37,7 +36,7 @@ when 'mysql'
   end
 
   mysql_database settings['database']['name'] do
-    connection database_connection
+    connection confluence_database_connection
     collation 'utf8_bin'
     encoding 'utf8'
     action :create
@@ -45,13 +44,13 @@ when 'mysql'
 
   # See this MySQL bug: http://bugs.mysql.com/bug.php?id=31061
   mysql_database_user '' do
-    connection database_connection
+    connection confluence_database_connection
     host 'localhost'
     action :drop
   end
 
   mysql_database_user settings['database']['user'] do
-    connection database_connection
+    connection confluence_database_connection
     host '%'
     password settings['database']['password']
     database_name settings['database']['name']
@@ -63,13 +62,13 @@ when 'postgresql'
   include_recipe 'database::postgresql'
 
   postgresql_database_user settings['database']['user'] do
-    connection database_connection
+    connection confluence_database_connection
     password settings['database']['password']
     action :create
   end
 
   postgresql_database settings['database']['name'] do
-    connection database_connection
+    connection confluence_database_connection
     connection_limit '-1'
     encoding 'utf8'
     owner settings['database']['user']

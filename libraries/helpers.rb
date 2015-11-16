@@ -36,6 +36,7 @@ module Confluence
       end
     end
 
+    # rubocop:disable Metrics/AbcSize
     def confluence_database_connection
       settings = merge_confluence_settings
 
@@ -52,8 +53,8 @@ module Confluence
       end
 
       database_connection
-
     end
+    # rubocop:enable Metrics/AbcSize
 
     # Merges Confluence settings from data bag and node attributes.
     # Data dag settings always has a higher priority.
