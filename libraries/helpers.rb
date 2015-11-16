@@ -264,3 +264,4 @@ module Confluence
 end
 
 ::Chef::Recipe.send(:include, Confluence::Helpers)
+::Chef::Resource.send(:include, Confluence::Helpers)
