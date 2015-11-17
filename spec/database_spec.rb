@@ -56,7 +56,7 @@ describe 'confluence::database' do
   context 'When data bag exists' do
     before do
       data_bag = {
-        'id' => 'confluence',
+        'id' => 'test_confluence',
         'confluence' => {
           'database' => {
             'type' => 'postgresql',
