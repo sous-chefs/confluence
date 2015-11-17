@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rake'
+gem 'stove'
 
 group :test, :integration do
   gem 'berkshelf', '~> 4.0'
