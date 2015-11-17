@@ -8,6 +8,9 @@
   [[GH-26]](https://github.com/parallels-cookbooks/confluence/pull/26)
 * Create database connection helper.
   [[GH-61]](https://github.com/parallels-cookbooks/confluence/pull/61)
+* Converted `virtual_host_name` and `virtual_host_alias` derived attrs
+  into helper methods for templates, etc.
+  [[GH-81]](https://github.com/parallels-cookbooks/confluence/pull/81)
 
 ## 1.7.1
 

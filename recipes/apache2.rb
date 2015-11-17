@@ -25,4 +25,4 @@ include_recipe 'apache2::mod_proxy'
 include_recipe 'apache2::mod_proxy_http'
 include_recipe 'apache2::mod_ssl'
 
-web_app node['confluence']['apache2']['virtual_host_alias']
+web_app confluence_virtual_host_alias

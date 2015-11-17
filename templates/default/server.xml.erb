@@ -20,7 +20,7 @@
                    compressableMimeType="text/html,text/xml,text/plain,text/css,application/json,application/javascript,application/x-javascript"
                    secure="true"
                    scheme="https"
-                   proxyName="<%= node['confluence']['apache2']['virtual_host_name'] %>"
+                   proxyName="<%= confluence_virtual_host_name %>"
                    proxyPort="<%= node['confluence']['apache2']['ssl']['port'] %>"
                    redirectPort="<%= node['confluence']['apache2']['ssl']['port'] %>"
         />
