@@ -6,6 +6,8 @@
   [[GH-40]](https://github.com/bflad/chef-confluence/issues/40)
 * Added Crowd SSO support.
   [[GH-26]](https://github.com/parallels-cookbooks/confluence/pull/26)
+* Create database connection helper.
+  [[GH-61]](https://github.com/parallels-cookbooks/confluence/pull/61)
 
 ## 1.7.1
 

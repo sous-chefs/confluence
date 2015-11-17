@@ -20,14 +20,20 @@ platforms:
     image: centos-7-0-x64
 
 - name: ubuntu-12.04
+  run_list:
+    - recipe[apt]
   driver:
     box: bento/ubuntu-12.04
     image: ubuntu-12-04-x64
 - name: ubuntu-14.04
+  run_list:
+    - recipe[apt]
   driver:
     box: bento/ubuntu-14.04
     image: ubuntu-14-04-x64
 - name: ubuntu-15.04
+  run_list:
+    - recipe[apt]
   driver:
     box: bento/ubuntu-15.04
     image: ubuntu-15-04-x64

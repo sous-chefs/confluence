@@ -36,6 +36,26 @@ module Confluence
       end
     end
 
+    # rubocop:disable Metrics/AbcSize
+    def confluence_database_connection
+      settings = merge_confluence_settings
+
+      database_connection = {
+        :host => settings['database']['host'],
+        :port => settings['database']['port']
+      }
+
+      case settings['database']['type']
+      when 'mysql'
+        database_connection.merge!(:username => 'root', :password => node['mysql']['server_root_password'])
+      when 'postgresql'
+        database_connection.merge!(:username => 'postgres', :password => node['postgresql']['password']['postgres'])
+      end
+
+      database_connection
+    end
+    # rubocop:enable Metrics/AbcSize
+
     # Merges Confluence settings from data bag and node attributes.
     # Data dag settings always has a higher priority.
     #
@@ -244,3 +264,4 @@ module Confluence
 end
 
 ::Chef::Recipe.send(:include, Confluence::Helpers)
+::Chef::Resource.send(:include, Confluence::Helpers)
