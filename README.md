@@ -115,7 +115,6 @@ Example:
   "confluence": {
     "database": {
       "type": "postgresql",
-      "host": "localhost",
       "name": "confluence_db",
       "user": "confluence_user",
       "password": "confluence_db_password",
@@ -148,57 +147,6 @@ Using individual recipes, you can use this cookbook to configure Confluence to f
   * `knife data bag create confluence`
   * `knife data bag edit confluence confluence --secret-file=path/to/secret`
 * Add individual recipes to your node's run list.
-
-## Testing and Development
-
-Here's how you can quickly get testing or developing against the cookbook thanks to [Vagrant](http://vagrantup.com/) and [Berkshelf](http://berkshelf.com/).
-
-    vagrant plugin install vagrant-berkshelf
-    vagrant plugin install vagrant-cachier
-    vagrant plugin install vagrant-omnibus
-    git clone git://github.com/bflad/chef-confluence.git
-    cd chef-confluence
-    vagrant up BOX # BOX being centos5, centos6, debian7, fedora18, fedora19, fedora20, freebsd9, ubuntu1204, ubuntu1210, ubuntu1304, or ubuntu1310
-
-You may need to add the following hosts entries:
-
-* 192.168.50.10 confluence-centos-6
-* 192.168.50.10 confluence-ubuntu-1204
-* (etc.)
-
-The running Confluence server is accessible from the host machine:
-
-CentOS 6 Box:
-* Web UI: https://confluence-centos-6/
-
-Ubuntu 12.04 Box:
-* Web UI: https://confluence-ubuntu-1204/
-
-You can then SSH into the running VM using the `vagrant ssh BOX` # BOX being centos6 or ubuntu1204 command.
-The VM can easily be stopped and deleted with the `vagrant destroy`
-command. Please see the official [Vagrant documentation](http://docs.vagrantup.com/v2/cli/index.html)
-for a more in depth explanation of available commands.
-
-#### Test-Kitchen
-
-Test-Kitchen is preconfigured to work with Vagrant to integration
-testing.
-
-If your system isn't powerful enough for speedy local testing, this
-cookbook is pre-configured to easily use remote servers with
-DigitalOcean:
-
-```
-ln -s .kitchen.digitalocean.yml .kitchen.local.yml
-# Get key ID by inspecting DOM of web dashboard on keys page
-export DIGITALOCEAN_ACCESS_TOKEN=xxxxxxxxxxxx DIGITALOCEAN_SSH_KEY_IDS=123456
-bundle install
-bundle exec kitchen list
-```
-
-## Contributing
-
-Please use standard Github issues/pull requests and if possible, in combination with testing on the Vagrant boxes.
 
 ## Sponsors
 
