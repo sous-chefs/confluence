@@ -3,12 +3,11 @@
 #  Local modifications will be overwritten by Chef.
 #
 <VirtualHost *:<%= node['confluence']['apache2']['port'] %>>
-	<% unless node['confluence']['apache2']['virtual_host_name'].empty? -%>
-	ServerName <%= node['confluence']['apache2']['virtual_host_name'] %>
+	<% unless confluence_virtual_host_name.nil? || confluence_virtual_host_name.empty? -%>
+	ServerName <%= confluence_virtual_host_name %>
 	<% end -%>
-	<% unless node['confluence']['apache2']['virtual_host_alias'].empty? -%>
-	<% virtual_host_aliases = node['confluence']['apache2']['virtual_host_alias'].kind_of?(Array) ? node['confluence']['apache2']['virtual_host_alias'] : [ node['confluence']['apache2']['virtual_host_alias'] ] -%>
-	<% virtual_host_aliases.each do |virtual_host_alias| -%>
+	<% unless confluence_virtual_host_alias.empty? -%>
+	<% Array(confluence_virtual_host_alias).each do |virtual_host_alias| -%>
 	ServerAlias <%= virtual_host_alias %>
 	<% end -%>
 	<% end -%>
@@ -24,12 +23,11 @@
 </VirtualHost>
 
 <VirtualHost *:<%= node['confluence']['apache2']['ssl']['port'] %>>
-	<% unless node['confluence']['apache2']['virtual_host_name'].empty? -%>
-	ServerName <%= node['confluence']['apache2']['virtual_host_name'] %>
+	<% unless confluence_virtual_host_name.nil? || confluence_virtual_host_name.empty? -%>
+	ServerName <%= confluence_virtual_host_name %>
 	<% end -%>
-	<% unless node['confluence']['apache2']['virtual_host_alias'].empty? -%>
-	<% virtual_host_aliases = node['confluence']['apache2']['virtual_host_alias'].kind_of?(Array) ? node['confluence']['apache2']['virtual_host_alias'] : [ node['confluence']['apache2']['virtual_host_alias'] ] -%>
-	<% virtual_host_aliases.each do |virtual_host_alias| -%>
+	<% unless confluence_virtual_host_alias.empty? -%>
+	<% Array(confluence_virtual_host_alias).each do |virtual_host_alias| -%>
 	ServerAlias <%= virtual_host_alias %>
 	<% end -%>
 	<% end -%>

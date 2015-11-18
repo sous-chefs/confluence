@@ -36,6 +36,14 @@ module Confluence
       end
     end
 
+    def confluence_virtual_host_name
+      node['confluence']['apache2']['virtual_host_name'] || node['fqdn']
+    end
+
+    def confluence_virtual_host_alias
+      node['confluence']['apache2']['virtual_host_alias'] || node['hostname']
+    end
+
     # rubocop:disable Metrics/AbcSize
     def confluence_database_connection
       settings = merge_confluence_settings
@@ -270,3 +278,4 @@ end
 
 ::Chef::Recipe.send(:include, Confluence::Helpers)
 ::Chef::Resource.send(:include, Confluence::Helpers)
+::Chef::Mixin::Template::TemplateContext.send(:include, Confluence::Helpers)

@@ -34,8 +34,10 @@ default['confluence']['data_bag_item'] = 'confluence'
 default['confluence']['apache2']['access_log']         = ''
 default['confluence']['apache2']['error_log']          = ''
 default['confluence']['apache2']['port']               = 80
-default['confluence']['apache2']['virtual_host_name']  = node['fqdn']
-default['confluence']['apache2']['virtual_host_alias'] = node['hostname']
+
+# Defaults are automatically selected from fqdn and hostname via helper functions
+default['confluence']['apache2']['virtual_host_name']  = nil
+default['confluence']['apache2']['virtual_host_alias'] = nil
 
 default['confluence']['apache2']['ssl']['access_log']       = ''
 default['confluence']['apache2']['ssl']['chain_file']       = ''
