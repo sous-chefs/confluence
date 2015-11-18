@@ -14,6 +14,7 @@ platforms:
   driver:
     box: bento/centos-6.7  # vagrant
     image: centos-6-5-x64 # digitalocean
+
 - name: centos-7
   driver:
     box: bento/centos-7.1
@@ -25,23 +26,13 @@ platforms:
   driver:
     box: bento/ubuntu-12.04
     image: ubuntu-12-04-x64
+
 - name: ubuntu-14.04
   run_list:
     - recipe[apt]
   driver:
     box: bento/ubuntu-14.04
     image: ubuntu-14-04-x64
-- name: ubuntu-15.04
-  run_list:
-    - recipe[apt]
-  driver:
-    box: bento/ubuntu-15.04
-    image: ubuntu-15-04-x64
-  attributes:
-    postgresql:
-      # postgresql cookbook doesn't support 15.04 yet.
-      version: '9.4'
-      enable_pgdg_apt: false
 
 provisioner:
   name: chef_zero
