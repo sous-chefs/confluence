@@ -14,6 +14,7 @@ platforms:
   driver:
     box: bento/centos-6.7  # vagrant
     image: centos-6-5-x64 # digitalocean
+
 - name: centos-7
   driver:
     box: bento/centos-7.1
@@ -25,80 +26,44 @@ platforms:
   driver:
     box: bento/ubuntu-12.04
     image: ubuntu-12-04-x64
+
 - name: ubuntu-14.04
   run_list:
     - recipe[apt]
   driver:
     box: bento/ubuntu-14.04
     image: ubuntu-14-04-x64
-- name: ubuntu-15.04
-  run_list:
-    - recipe[apt]
-  driver:
-    box: bento/ubuntu-15.04
-    image: ubuntu-15-04-x64
-  attributes:
-    postgresql:
-      # postgresql cookbook doesn't support 15.04 yet.
-      version: '9.4'
-      enable_pgdg_apt: false
 
 provisioner:
   name: chef_zero
   attributes:
     java:
       install_flavor: oracle
-      java_home: /usr/lib/jvm/java-7-oracle
-      jdk_version: 7
+      jdk_version: 8
       oracle:
         accept_oracle_download_terms: true
 
 suites:
 - name: installer-mysql
   run_list:
-  - recipe[confluence]
-  attributes:
-    mysql:
-      server_root_password: iloverandompasswordsbutthiswilldo
+  - recipe[confluence_test::mysql]
 
 - name: installer-postgresql
   run_list:
-  - recipe[confluence]
-  attributes:
-    confluence:
-      database:
-        type: postgresql
-    postgresql:
-      password:
-        postgres: iloverandompasswordsbutthiswilldo
+  - recipe[confluence_test::postgresql]
 
 - name: standalone-mysql
   run_list:
   - recipe[java]
-  - recipe[confluence]
+  - recipe[confluence_test::mysql]
   attributes:
     confluence:
-      database:
-        type: mysql
       install_type: standalone
-    java:
-      java_home: /usr/lib/jvm/java-8-oracle
-      jdk_version: 8
-    mysql:
-      server_root_password: iloverandompasswordsbutthiswilldo
 
 - name: standalone-postgresql
   run_list:
   - recipe[java]
-  - recipe[confluence]
+  - recipe[confluence_test::postgresql]
   attributes:
     confluence:
-      database:
-        type: postgresql
       install_type: standalone
-    java:
-      java_home: /usr/lib/jvm/java-8-oracle
-      jdk_version: 8
-    postgresql:
-      password:
-        postgres: iloverandompasswordsbutthiswilldo
