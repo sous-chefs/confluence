@@ -37,7 +37,7 @@ module Confluence
     end
 
     def confluence_virtual_host_name
-      node['confluence']['apache2']['virtual_host_name'] || node['fqdn']
+      node['confluence']['apache2']['virtual_host_name'] || node['fqdn'] || node['machinename'] || node['hostname']
     end
 
     def confluence_virtual_host_alias
