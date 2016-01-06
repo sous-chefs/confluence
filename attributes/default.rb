@@ -36,6 +36,7 @@ default['confluence']['apache2']['error_log']          = ''
 default['confluence']['apache2']['port']               = 80
 
 # Defaults are automatically selected from fqdn and hostname via helper functions
+default['confluence']['apache2']['template_cookbook']  = 'confluence'
 default['confluence']['apache2']['virtual_host_name']  = nil
 default['confluence']['apache2']['virtual_host_alias'] = nil
 
