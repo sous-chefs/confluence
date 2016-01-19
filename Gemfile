@@ -24,6 +24,7 @@ end
 
 group :kitchen_cloud do
   gem 'kitchen-digitalocean'
+  gem 'kitchen-sync'
 end
 
 group :development do
