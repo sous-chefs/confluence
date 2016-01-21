@@ -34,6 +34,9 @@ directory '/etc/ssl/localcerts'
 crt = "/etc/ssl/localcerts/#{confluence_virtual_host_name}.crt"
 key = "/etc/ssl/localcerts/#{confluence_virtual_host_name}.key"
 
+node.default['confluence']['apache2']['ssl']['certificate_file'] = crt
+node.default['confluence']['apache2']['ssl']['key_file'] = key
+
 letsencrypt_certificate confluence_virtual_host_name do
   crt      crt
   key      key
@@ -43,6 +46,4 @@ end
 
 web_app confluence_virtual_host_alias do
   cookbook node['confluence']['apache2']['template_cookbook']
-  certificate_file crt
-  key_file key
 end

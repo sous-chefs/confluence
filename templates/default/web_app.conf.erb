@@ -49,8 +49,8 @@
 	ProxyPassReverse / http://localhost:<%= node['confluence']['tomcat']['port'] %>/
 
 	SSLEngine on
-	SSLCertificateFile <%= @params[:certificate_file] %>
-	SSLCertificateKeyFile <%= @params[:key_file] %>
+	SSLCertificateFile <%= node['confluence']['apache2']['ssl']['certificate_file'] %>
+	SSLCertificateKeyFile <%= node['confluence']['apache2']['ssl']['key_file'] %>
 	<% unless node['confluence']['apache2']['ssl']['chain_file'].empty? -%>
 	SSLCertificateChainFile <%= node['confluence']['apache2']['ssl']['chain_file'] %>
 	<% end -%>
