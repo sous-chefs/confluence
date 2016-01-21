@@ -1,0 +1,11 @@
+<IfModule mod_proxy.c>
+        ProxyPass /.well-known/acme-challenge !
+</IfModule>
+Alias /.well-known/acme-challenge <%= node['apache']['docroot_dir'] %>/.well-known/acme-challenge
+
+<Directory "<%= node['apache']['docroot_dir'] %>/.well-known/acme-challenge">
+    Options None
+    AllowOverride None
+    Require all granted
+    AddDefaultCharset off
+</Directory>

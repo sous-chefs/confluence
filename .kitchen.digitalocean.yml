@@ -10,6 +10,11 @@ provisioner:
   attributes:
     apt:
       compile_time_update: true
+    confluence:
+      apache2:
+        virtual_host_name: abc123.test.example.com
+    letsencrypt:
+      contact: mailto:admin@example.com
   client_rb:
     formatters:
       # Keeps logs concise for parallelism.
