@@ -12,7 +12,7 @@ provisioner:
       compile_time_update: true
     confluence:
       apache2:
-        virtual_host_name: confluence-01.test.blendive.com
+        virtual_host_name: abc123.test.example.com
     letsencrypt:
       contact: mailto:admin@example.com
   client_rb:
