@@ -24,7 +24,25 @@ include_recipe 'apache2'
 include_recipe 'apache2::mod_proxy'
 include_recipe 'apache2::mod_proxy_http'
 include_recipe 'apache2::mod_ssl'
+include_recipe 'apache2::mod_alias'
+include_recipe 'letsencrypt'
+
+apache_conf 'letsencrypt'
+
+directory '/etc/ssl/localcerts'
+
+crt = "/etc/ssl/localcerts/#{confluence_virtual_host_name}.crt"
+key = "/etc/ssl/localcerts/#{confluence_virtual_host_name}.key"
+
+letsencrypt_certificate confluence_virtual_host_name do
+  crt      crt
+  key      key
+  method   'http'
+  wwwroot  node['apache']['docroot_dir']
+end
 
 web_app confluence_virtual_host_alias do
   cookbook node['confluence']['apache2']['template_cookbook']
+  certificate_file crt
+  key_file key
 end
