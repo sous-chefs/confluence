@@ -30,7 +30,7 @@ shared_examples_for 'confluence behind the apache proxy' do
       end
     end
 
-    describe http('https://127.0.0.1/setup/setupstart.action', ssl: {verify: false}) do
+    describe http('https://127.0.0.1/setup/setupstart.action', ssl: { verify: false }) do
       it 'returns setup wizard' do
         expect(response.status).to eq(200)
         expect(response.body).to include('Set up Confluence')

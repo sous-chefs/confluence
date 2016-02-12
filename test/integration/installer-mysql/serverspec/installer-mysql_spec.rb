@@ -9,4 +9,3 @@ end
 describe 'Confluence' do
   it_behaves_like 'confluence behind the apache proxy'
 end
-

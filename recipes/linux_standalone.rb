@@ -29,7 +29,7 @@ user node['confluence']['user'] do
   comment 'Confluence Service Account'
   home node['confluence']['home_path']
   shell '/bin/bash'
-  supports :manage_home => true
+  supports manage_home: true
   system true
   action :create
 end
