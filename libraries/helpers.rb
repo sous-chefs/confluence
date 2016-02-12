@@ -274,6 +274,36 @@ module Confluence
           'x32' => 'c5927999c5e8408c3438a91823a082162f440eb2a095a63db6785515772735d5',
           'x64' => '51f65cfc9b94d4ead3bfe2e5cbe601bab2f97583875a46a3259714fea9ed1a3b',
           'tar' => '5bb9c02cc38e86ad95aeacd85cedb7464a7e18d3a67b4b9798ba9b0425dea1d8'
+        },
+        '5.8.18' => {
+          'x32' => 'f57b839822259ed520bbecd4ac5a055556984c5aa67e6a01d22ee3b3de695a6a',
+          'x64' => '7424cd7abf210a0e970509d7e7efc00a5fe991ea86cce5b15c0bd0ea4e167f7a',
+          'tar' => 'fdd48278913c9990d338b088104f8ddc74d66d5acb3e36c498531b381bfd2382',
+        },
+        '5.9.1' => {
+          'x32' => 'ca092a95744d9ec468e641f492595bc9f99fe5fd809055bc070a426756d484ea',
+          'x64' => '5f238aeb4fb5b60ef7525470b011d082ff47c37053eeb758f06e7468fa5e14d7',
+          'tar' => '7ec1728d615fd7b4bd8e694fc1fa13db9dd452f293c1948a7fb10d55eec0d1b4',
+        },
+        '5.9.2' => {
+          'x32' => '44c07aff036724ca78bb5173374b4325e8793f0a744451641efe5f9e371bacea',
+          'x64' => 'aecda279b3e971e11f3fb9a39b63e7ecca92a178bc82dfb2ae77ddf27d3f4806',
+          'tar' => 'd453e636fbcc510ffa66d411c541ac1f4b6f05a32d9c693740f8c3dacf2f2858',
+        },
+        '5.9.3' => {
+          'x32' => 'c928287203ff6ca1f93f0b0338ae42aa1643c8921d9dc5c6dfa202a09dcd31cd',
+          'x64' => 'd6c2b1ccadcaff94384fa4459c88a7129fbe91828ee2bd0743bf93646706ed4e',
+          'tar' => '8c1fc4daeb891cdf680980ba4f6f3c883b511be4bcb46848d1c27f39735497fe',
+        },
+        '5.9.4' => {
+          'x32' => '29cdf079bf2ce2ab733f44936b7ee9b7e0af4cb015ad9d36767122a0db5219ab',
+          'x64' => '55eebdfb228d17fb4ca1b6008a66c3c8dfaed90cf2d4190cff753878de534d70',
+          'tar' => '7bfcabd321814c6973bb4a346c4767f810b8bc144a210954047e4af0ad80276a',
+        },
+        '5.9.5' => {
+          'x32' => 'f2f9c27e49d4d469f411b00dbcdb2c46d9ccdc714bf128690090d27f9443201b',
+          'x64' => '6b37adc21ea85a8e37a06d88bd3e4d32c25cce2d009f1582066e4c3ff16e61b9',
+          'tar' => 'bd4999df5d1bcf9aaee3b3976b10dd3bb44b50c292225b94432aa790ad7d1d13',
         }
       }
     end
