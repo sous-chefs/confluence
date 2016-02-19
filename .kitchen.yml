@@ -36,6 +36,8 @@ platforms:
 
 provisioner:
   name: chef_zero
+  client_rb:
+    diff_disabled: true
   attributes:
     java:
       install_flavor: oracle
