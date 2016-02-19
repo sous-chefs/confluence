@@ -7,9 +7,9 @@ template "#{node['confluence']['install_path']}/confluence/WEB-INF/classes/crowd
   mode 00644
   action :create
   variables(
-    :app_name => settings['crowd_sso']['app_name'],
-    :app_password => settings['crowd_sso']['app_password'],
-    :crowd_base_url => settings['crowd_sso']['crowd_base_url']
+    app_name: settings['crowd_sso']['app_name'],
+    app_password: settings['crowd_sso']['app_password'],
+    crowd_base_url: settings['crowd_sso']['crowd_base_url']
   )
   sensitive true
   notifies :restart, 'service[confluence]', :delayed
