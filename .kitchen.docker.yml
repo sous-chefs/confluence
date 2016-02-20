@@ -51,6 +51,8 @@ provisioner:
       jdk_version: 8
       oracle:
         accept_oracle_download_terms: true
+  client_rb:
+    diff_disabled: true
 
 suites:
 - name: installer-mysql
