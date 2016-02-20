@@ -1,3 +1,7 @@
 source 'https://rubygems.org'
 
-gem 'infrataster'
+# This is required for successful 'nokogiri' install
+# https://github.com/chef/chef-dk/issues/278#issuecomment-185307218
+ENV['PKG_CONFIG_PATH'] = '/opt/chef/embedded/lib/pkgconfig'
+
+gem 'infrataster', '>= 0.3.2'
