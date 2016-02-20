@@ -1,10 +1,10 @@
-# chef-confluence
+# Confluence Cookbook
 [![Cookbook Version](https://img.shields.io/cookbook/v/confluence.svg)](https://supermarket.chef.io/cookbooks/confluence)
 [![Build Status](https://secure.travis-ci.org/parallels-cookbooks/confluence.png?branch=master)](http://travis-ci.org/parallels-cookbooks/confluence)
 
 ## Description
 
-Installs/Configures Atlassian Confluence server. Please see [COMPATIBILITY.md](COMPATIBILITY.md) for more information about Confluence releases that are tested and supported by this cookbook and its versions.
+Installs/Configures an instance of [Atlassian Confluence](https://www.atlassian.com/software/confluence/).
 
 ## Requirements
 
