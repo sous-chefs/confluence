@@ -28,7 +28,7 @@ Installs/Configures Atlassian Confluence server. Please see [COMPATIBILITY.md](C
 
 The Atlassian Confluence Linux installer will automatically configure a bundled JRE.
 
-If you prefer Confluence stadalone installation, then you have to manage JDK/JRE 8
+If you prefer Confluence standalone installation, then you have to manage JDK/JRE 8
 ([Supported Platforms](https://confluence.atlassian.com/display/DOC/Supported+Platforms))
 on this node. It can be done with `java` cookbook and appropricate attributes:
 
@@ -159,6 +159,7 @@ the code contributions of the following organizations:
 
 ## License and Author
 
+* Author:: Mikhail Zholobov (legal90@gmail.com, @legal90)
 * Author:: Brian Flad (<bflad417@gmail.com>, @bflad)
 * Author:: Denny Schäfer (<trash4you@online.de>, @tuxinaut)
 * Copyright:: 2013, Brian Flad
