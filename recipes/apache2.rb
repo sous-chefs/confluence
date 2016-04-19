@@ -16,9 +16,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-
-node.set['apache']['listen_ports'] = node['apache']['listen_ports'] + [node['confluence']['apache2']['port']] unless node['apache']['listen_ports'].include?(node['confluence']['apache2']['port'])
-node.set['apache']['listen_ports'] = node['apache']['listen_ports'] + [node['confluence']['apache2']['ssl']['port']] unless node['apache']['listen_ports'].include?(node['confluence']['apache2']['ssl']['port'])
+node.default['apache']['listen'] |= [
+  "*:#{node['confluence']['apache2']['port']}",
+  "*:#{node['confluence']['apache2']['ssl']['port']}"
+]
 
 include_recipe 'apache2'
 include_recipe 'apache2::mod_proxy'
