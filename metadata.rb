@@ -20,7 +20,7 @@ supports 'redhat'
 supports 'scientific'
 supports 'ubuntu'
 
-depends 'apache2', '>= 3.2.0'
+depends 'apache2'
 depends 'ark'
 depends 'database'
 depends 'java'
