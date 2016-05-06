@@ -49,7 +49,7 @@ install_path | location to install Confluence | String | /opt/atlassian/confluen
 install_type | Confluence install type - "installer", "standalone" | String | installer
 url | URL for Confluence install | String | auto-detected by library method
 user | user running Confluence | String | confluence
-version | Confluence version to install | String | 5.9.5
+version | Confluence version to install | String | 5.9.10
 
 **Notice:** If `['confluence']['install_type']` is set to `installer`, then the installer will try to upgrade your Confluence instance located in `['confluence']['install_path']` (if it exists) to the `['confluence']['version']`.
 
