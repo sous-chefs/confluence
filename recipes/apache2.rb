@@ -16,10 +16,18 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-node.default['apache']['listen'] |= [
-  "*:#{node['confluence']['apache2']['port']}",
-  "*:#{node['confluence']['apache2']['ssl']['port']}"
-]
+if node['apache'].attribute?('listen_ports')
+  # Compatibility with cookbook 'apache' < 3.2.0
+  node.default['apache']['listen_ports'] |= [
+    node['confluence']['apache2']['port'],
+    node['confluence']['apache2']['ssl']['port']
+  ]
+else
+  node.default['apache']['listen'] |= [
+    "*:#{node['confluence']['apache2']['port']}",
+    "*:#{node['confluence']['apache2']['ssl']['port']}"
+  ]
+end
 
 include_recipe 'apache2'
 include_recipe 'apache2::mod_proxy'
