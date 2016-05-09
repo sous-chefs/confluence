@@ -70,7 +70,10 @@ when 'postgresql'
   postgresql_database settings['database']['name'] do
     connection confluence_database_connection
     connection_limit '-1'
+    # See: https://confluence.atlassian.com/display/JIRAKB/Health+Check%3A+Database+Collation
     encoding 'utf8'
+    collation 'C'
+    template 'template0'
     owner settings['database']['user']
     action :create
   end
