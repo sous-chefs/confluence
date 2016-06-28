@@ -19,6 +19,14 @@
 
 settings = merge_confluence_settings
 
+# Fix conf directory permissions (GH-99)
+directory File.join(node['confluence']['install_path'], 'conf') do
+  owner node['confluence']['user']
+  group 'root'
+  mode 00755
+  action :create
+end
+
 template "#{node['confluence']['install_path']}/confluence/WEB-INF/classes/confluence-init.properties" do
   source 'confluence-init.properties.erb'
   owner node['confluence']['user']
