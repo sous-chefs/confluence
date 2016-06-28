@@ -78,6 +78,7 @@ minimum_memory | JVM minimum memory | String | 512m
 maximum_memory | JVM maximum memory | String | 768m
 maximum_permgen | JVM maximum PermGen memory | String | 256m
 java_opts | additional JAVA_OPTS to be passed to Confluence JVM during startup | String | ""
+bundled_jre | prefer JRE bundled with linux installer | Boolean | true
 
 ### Confluence Tomcat Attributes
 

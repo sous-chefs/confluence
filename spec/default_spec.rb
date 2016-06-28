@@ -38,6 +38,18 @@ describe 'confluence::default' do
     end
   end
 
+  context 'for "installer" installation type' do
+    it 'uses JRE managed by "java" cookbook when bundled_jre attribute is false' do
+      chef_run.node.set['java']['java_home'] = '/usr/lib/jvm/java'
+      chef_run.node.set['confluence']['jvm']['bundled_jre'] = false
+
+      expect(chef_run).to render_file('/opt/atlassian/confluence/bin/setenv.sh')
+        .with_content { |content|
+          expect(content).to include('JRE_HOME="/usr/lib/jvm/java/jre/"')
+        }
+    end
+  end
+
   context 'for "standalone" installation type' do
     it 'uses JRE managed by "java" cookbook' do
       chef_run.node.set['java']['java_home'] = '/usr/lib/jvm/java'
