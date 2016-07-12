@@ -30,10 +30,3 @@ template "#{node['confluence']['install_path']}/conf/server.xml" do
   mode '0640'
   notifies :restart, 'service[confluence]', :delayed
 end
-
-template "#{node['confluence']['install_path']}/conf/web.xml" do
-  source 'web.xml.erb'
-  owner node['confluence']['user']
-  mode '0644'
-  notifies :restart, 'service[confluence]', :delayed
-end
