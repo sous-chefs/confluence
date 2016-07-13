@@ -1,3 +1,37 @@
+## 2.1.0 (July 13, 2016)
+
+BACKWARDS INCOMPATIBILITIES:
+
+- Dropped support of Confluence < 5.5, since they've reached their EOL date.
+  [[GH-106]](https://github.com/parallels-cookbooks/confluence/pull/106)
+- Attribute `['confluence']['jvm']['maximum_permgen']` was removed, because
+  it is not needed for Java 8.
+  [[GH-114]](https://github.com/parallels-cookbooks/confluence/pull/114)
+
+IMPROVEMENTS:
+
+- Added attribute `['confluence']['jvm']['bundled_jre']` allowing to manage
+  custom JRE by `java` cookbook regardless of `install_type`.
+  [[GH-111]](https://github.com/parallels-cookbooks/confluence/pull/111)  
+- Added support of Confluence 5.9.9, 5.9.10, 5.10.1.
+  [[GH-107]](https://github.com/parallels-cookbooks/confluence/pull/107)
+  [[GH-115]](https://github.com/parallels-cookbooks/confluence/pull/115)
+- Changed `mysql` cookbook constraint to work with newer version of
+  `mysql2_chef_gem` cookbook.
+  [[GH-109]](https://github.com/parallels-cookbooks/confluence/pull/109)
+- Removes non-dynamic template for `web.xml` config.
+  [[GH-116]](https://github.com/parallels-cookbooks/confluence/pull/116)
+
+BUG FIXES:
+
+- postgres: Set "utf-8" encoding, "C" collation and "template0".
+  [[GH-108]](https://github.com/parallels-cookbooks/confluence/pull/108)
+- Fixed attributes for Apache listen ports.
+  [[GH-103]](https://github.com/parallels-cookbooks/confluence/pull/103)
+  [[GH-105]](https://github.com/parallels-cookbooks/confluence/pull/105)
+- Fixed `conf` directory permissions.
+  [[GH-99]](https://github.com/parallels-cookbooks/confluence/pull/99)
+
 ## 2.0.0 (February 20, 2016)
 
 BACKWARDS INCOMPATIBILITIES:
@@ -49,6 +83,7 @@ IMPROVEMENTS:
   [[GH-27]](https://github.com/parallels-cookbooks/confluence/pull/27)
 
 BUG FIXES:
+
 * Fixed issues of derived attributes
   [[GH-30]](https://github.com/parallels-cookbooks/confluence/pull/30)
   [[GH-31]](https://github.com/parallels-cookbooks/confluence/pull/31)
