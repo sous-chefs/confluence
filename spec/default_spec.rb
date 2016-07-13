@@ -21,14 +21,6 @@ describe 'confluence::default' do
     expect(chef_run).to render_file(path)
   end
 
-  it 'renders web.xml' do
-    path = '/opt/atlassian/confluence/conf/web.xml'
-    resource = chef_run.template(path)
-
-    expect(resource).to notify('service[confluence]').to(:restart)
-    expect(chef_run).to render_file(path)
-  end
-
   context 'for "installer" installation type' do
     it 'uses the bundled JRE' do
       expect(chef_run).to render_file('/opt/atlassian/confluence/bin/setenv.sh')
