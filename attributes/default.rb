@@ -63,7 +63,6 @@ default['confluence']['database']['user']     = 'confluence'
 default['confluence']['jvm']['bundled_jre']     = true
 default['confluence']['jvm']['minimum_memory']  = '256m'
 default['confluence']['jvm']['maximum_memory']  = '512m'
-default['confluence']['jvm']['maximum_permgen'] = '256m'
 default['confluence']['jvm']['java_opts']       = ''
 
 default['confluence']['tomcat']['port']         = '8090'

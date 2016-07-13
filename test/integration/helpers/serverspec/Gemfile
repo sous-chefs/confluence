@@ -5,3 +5,5 @@ source 'https://rubygems.org'
 ENV['PKG_CONFIG_PATH'] = '/opt/chef/embedded/lib/pkgconfig'
 
 gem 'infrataster', '>= 0.3.2'
+# 'rack' > 2.0 requires Ruby 2.2.2, but Chef 12.12.15 bundles Ruby 2.1.8
+gem 'rack', '~> 1.6'

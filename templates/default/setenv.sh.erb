@@ -3,10 +3,9 @@
 #  Local modifications will be overwritten by Chef.
 #
 
-JAVA_OPTS="-Xms<%= node['confluence']['jvm']['minimum_memory'] %> -Xmx<%= node['confluence']['jvm']['maximum_memory'] %> -XX:MaxPermSize=<%= node['confluence']['jvm']['maximum_permgen'] %> <%= node['confluence']['jvm']['java_opts'] %> $JAVA_OPTS -Djava.awt.headless=true "
-export JAVA_OPTS
+# See the CATALINA_OPTS below for tuning the JVM arguments used to start Confluence.
 
-echo "If you encounter issues starting up Confluence Standalone, please see the Installation guide at http://confluence.atlassian.com/display/DOC/Confluence+Installation+Guide"
+echo "If you encounter issues starting up Confluence, please see the Installation guide at http://confluence.atlassian.com/display/DOC/Confluence+Installation+Guide"
 
 # set the location of the pid file
 if [ -z "$CATALINA_PID" ] ; then
@@ -40,6 +39,20 @@ cd $PUSHED_DIR
 
 echo ""
 echo "Server startup logs are located in $LOGBASEABS/logs/catalina.out"
+
+# Set the JVM arguments used to start Confluence. For a description of the options, see
+# http://www.oracle.com/technetwork/java/javase/tech/vmoptions-jsp-140102.html
+CATALINA_OPTS="-XX:-PrintGCDetails -XX:+PrintGCTimeStamps -XX:-PrintTenuringDistribution ${CATALINA_OPTS}"
+CATALINA_OPTS="-Xloggc:$LOGBASEABS/logs/gc-`date +%F_%H-%M-%S`.log -XX:+UseGCLogFileRotation -XX:NumberOfGCLogFiles=5 -XX:GCLogFileSize=2M ${CATALINA_OPTS}"
+CATALINA_OPTS="-Djava.awt.headless=true ${CATALINA_OPTS}"
+CATALINA_OPTS="-Datlassian.plugins.enable.wait=300 ${CATALINA_OPTS}"
+CATALINA_OPTS="-Xms<%= node['confluence']['jvm']['minimum_memory'] %> -Xmx<%= node['confluence']['jvm']['maximum_memory'] %> -XX:+UseG1GC ${CATALINA_OPTS}"
+export CATALINA_OPTS
+
+<% if node['confluence']['jvm']['java_opts'] != '' -%>
+JAVA_OPTS="<%= node['confluence']['jvm']['java_opts']%>
+export JAVA_OPTS
+<% end -%>
 
 <% if node['confluence']['install_type'] == 'installer' && node['confluence']['jvm']['bundled_jre'] -%>
 JRE_HOME="<%= node['confluence']['install_path'] %>/jre/"; export JRE_HOME
