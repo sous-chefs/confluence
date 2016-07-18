@@ -80,6 +80,8 @@ module Confluence
         settings['database']['port'] ||= 3306
       when 'postgresql'
         settings['database']['port'] ||= 5432
+      when 'hsqldb'
+        # No-op. HSQLDB doesn't require any configuration.
       else
         raise "Unsupported database type: #{settings['database']['type']}"
       end
