@@ -65,7 +65,7 @@ host | FQDN or IP of database server ("127.0.0.1" automatically installs `['data
 name | Confluence database name | String | confluence
 password | Confluence database user password | String | changeit
 port | Confluence database port | Fixnum | 3306 for MySQL, 5432 for PostgreSQL
-type | Confluence database type - "mysql" or "postgresql" | String | mysql
+type | Confluence database type - "mysql", "postgresql", or "hsqldb"/"none" | String | mysql
 user | Confluence database user | String | confluence
 
 ### Confluence JVM Attributes
