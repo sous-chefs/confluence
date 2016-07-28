@@ -1,8 +1,3 @@
-## x.y.z (pending)
-
-- Added ability to set database type to `hsqldb` or `none` for a no-op.
-  [[GH-117]](https://github.com/parallels-cookbooks/confluence/issues/117)
-
 ## 2.1.0 (July 13, 2016)
 
 BACKWARDS INCOMPATIBILITIES:
