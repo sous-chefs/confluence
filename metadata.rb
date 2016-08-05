@@ -1,10 +1,13 @@
 name 'confluence'
-maintainer 'Brian Flad'
-maintainer_email 'bflad417@gmail.com'
+maintainer 'Mikhail Zholobov'
+maintainer_email 'legal90@gmail.com'
 license 'Apache 2.0'
 description 'Installs/Configures Atlassian Confluence'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-version '2.1.0'
+version '2.1.1'
+
+issues_url 'https://github.com/parallels-cookbooks/confluence/issues'
+source_url 'https://github.com/parallels-cookbooks/confluence'
 
 recipe 'confluence', 'Installs/configures Atlassian Confluence'
 recipe 'confluence::apache2', 'Installs/configures Apache 2 as proxy (ports 80/443)'
