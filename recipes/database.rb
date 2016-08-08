@@ -78,4 +78,6 @@ when 'postgresql'
     action :create
   end
 
+when 'hsqldb'
+  # No-op. HSQLDB doesn't require any configuration.
 end
