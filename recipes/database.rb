@@ -78,4 +78,6 @@ when 'postgresql'
     action :create
   end
 
+when 'hsqldb', 'none'
+  # no-op
 end
