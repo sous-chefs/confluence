@@ -50,7 +50,7 @@ CATALINA_OPTS="-Xms<%= node['confluence']['jvm']['minimum_memory'] %> -Xmx<%= no
 export CATALINA_OPTS
 
 <% if node['confluence']['jvm']['java_opts'] != '' -%>
-JAVA_OPTS="<%= node['confluence']['jvm']['java_opts']%>
+JAVA_OPTS="<%= node['confluence']['jvm']['java_opts']%>"
 export JAVA_OPTS
 <% end -%>
 
