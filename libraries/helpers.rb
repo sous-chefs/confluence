@@ -283,6 +283,16 @@ module Confluence
           'x32' => '79d65757fb8eeb32bc54c2bd4edad6bcb5e8b3c6cf167164123732a4046ba0ce',
           'x64' => 'e54d8d5c0541ef04560f8290c7b78cda086d383fbbea24901ff96e5a583d6ab6',
           'tar' => '2b309b7e17f64766e61e991e81a9de59976adb3ad544f3637e125b74f455f3ff'
+        },
+        '5.10.8' => {
+          'x32' => 'e15600ccf3512378a88e5bd59304e486bf4c2256d9f1bbbc41f2126f6980812f',
+          'x64' => 'badd2963fd7b0dc2deb11eaa257d7c982145fe59f55204b09303e4d09846905e',
+          'tar' => '6346bc1ca7b14d6a131270c88574cdf4f3091543e3a30054fb02c47448058088'
+        },
+        '6.0.1' => {
+          'x32' => 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855',
+          'x64' => 'aff42d8bcc61ce7358109fe774f8b46c6713f37c362779639bb64326ac126260',
+          'tar' => '444d9aa26d459ab41e42852799ffcb0ad04d1fe7471b52f8275f240860014e95'
         }
       }
     end
