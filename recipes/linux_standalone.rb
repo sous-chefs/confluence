@@ -20,7 +20,7 @@
 directory File.dirname(node['confluence']['home_path']) do
   owner 'root'
   group 'root'
-  mode 00755
+  mode '0755'
   action :create
   recursive true
 end
@@ -51,7 +51,7 @@ end
   directory File.join(node['confluence']['install_path'], dir) do
     owner node['confluence']['user']
     group 'root'
-    mode 00700
+    mode '0700'
     action :create
   end
 end
