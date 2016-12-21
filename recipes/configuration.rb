@@ -23,7 +23,7 @@ settings = merge_confluence_settings
 directory File.join(node['confluence']['install_path'], 'conf') do
   owner node['confluence']['user']
   group 'root'
-  mode 00755
+  mode '0755'
   action :create
 end
 
@@ -48,7 +48,7 @@ if node['init_package'] == 'systemd'
     source 'confluence.systemd.erb'
     owner 'root'
     group 'root'
-    mode 00755
+    mode '0755'
     action :create
     notifies :run, 'execute[systemctl-daemon-reload]', :immediately
     notifies :restart, 'service[confluence]', :delayed
@@ -58,7 +58,7 @@ else
     source 'confluence.init.erb'
     owner 'root'
     group 'root'
-    mode 00755
+    mode '0755'
     action :create
     notifies :restart, 'service[confluence]', :delayed
   end
