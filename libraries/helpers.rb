@@ -82,6 +82,7 @@ module Confluence
         settings['database']['port'] ||= 5432
       when 'hsqldb'
         # No-op. HSQLDB doesn't require any configuration.
+        Chef::Log.warn('HSQLDB should not be used in production.')
       else
         raise "Unsupported database type: #{settings['database']['type']}"
       end
