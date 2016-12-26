@@ -42,4 +42,24 @@ if confluence_version != node['confluence']['version']
     cwd Chef::Config[:file_cache_path]
     command "./atlassian-confluence-#{node['confluence']['version']}.bin -q -varfile atlassian-confluence-response.varfile"
   end
+  
+  # Nasty workaround for intial post-install restart by systemd
+  ruby_block 'Replace exit 1 as workaround for systemd' do
+  block do
+    file_name = "#{node['confluence']['install_path']}/bin/catalina.sh"
+    text = File.read(file_name)
+
+    new_contents = text.gsub('remove the PID file and try again:"
+            ps -f -p $PID
+            exit 1
+          else', 'remove the PID file and try again:"
+            ps -f -p $PID
+            exit 0
+          else')
+
+    File.open(file_name, "w") {|file| file.puts new_contents }
+  end
+  action :run
+end
+
 end
