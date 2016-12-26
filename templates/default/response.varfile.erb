@@ -3,7 +3,7 @@
 # Local modifications will be overwritten by Chef.
 #
 rmiPort$Long=8000
-app.install.service$Boolean=true
+app.install.service$Boolean=false
 existingInstallationDir=<%= node['confluence']['install_path'] %>
 sys.confirmedUpdateInstallationString=<%= @update ? "true" : "false" %>
 sys.languageId=en
