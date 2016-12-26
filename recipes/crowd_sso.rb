@@ -4,7 +4,7 @@ template "#{node['confluence']['install_path']}/confluence/WEB-INF/classes/crowd
   source 'crowd.properties.erb'
   owner node['confluence']['user']
   group node['confluence']['user']
-  mode 00644
+  mode '0644'
   action :create
   variables(
     app_name: settings['crowd_sso']['app_name'],

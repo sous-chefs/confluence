@@ -23,7 +23,7 @@ describe 'confluence::database' do
         host: '127.0.0.1',
         port: 3306,
         username: 'root',
-        password: 'mysql_root_pass'
+        password: 'mysql_root_pass',
       }
     end
 
@@ -61,9 +61,9 @@ describe 'confluence::database' do
           'database' => {
             'type' => 'postgresql',
             'user' => 'db_user',
-            'password' => 'db_password'
-          }
-        }
+            'password' => 'db_password',
+          },
+        },
       }
       stub_data_bag('apps').and_return(['test_confluence'])
       stub_data_bag_item('apps', 'test_confluence').and_return(data_bag)
@@ -76,7 +76,7 @@ describe 'confluence::database' do
         host: '127.0.0.1',
         port: 5432,
         username: 'postgres',
-        password: 'postgres_pass'
+        password: 'postgres_pass',
       }
     end
 
