@@ -51,6 +51,14 @@ platforms:
       - RUN /usr/bin/apt-get update
       - RUN /usr/bin/apt-get install openssl apt-transport-https lsb-release procps net-tools sudo -y
 
+- name: ubuntu-16.04
+  driver:
+    image: ubuntu:16.04
+    pid_one_command: /bin/systemd
+    intermediate_instructions:
+      - RUN /usr/bin/apt-get update
+      - RUN /usr/bin/apt-get install openssl apt-transport-https lsb-release procps net-tools sudo -y
+
 suites:
 - name: installer-mysql
   run_list:

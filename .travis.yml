@@ -15,12 +15,12 @@ services: docker
 
 env:
   matrix:
-  - INSTANCE=installer-mysql-centos-6
-  - INSTANCE=installer-mysql-ubuntu-1204
-  - INSTANCE=installer-postgresql-ubuntu-1204
+  - INSTANCE=installer-mysql-centos-7
+  - INSTANCE=installer-mysql-ubuntu-1404
+  - INSTANCE=installer-postgresql-ubuntu-1604
   - INSTANCE=standalone-mysql-ubuntu-1404
   - INSTANCE=standalone-postgresql-centos-6
-  - INSTANCE=standalone-postgresql-ubuntu-1404
+  - INSTANCE=standalone-postgresql-ubuntu-1604
 
 # Don't `bundle install`
 install: echo "skip bundle install"
