@@ -20,13 +20,6 @@ platforms:
     box: bento/centos-7.1
     image: centos-7-0-x64
 
-- name: ubuntu-12.04
-  run_list:
-    - recipe[apt]
-  driver:
-    box: bento/ubuntu-12.04
-    image: ubuntu-12-04-x64
-
 - name: ubuntu-14.04
   run_list:
     - recipe[apt]
