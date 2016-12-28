@@ -1,14 +1,4 @@
-require 'spec_helper'
-
-describe 'confluence::linux_installer' do
-  let(:chef_run) do
-    ChefSpec::SoloRunner.new do |node|
-      node.set['confluence']['version'] = '5.7.1'
-      node.set['confluence']['install_path'] = '/opt/atlassian/confluence'
-      node.automatic['kernel']['machine'] = 'x86_64'
-    end.converge(described_recipe)
-  end
-
+shared_examples 'linux_installer' do
   context 'When Confluence is not installed' do
     before do
       allow_any_instance_of(Chef::Recipe).to receive(:confluence_version).and_return(nil)

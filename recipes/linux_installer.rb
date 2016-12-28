@@ -42,4 +42,13 @@ if confluence_version != node['confluence']['version']
     cwd Chef::Config[:file_cache_path]
     command "./atlassian-confluence-#{node['confluence']['version']}.bin -q -varfile atlassian-confluence-response.varfile"
   end
+
+  # Installer always starts Confluence by `start-confluence.sh`, which could
+  # collide with a service provider (init.d/systemd). We should stop it and then
+  # start as a system service.
+  execute 'Stop Confluence' do
+    command "#{node['confluence']['install_path']}/bin/stop-confluence.sh"
+    ignore_failure true
+    notifies :restart, 'service[confluence]'
+  end
 end

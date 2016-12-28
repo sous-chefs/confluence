@@ -11,7 +11,7 @@ Installs/Configures an instance of [Atlassian Confluence](https://www.atlassian.
 ### Platforms
 
 * RHEL/CentOS 6, 7
-* Ubuntu 12.04, 14.04
+* Ubuntu 14.04, 16.04
 
 ### Cookbooks
 
