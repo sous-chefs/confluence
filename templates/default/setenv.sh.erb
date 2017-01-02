@@ -42,11 +42,15 @@ echo "Server startup logs are located in $LOGBASEABS/logs/catalina.out"
 
 # Set the JVM arguments used to start Confluence. For a description of the options, see
 # http://www.oracle.com/technetwork/java/javase/tech/vmoptions-jsp-140102.html
-CATALINA_OPTS="-XX:-PrintGCDetails -XX:+PrintGCTimeStamps -XX:-PrintTenuringDistribution ${CATALINA_OPTS}"
+CATALINA_OPTS="-XX:-PrintGCDetails -XX:+PrintGCDateStamps -XX:-PrintTenuringDistribution ${CATALINA_OPTS}"
 CATALINA_OPTS="-Xloggc:$LOGBASEABS/logs/gc-`date +%F_%H-%M-%S`.log -XX:+UseGCLogFileRotation -XX:NumberOfGCLogFiles=5 -XX:GCLogFileSize=2M ${CATALINA_OPTS}"
+CATALINA_OPTS="-XX:G1ReservePercent=20 ${CATALINA_OPTS}"
 CATALINA_OPTS="-Djava.awt.headless=true ${CATALINA_OPTS}"
 CATALINA_OPTS="-Datlassian.plugins.enable.wait=300 ${CATALINA_OPTS}"
 CATALINA_OPTS="-Xms<%= node['confluence']['jvm']['minimum_memory'] %> -Xmx<%= node['confluence']['jvm']['maximum_memory'] %> -XX:+UseG1GC ${CATALINA_OPTS}"
+<% if node['confluence']['version'].to_f >= 6.0 -%>
+CATALINA_OPTS="-Dorg.apache.tomcat.websocket.DEFAULT_BUFFER_SIZE=32768 ${CATALINA_OPTS}"
+<% end -%>
 export CATALINA_OPTS
 
 <% if node['confluence']['jvm']['java_opts'] != '' -%>
