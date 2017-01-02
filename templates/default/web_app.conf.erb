@@ -46,8 +46,35 @@
 		Require all granted
 	<% end -%>
 	</Proxy>
+
+	<% if node['confluence']['version'].to_f >= 6.0 -%>
+	ProxyPass /synchrony http://localhost:8091/synchrony
+
+	<Location /synchrony>
+		<% if node['apache']['version'].to_f < 2.4 -%>
+		Order Deny,Allow
+		Allow from all
+		<% else -%>
+		Require all granted
+		<% end -%>
+		RewriteEngine on
+		RewriteCond %{HTTP:UPGRADE} ^WebSocket$ [NC]
+		RewriteCond %{HTTP:CONNECTION} Upgrade$ [NC]
+		RewriteRule .* ws://%{HTTP_HOST}:8091%{REQUEST_URI} [P]
+	</Location>
+	<% end -%>
+
 	ProxyPass        / http://localhost:<%= node['confluence']['tomcat']['port'] %>/ connectiontimeout=5 timeout=300
 	ProxyPassReverse / http://localhost:<%= node['confluence']['tomcat']['port'] %>/
+
+	<Location />
+	<% if node['apache']['version'].to_f < 2.4 -%>
+		Order Deny,Allow
+		Allow from all
+	<% else -%>
+		Require all granted
+	<% end -%>
+	</Location>
 
 	SSLEngine on
 	SSLCertificateFile <%= node['confluence']['apache2']['ssl']['certificate_file'] %>
