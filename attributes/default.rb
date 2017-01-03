@@ -17,55 +17,55 @@
 # limitations under the License.
 #
 
-default['confluence']['home_path']      = '/var/atlassian/application-data/confluence'
-default['confluence']['install_path']   = '/opt/atlassian/confluence'
-default['confluence']['install_type']   = 'installer'
-default['confluence']['user']           = 'confluence'
-default['confluence']['version']        = '6.0.3'
+default['confluence']['home_path'] = '/var/atlassian/application-data/confluence'
+default['confluence']['install_path'] = '/opt/atlassian/confluence'
+default['confluence']['install_type'] = 'installer'
+default['confluence']['user'] = 'confluence'
+default['confluence']['version'] = '6.0.3'
 
 # Defaults are automatically selected from version via helper functions
-default['confluence']['url']            = nil
-default['confluence']['checksum']       = nil
+default['confluence']['url'] = nil
+default['confluence']['checksum'] = nil
 
 # Data bag where credentials and other sensitive data could be stored (optional)
 default['confluence']['data_bag_name'] = 'confluence'
 default['confluence']['data_bag_item'] = 'confluence'
 
-default['confluence']['apache2']['access_log']         = ''
-default['confluence']['apache2']['error_log']          = ''
-default['confluence']['apache2']['port']               = 80
+default['confluence']['apache2']['access_log'] = ''
+default['confluence']['apache2']['error_log'] = ''
+default['confluence']['apache2']['port'] = 80
 
 # Defaults are automatically selected from fqdn and hostname via helper functions
-default['confluence']['apache2']['template_cookbook']  = 'confluence'
-default['confluence']['apache2']['virtual_host_name']  = nil
+default['confluence']['apache2']['template_cookbook'] = 'confluence'
+default['confluence']['apache2']['virtual_host_name'] = nil
 default['confluence']['apache2']['virtual_host_alias'] = nil
 
-default['confluence']['apache2']['ssl']['access_log']       = ''
-default['confluence']['apache2']['ssl']['chain_file']       = ''
-default['confluence']['apache2']['ssl']['error_log']        = ''
-default['confluence']['apache2']['ssl']['port']             = 443
+default['confluence']['apache2']['ssl']['access_log'] = ''
+default['confluence']['apache2']['ssl']['chain_file'] = ''
+default['confluence']['apache2']['ssl']['error_log'] = ''
+default['confluence']['apache2']['ssl']['port'] = 443
 
 case node['platform_family']
 when 'rhel'
   default['confluence']['apache2']['ssl']['certificate_file'] = '/etc/pki/tls/certs/localhost.crt'
-  default['confluence']['apache2']['ssl']['key_file']         = '/etc/pki/tls/private/localhost.key'
+  default['confluence']['apache2']['ssl']['key_file'] = '/etc/pki/tls/private/localhost.key'
 else
   default['confluence']['apache2']['ssl']['certificate_file'] = '/etc/ssl/certs/ssl-cert-snakeoil.pem'
-  default['confluence']['apache2']['ssl']['key_file']         = '/etc/ssl/private/ssl-cert-snakeoil.key'
+  default['confluence']['apache2']['ssl']['key_file'] = '/etc/ssl/private/ssl-cert-snakeoil.key'
 end
 
-default['confluence']['database']['host']     = '127.0.0.1'
-default['confluence']['database']['name']     = 'confluence'
+default['confluence']['database']['host'] = '127.0.0.1'
+default['confluence']['database']['name'] = 'confluence'
 default['confluence']['database']['password'] = 'changeit'
-default['confluence']['database']['type']     = 'mysql'
-default['confluence']['database']['user']     = 'confluence'
+default['confluence']['database']['type'] = 'mysql'
+default['confluence']['database']['user'] = 'confluence'
 
-default['confluence']['jvm']['bundled_jre']     = true
-default['confluence']['jvm']['minimum_memory']  = '256m'
-default['confluence']['jvm']['maximum_memory']  = '512m'
-default['confluence']['jvm']['java_opts']       = ''
+default['confluence']['jvm']['bundled_jre'] = true
+default['confluence']['jvm']['minimum_memory'] = '256m'
+default['confluence']['jvm']['maximum_memory'] = '512m'
+default['confluence']['jvm']['java_opts'] = ''
 
-default['confluence']['tomcat']['port']         = '8090'
+default['confluence']['tomcat']['port'] = '8090'
 
 default['confluence']['crowd_sso']['enabled'] = false
 default['confluence']['crowd_sso']['app_name'] = nil
