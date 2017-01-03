@@ -112,6 +112,9 @@ module Confluence
 
       case node['confluence']['install_type']
       when 'installer'
+        if confluence_arch == 'x32' && version.to_i >= 6
+          raise "32-bit installers are not available for Confluence 6.0+. Please use 'standalone' installation type instead."
+        end
         "http://www.atlassian.com/software/confluence/downloads/binary/atlassian-confluence-#{version}-#{confluence_arch}.bin"
       when 'standalone'
         "http://www.atlassian.com/software/confluence/downloads/binary/atlassian-confluence-#{version}.tar.gz"
@@ -140,36 +143,6 @@ module Confluence
     # Returns SHA256 checksum map for Confluence artifacts
     def confluence_checksum_map
       {
-        '5.5.2' => {
-          'x32' => '4e2ceb32cfa45085b184bbe08c7d4fbce6985487f9d12855e7fd4d0e60d9c78f',
-          'x64' => '6b0361e2e25161f5e2d99380b397b5768fef835922dcb21ae34dfbc484bc203c',
-          'tar' => '667190e9006de123e55ccc04e639321070dc65a40658ba3aa0b9d8e3473048eb',
-        },
-        '5.5.3' => {
-          'x32' => '7e4be644b4fb9b58e5794029f0c733cc8537b3e1a8dd797949a8133c7d87ce73',
-          'x64' => '0f091ecac293332f0841d80374090c5688fd413272e557d426d0b6809601030b',
-          'tar' => '66538cba1a7925c82a2db5d438af27167c0a12dc02466d045a2f006f0f24d524',
-        },
-        '5.6' => {
-          'x32' => '7e3fc60e576e1a8109bb6eceb57797c0391ad81e1e025b75f19ed836846b49e2',
-          'x64' => '284a1afc2c6e22414766e7e140fed9821c81ed59cf32995ead2b4c4ecc9fa09f',
-          'tar' => 'a3738ea9da8012d7e93180732632d4bf782501cb25fccee960fccc6955117d68',
-        },
-        '5.6.1' => {
-          'x32' => 'a0936d961c95f0c3c4e4c2f6721a46a632d03ffbfefb75f3d225689b3df76744',
-          'x64' => '410c09200a7e81ba08e9ca27000140654e8ef1742b873456d3938ec6275aa161',
-          'tar' => 'f8ff7ecdc742560ffeab4595200db26b3d1cb1bd0be9a93e418ae06fd6436e1c',
-        },
-        '5.6.3' => {
-          'x32' => '7d252e8d9c092f56737a45d75b6c3643e30ce800e185981828e8419965001bb9',
-          'x64' => '7c9545d67dbafa4507603d9e5014ee8ba8975e057dff66edbf40acb85b92c6f8',
-          'tar' => '63242c4df873f68461bcf071cf69a98fea07ec58a1e707ad5a5524cec77dcfdd',
-        },
-        '5.6.5' => {
-          'x32' => '068e606b897e769209761c5b8097e9edf358b927109df4c4c58185e565ac2614',
-          'x64' => '76e882b9466068cbc3079870e97842d7823a88bc6b6a6e8cb934b6b4ad08872d',
-          'tar' => '013b9fc8d20f5947637abefea1386532bb484134de57a70f7fd78d177352bd4d',
-        },
         '5.7' => {
           'x32' => 'cb149a15d5052e17955042b6feaca55fabc3a76aa8b0afd19457c415fbed4540',
           'x64' => '3248c326a779007f9753cc1870330e2a09b8f2355466519d76ae3415b582ed52',
@@ -291,13 +264,16 @@ module Confluence
           'tar' => '6346bc1ca7b14d6a131270c88574cdf4f3091543e3a30054fb02c47448058088',
         },
         '6.0.1' => {
-          'x32' => 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855',
           'x64' => 'aff42d8bcc61ce7358109fe774f8b46c6713f37c362779639bb64326ac126260',
           'tar' => '444d9aa26d459ab41e42852799ffcb0ad04d1fe7471b52f8275f240860014e95',
         },
         '6.0.2' => {
           'x64' => '81aa5b4f47e575e7564c0a798b7345820ae405a3b967fc04c8af61f34034da00',
           'tar' => '7d0632ed2d6db6681bbf0aab8b42c455d6caed8676d4470f90da52efac12500d',
+        },
+        '6.0.3' => {
+          'x64' => 'febd2c6395f34c5ebf7538b1134500aac2dfe87c693f079bcd0802c64092693f',
+          'tar' => '67dd59a113472b3a1c9a4385711be0e1f959046db1f64ce19eba8b8dc5d2e535',
         },
       }
     end
