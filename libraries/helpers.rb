@@ -112,6 +112,9 @@ module Confluence
 
       case node['confluence']['install_type']
       when 'installer'
+        if confluence_arch == 'x32' && version.to_i >= 6
+          raise "32-bit installers are not available for Confluence 6.0+. Please use 'standalone' installation type instead."
+        end
         "http://www.atlassian.com/software/confluence/downloads/binary/atlassian-confluence-#{version}-#{confluence_arch}.bin"
       when 'standalone'
         "http://www.atlassian.com/software/confluence/downloads/binary/atlassian-confluence-#{version}.tar.gz"
@@ -261,7 +264,6 @@ module Confluence
           'tar' => '6346bc1ca7b14d6a131270c88574cdf4f3091543e3a30054fb02c47448058088',
         },
         '6.0.1' => {
-          'x32' => 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855',
           'x64' => 'aff42d8bcc61ce7358109fe774f8b46c6713f37c362779639bb64326ac126260',
           'tar' => '444d9aa26d459ab41e42852799ffcb0ad04d1fe7471b52f8275f240860014e95',
         },
