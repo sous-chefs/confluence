@@ -118,7 +118,7 @@ Example:
       "type": "postgresql",
       "name": "confluence_db",
       "user": "confluence_user",
-      "password": "confluence_db_password",
+      "password": "confluence_db_password"
     }
   }
 }
