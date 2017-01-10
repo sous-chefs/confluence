@@ -60,7 +60,6 @@ default['confluence']['database']['password'] = 'changeit'
 default['confluence']['database']['type'] = 'mysql'
 default['confluence']['database']['user'] = 'confluence'
 
-
 # Types include: 'mixed', 'dedicated', 'shared'
 # 'mixed'     - Confluence and DB run on the same system
 # 'dedicated' - Confluence has the system all to itself
