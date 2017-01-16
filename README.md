@@ -88,9 +88,9 @@ initial version only supports JVM min and max memory size tuning.
 
 There are several tuning types that can be set:
 
-* 'mixed' - JIRA and DB run on the same system
-* 'dedicated' - JIRA has the system all to itself
-* 'shared' - JIRA shares the system with the DB and other applications
+* 'mixed' - Confluence and DB run on the same system
+* 'dedicated' - Confluence has the system all to itself
+* 'shared' - Confluence shares the system with the DB and other applications
 
 Total available memory is auto discovered using Ohai but can be overridden by setting your own value in kB.
 
