@@ -58,7 +58,7 @@ JAVA_OPTS="<%= node['confluence']['jvm']['java_opts']%>"
 export JAVA_OPTS
 <% end -%>
 
-<% if node['confluence']['install_type'] == 'installer' && node['confluence']['jvm']['bundled_jre'] -%>
+<% if node['confluence']['install_type'] == 'installer' && node['confluence']['jvm']['bundled_jre'] = true -%>
 JRE_HOME="<%= node['confluence']['install_path'] %>/jre/"; export JRE_HOME
 <% else -%>
 JRE_HOME="<%= node['java']['java_home'] %>/jre/"; export JRE_HOME
