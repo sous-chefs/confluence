@@ -1,6 +1,6 @@
 name 'confluence'
-maintainer 'Mikhail Zholobov'
-maintainer_email 'legal90@gmail.com'
+maintainer 'Azat Khadiev'
+maintainer_email 'anuriq@gmail.com'
 license 'Apache 2.0'
 description 'Installs/Configures Atlassian Confluence'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
