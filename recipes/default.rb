@@ -22,7 +22,7 @@ settings = merge_confluence_settings
 include_recipe 'confluence::database' if settings['database']['host'] == '127.0.0.1'
 include_recipe "confluence::linux_#{node['confluence']['install_type']}"
 include_recipe 'confluence::configuration'
-include_recipe 'confluence::autotune' if settings['autotune']['enabled'] == true
+include_recipe 'confluence::autotune' if settings['autotune']['enabled']
 include_recipe 'confluence::tomcat_configuration'
 include_recipe 'confluence::apache2'
 include_recipe 'confluence::crowd_sso' if settings['crowd_sso']['enabled']
