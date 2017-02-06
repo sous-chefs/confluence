@@ -60,6 +60,13 @@ default['confluence']['database']['password'] = 'changeit'
 default['confluence']['database']['type'] = 'mysql'
 default['confluence']['database']['user'] = 'confluence'
 
+default['confluence']['autotune']['enabled'] = false
+default['confluence']['autotune']['type']    = 'mixed'
+
+# If you don't want total system memory to be automatically discovered through
+# Ohai, uncomment the following line and set your own value in kB.
+# default['confluence']['autotune']['total_memory'] = '1048576kB' # 1024m
+
 default['confluence']['jvm']['bundled_jre'] = true
 default['confluence']['jvm']['minimum_memory'] = '256m'
 default['confluence']['jvm']['maximum_memory'] = '512m'

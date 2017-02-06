@@ -80,6 +80,28 @@ maximum_permgen | JVM maximum PermGen memory | String | 256m
 java_opts | additional JAVA_OPTS to be passed to Confluence JVM during startup | String | ""
 bundled_jre | prefer JRE bundled with linux installer | Boolean | true
 
+### Confluence Autotune Attributes
+
+These attributes are under the `node['confluence']['autotune']` namespace. Autotune automatically determines appropriate settings for certain
+attributes. This feature is inspired by the `autotune` recipe in the https://github.com/afklm/jira cookbook. This
+initial version only supports JVM min and max memory size tuning.
+
+There are several tuning types that can be set:
+
+* 'mixed' - Confluence and DB run on the same system
+* 'dedicated' - Confluence has the system all to itself
+* 'shared' - Confluence shares the system with the DB and other applications
+
+Total available memory is auto discovered using Ohai but can be overridden by setting your own value in kB.
+
+Attribute    | Description                                                           | Type    | Default
+-------------|-----------------------------------------------------------------------|---------|------------
+enabled      | Whether or not to autotune settings.                                  | Boolean | false
+type         | Type of tuning to apply. One of 'mixed', 'dedicated' and 'shared'.    | String  | mixed
+total_memory | Total system memory to use for autotune calculations.                 | String  | Ohai value
+
+
+
 ### Confluence Tomcat Attributes
 
 These attributes are under the `node['confluence']['tomcat']` namespace.
