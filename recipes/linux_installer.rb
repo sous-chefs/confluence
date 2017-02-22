@@ -25,8 +25,20 @@ if confluence_version != node['confluence']['version']
     group 'root'
     mode '0644'
     variables(
-      'update' => Dir.exist?(node['confluence']['install_path'])
+      'update' => Dir.exist?(node['confluence']['install_path']),
+      'backup_when_update' => node['confluence']['backup_when_update']
     )
+  end
+
+  # Temporary workaround for bug in installer: https://jira.atlassian.com/browse/CONF-35722
+  # Remove when installer bug is fixed!
+  remote_file 'Apply workaround for Atlassian bug CONF-35722' do
+    path "#{node['confluence']['install_path']}/.install4j/response.varfile"
+    source "file://#{Chef::Config[:file_cache_path]}/atlassian-confluence-response.varfile"
+    owner 'root'
+    group 'root'
+    mode '0644'
+    action :create
   end
 
   Chef::Resource::RemoteFile.send(:include, Confluence::Helpers)
