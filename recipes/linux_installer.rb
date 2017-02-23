@@ -39,6 +39,7 @@ if confluence_version != node['confluence']['version']
     group 'root'
     mode '0644'
     action :create
+    only_if { ::File.exist?("#{node['confluence']['install_path']}/.install4j/response.varfile") }
   end
 
   Chef::Resource::RemoteFile.send(:include, Confluence::Helpers)
