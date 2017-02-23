@@ -6,6 +6,7 @@ rmiPort$Long=8000
 app.install.service$Boolean=false
 existingInstallationDir=<%= node['confluence']['install_path'] %>
 sys.confirmedUpdateInstallationString=<%= @update ? "true" : "false" %>
+backupConfluence$Boolean=<%= @backup_when_update ? "true" : "false" %>
 sys.languageId=en
 sys.installationDir=<%= node['confluence']['install_path'] %>
 app.confHome=<%= node['confluence']['home_path'] %>
