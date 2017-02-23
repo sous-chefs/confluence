@@ -1,5 +1,10 @@
 # Confluence Cookbook Changelog
 
+## 2.3.0 (February 23, 2017)
+IMPROVEMENTS:
+- Added autotune feature for configuring jvm settings. see README.md for details. [[GH-140]](https://github.com/parallels-cookbooks/confluence/pull/140)
+- Add temporary workaround for [CONF-35722](https://jira.atlassian.com/browse/CONF-35722). [[GH-148]](https://github.com/parallels-cookbooks/confluence/pull/148)
+
 ## 2.2.0 (December 28, 2016)
 
 IMPROVEMENTS:

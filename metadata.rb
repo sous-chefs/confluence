@@ -4,7 +4,7 @@ maintainer_email 'anuriq@gmail.com'
 license 'Apache 2.0'
 description 'Installs/Configures Atlassian Confluence'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-version '2.2.0'
+version '2.3.0'
 
 issues_url 'https://github.com/parallels-cookbooks/confluence/issues'
 source_url 'https://github.com/parallels-cookbooks/confluence'
