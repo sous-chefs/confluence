@@ -16,6 +16,7 @@ recipe 'confluence::linux_installer', 'Installs/configures Confluence via Linux 
 recipe 'confluence::linux_standalone', 'Installs/configures Confluence via Linux standalone archive'
 recipe 'confluence::tomcat_configuration', "Configures Confluence's built-in Tomcat"
 recipe 'confluence::crowd_sso', 'Configures user authentication with Crowd single sign-on'
+recipe 'confluence::firewall', 'Configures the firewall to open specific ports'
 
 supports 'amazon'
 supports 'centos'
@@ -26,6 +27,7 @@ supports 'ubuntu'
 depends 'apache2'
 depends 'ark'
 depends 'database'
+depends 'firewall'
 depends 'java'
 depends 'mysql', '< 8.0'
 depends 'mysql_connector'

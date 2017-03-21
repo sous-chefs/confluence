@@ -79,3 +79,5 @@ default['confluence']['crowd_sso']['enabled'] = false
 default['confluence']['crowd_sso']['app_name'] = nil
 default['confluence']['crowd_sso']['app_password'] = nil
 default['confluence']['crowd_sso']['crowd_base_url'] = 'http://crowd.example.com:8095/crowd'
+
+default['confluence']['firewall']['ports'] = nil

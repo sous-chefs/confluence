@@ -67,3 +67,12 @@ suites:
   attributes:
     confluence:
       install_type: standalone
+
+- name: standalone-postgresql-firewall
+  run_list:
+  - recipe[java]
+  - recipe[confluence_test::postgresql]
+  - recipe[confluence::firewall]
+  attributes:
+    confluence:
+      install_type: standalone
