@@ -21,7 +21,7 @@ default['confluence']['home_path'] = '/var/atlassian/application-data/confluence
 default['confluence']['install_path'] = '/opt/atlassian/confluence'
 default['confluence']['install_type'] = 'installer'
 default['confluence']['user'] = 'confluence'
-default['confluence']['version'] = '6.0.5'
+default['confluence']['version'] = '6.1.1'
 default['confluence']['backup_when_update'] = true
 
 # Defaults are automatically selected from version via helper functions
