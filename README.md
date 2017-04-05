@@ -33,7 +33,7 @@ If you prefer Confluence standalone installation, then you have to manage JDK/JR
 on this node. It can be done with `java` cookbook and appropricate attributes:
 
 ```ruby
-node.set['java']['jdk_version'] = "8"
+node.default['java']['jdk_version'] = "8"
 include_recipe 'java'
 ```
 
@@ -183,11 +183,13 @@ the code contributions of the following organizations:
 ## License and Author
 
 * Author:: Mikhail Zholobov (legal90@gmail.com, @legal90)
+* Author:: Azat Khadiev (anuriq@gmail.com, @anuriq)
 * Author:: Brian Flad (<bflad417@gmail.com>, @bflad)
 * Author:: Denny Schäfer (<trash4you@online.de>, @tuxinaut)
 * Copyright:: 2013, Brian Flad
 * Copyright:: 2013, University of Pennsylvania
 * Copyright:: 2013, Denny Schäfer
+* Copyright:: 2016-2017, Parallels International GmbH
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
