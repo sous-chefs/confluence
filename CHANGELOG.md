@@ -1,5 +1,10 @@
 # Confluence Cookbook Changelog
 
+## 2.4.0 (April 6, 2017)
+IMPROVEMENTS:
+- Added hash values and support for Confluence v6.0.5 and v6.1.1
+- Added restriction to avoid testing with Chef Client v13 for now
+
 ## 2.3.0 (February 23, 2017)
 IMPROVEMENTS:
 - Added autotune feature for configuring jvm settings. see README.md for details. [[GH-140]](https://github.com/parallels-cookbooks/confluence/pull/140)
