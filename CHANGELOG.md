@@ -1,5 +1,9 @@
 # Confluence Cookbook Changelog
 
+## 2.4.1 (April 26, 2017)
+IMPROVEMENTS:
+- Added hash values and support for Confluence v6.1.2 
+
 ## 2.4.0 (April 6, 2017)
 IMPROVEMENTS:
 - Added hash values and support for Confluence v6.0.5 and v6.1.1

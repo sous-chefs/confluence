@@ -1,6 +1,6 @@
 # Confluence Cookbook
 [![Cookbook Version](https://img.shields.io/cookbook/v/confluence.svg)](https://supermarket.chef.io/cookbooks/confluence)
-[![Build Status](https://secure.travis-ci.org/parallels-cookbooks/confluence.png?branch=master)](http://travis-ci.org/parallels-cookbooks/confluence)
+[![Build Status](https://travis-ci.org/parallels-cookbooks/confluence.svg?branch=master)](https://travis-ci.org/parallels-cookbooks/confluence) 
 
 ## Description
 
@@ -49,7 +49,7 @@ install_path | location to install Confluence | String | /opt/atlassian/confluen
 install_type | Confluence install type - "installer", "standalone" | String | installer
 url | URL for Confluence install | String | auto-detected by library method
 user | user running Confluence | String | confluence
-version | Confluence version to install | String | 6.1.1
+version | Confluence version to install | String | 6.1.2
 
 **Notice:** If `['confluence']['install_type']` is set to `installer`, then the installer will try to upgrade your Confluence instance located in `['confluence']['install_path']` (if it exists) to the `['confluence']['version']`.
 
@@ -177,7 +177,7 @@ Development of this cookbook has been generously supported in part by
 the code contributions of the following organizations:
 
 * [University of Pennsylvania](http://www.upenn.edu/)
-* [Parallels Inc.](https://www.parallels.com)
+* [Parallels International GmbH](https://www.parallels.com)
 * [Blended Perspectives Inc.](http://www.blendedperspectives.com/)
 
 ## License and Author
