@@ -3,6 +3,7 @@
 # Attributes:: confluence
 #
 # Copyright 2013, Brian Flad
+# Copyright 2017, Parallels International GmbH
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -21,7 +22,7 @@ default['confluence']['home_path'] = '/var/atlassian/application-data/confluence
 default['confluence']['install_path'] = '/opt/atlassian/confluence'
 default['confluence']['install_type'] = 'installer'
 default['confluence']['user'] = 'confluence'
-default['confluence']['version'] = '6.1.1'
+default['confluence']['version'] = '6.1.2'
 default['confluence']['backup_when_update'] = true
 
 # Defaults are automatically selected from version via helper functions

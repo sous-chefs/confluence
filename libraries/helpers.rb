@@ -287,6 +287,10 @@ module Confluence
           'x64' => 'f25440547cca0a6bbbd6df05e4f430e2bdbda78fffee3f899128c2cf299640dd',
           'tar' => '002089d7fef21da1cf338c45dcf8c180802a87404775202e939cbdaa3b448b4e',
         },
+        '6.1.2' => {
+          'x64' => '5e6d69c50bd75c26f51a549470c8b5497f7c6e57ebcbf8e5db630129a041f3de',
+          'tar' => '4477ae6573ebc722dc318a1496b1f0d671a854449eb485d6705d8e4855ef61a9',
+        },
       }
     end
 
