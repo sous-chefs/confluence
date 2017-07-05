@@ -303,6 +303,18 @@ module Confluence
           'x64' => '2118fbb64bfd9b594bfad111028e6abb6a4cfbd3f3e49e3036dc0836518d1282',
           'tar' => '97f170e6726f88520c7f4ea267d19da02d409a094d7c059652b466b821e9dee1',
         },
+        '6.2.1' => {
+            'x64' => 'a16e4233efe599ca6bbac91508385f6606450d994ee8d8e79ce925c9cb9d9a9a',
+            'tar' => '4900199d8f3de0b8f66469ea11bbc0fe47cd109eab42f4b491b64ccde70a8fca',
+        },
+        '6.2.2' => {
+            'x64' => 'e32c78fd7a82073f06ce9f57472348714c8d9db17b972a6fcfa73de66bc66f59',
+            'tar' => 'ef29982fd3b8a9f58430f120a1bc303a78487faf840f0dd6e9a80a34523af6ba',
+        },
+        '6.2.3' => {
+            'x64' => 'e11d89c8f806c71ebfa33a4c575fb0a0955eed20c955d1d6f501aec97693e31e',
+            'tar' => 'bfbe4a90eec7b5cda4f564743314155b107d13f03d347f16ae0899252cf7587a',
+        },
       }
     end
 
