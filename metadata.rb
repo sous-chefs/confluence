@@ -1,7 +1,7 @@
 name 'confluence'
 maintainer 'Azat Khadiev'
 maintainer_email 'anuriq@gmail.com'
-license 'Apache 2.0'
+license 'Apache-2.0'
 description 'Installs/Configures Atlassian Confluence'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 version '2.4.2'
