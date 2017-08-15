@@ -1,6 +1,10 @@
 # Confluence Cookbook
 [![Cookbook Version](https://img.shields.io/cookbook/v/confluence.svg)](https://supermarket.chef.io/cookbooks/confluence)
-[![Build Status](https://travis-ci.org/parallels-cookbooks/confluence.svg?branch=master)](https://travis-ci.org/parallels-cookbooks/confluence) 
+[![Build Status](https://travis-ci.org/parallels-cookbooks/confluence.svg?branch=master)](https://travis-ci.org/parallels-cookbooks/confluence)
+
+## Call for maintainer
+
+Please, see this [issue](https://github.com/parallels-cookbooks/confluence/issues/162)
 
 ## Description
 
