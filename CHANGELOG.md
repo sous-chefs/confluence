@@ -1,4 +1,7 @@
 # Confluence Cookbook Changelog
+## 2.5.1 (October 24, 2018)
+IMPROVEMENTS:
+- Added hash values to support for Confluence version `6.8.2`.
 
 ## 2.5.0 (May 10, 2018)
 - Changed cookbook ownership to Sous Chefs Community. Hopefully cookbook will come back to life.
