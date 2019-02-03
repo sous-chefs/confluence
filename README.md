@@ -1,6 +1,7 @@
 # Confluence Cookbook
+
 [![Cookbook Version](https://img.shields.io/cookbook/v/confluence.svg)](https://supermarket.chef.io/cookbooks/confluence)
-[![Build Status](https://travis-ci.org/parallels-cookbooks/confluence.svg?branch=master)](https://travis-ci.org/parallels-cookbooks/confluence)
+[![Build Status](https://img.shields.io/circleci/project/github/sous-chefs/confluence/master.svg)](https://circleci.com/gh/sous-chefs/confluence)
 
 ## Call for maintainer
 
