@@ -11,7 +11,7 @@ if node['platform'] == 'ubuntu'
   node.normal['postgresql']['server']['service_name'] = 'postgresql'
 elsif node['platform'] == 'centos'
   node.normal['postgresql']['enable_pgdg_yum'] = true
-  node.normal['postgresql']['client']['packages'] = ['postgresql93', 'postgresql93-devel']
+  node.normal['postgresql']['client']['packages'] = %w(postgresql93 postgresql93-devel)
   node.normal['postgresql']['server']['packages'] = ['postgresql93-server']
   node.normal['postgresql']['contrib']['packages'] = ['postgresql93-contrib']
   node.normal['postgresql']['server']['service_name'] = 'postgresql-9.3'
