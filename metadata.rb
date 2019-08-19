@@ -4,7 +4,7 @@ maintainer_email 'anuriq@gmail.com'
 license 'Apache-2.0'
 description 'Installs/Configures Atlassian Confluence'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-version '2.5.0'
+version '2.5.1'
 
 issues_url 'https://github.com/sous-chefs/confluence/issues' if respond_to?(:issues_url)
 source_url 'https://github.com/sous-chefs/confluence' if respond_to?(:source_url)
@@ -23,7 +23,7 @@ supports 'redhat'
 supports 'scientific'
 supports 'ubuntu'
 
-depends 'apache2'
+depends 'apache2', '< 6.0.0'
 depends 'ark'
 depends 'database'
 depends 'java'

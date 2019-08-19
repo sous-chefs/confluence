@@ -1,4 +1,9 @@
 # Confluence Cookbook Changelog
+
+## 2.5.0 (March 10, 2019)
+BUG FIX:
+- Added version pin for Apache2
+
 ## 2.5.0 (October 24, 2018)
 IMPROVEMENTS:
 - Added hash values to support for Confluence version `6.8.2`.

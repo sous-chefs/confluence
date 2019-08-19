@@ -1,32 +1,36 @@
 # Confluence Cookbook
+
 [![Cookbook Version](https://img.shields.io/cookbook/v/confluence.svg)](https://supermarket.chef.io/cookbooks/confluence)
-[![Build Status](https://travis-ci.org/parallels-cookbooks/confluence.svg?branch=master)](https://travis-ci.org/parallels-cookbooks/confluence)
-
-## Call for maintainer
-
-Please, see this [issue](https://github.com/parallels-cookbooks/confluence/issues/162)
+[![Build Status](https://img.shields.io/circleci/project/github/sous-chefs/confluence/master.svg)](https://circleci.com/gh/sous-chefs/confluence)
+[![OpenCollective](https://opencollective.com/sous-chefs/backers/badge.svg)](#backers)
+[![OpenCollective](https://opencollective.com/sous-chefs/sponsors/badge.svg)](#sponsors)
+[![License](https://img.shields.io/badge/License-Apache%202.0-green.svg)](https://opensource.org/licenses/Apache-2.0)
 
 ## Description
 
 Installs/Configures an instance of [Atlassian Confluence](https://www.atlassian.com/software/confluence/).
 
+## Maintainers
+
+This cookbook is maintained by the Sous Chefs. The Sous Chefs are a community of Chef cookbook maintainers working together to maintain important cookbooks. If you’d like to know more please visit [sous-chefs.org](https://sous-chefs.org/) or come chat with us on the Chef Community Slack in [#sous-chefs](https://chefcommunity.slack.com/messages/C2V7B88SF).
+
 ## Requirements
 
 ### Platforms
 
-* RHEL/CentOS 6, 7
-* Ubuntu 14.04, 16.04
+- RHEL/CentOS 6, 7
+- Ubuntu 14.04, 16.04
 
 ### Cookbooks
 
-* [apache2](https://github.com/svanzoest-cookbooks/apache2)
-* [ark](https://github.com/burtlo/ark)
-* [database](https://github.com/chef-cookbooks/database)
-* [java](https://github.com/agileorbit-cookbooks/java)
-* [mysql](https://github.com/chef-cookbooks/mysql)
-* [mysql_connector](https://github.com/bflad/chef-mysql_connector)
-* [mysql2_chef_gem](https://github.com/chef-cookbooks/mysql_chef_gem)
-* [postgresql](https://github.com/hw-cookbooks/postgresql)
+- [apache2](https://github.com/sous-chefs/apache2)
+- [ark](https://github.com/burtlo/ark)
+- [database](https://github.com/chef-cookbooks/database)
+- [java](https://github.com/sous-chefs/java)
+- [mysql](https://github.com/sous-chefs/mysql)
+- [mysql_connector](https://github.com/bflad/chef-mysql_connector)
+- [mysql2_chef_gem](https://github.com/chef-cookbooks/mysql_chef_gem)
+- [postgresql](https://github.com/sous-chefs/postgresql)
 
 ### JDK/JRE
 
@@ -55,7 +59,7 @@ url | URL for Confluence install | String | auto-detected by library method
 user | user running Confluence | String | confluence
 version | Confluence version to install | String | 6.1.2
 
-**Notice:** If `['confluence']['install_type']` is set to `installer`, then the installer will try to upgrade your Confluence instance located in `['confluence']['install_path']` (if it exists) to the `['confluence']['version']`.
+--Notice:-- If `['confluence']['install_type']` is set to `installer`, then the installer will try to upgrade your Confluence instance located in `['confluence']['install_path']` (if it exists) to the `['confluence']['version']`.
 
 If you want to avoid an unexpected upgrade, just set or override `['confluence']['version']` attribute value to that of your current confluence version.
 
@@ -92,9 +96,9 @@ initial version only supports JVM min and max memory size tuning.
 
 There are several tuning types that can be set:
 
-* 'mixed' - Confluence and DB run on the same system
-* 'dedicated' - Confluence has the system all to itself
-* 'shared' - Confluence shares the system with the DB and other applications
+- 'mixed' - Confluence and DB run on the same system
+- 'dedicated' - Confluence has the system all to itself
+- 'shared' - Confluence shares the system with the DB and other applications
 
 Total available memory is auto discovered using Ohai but can be overridden by setting your own value in kB.
 
@@ -103,8 +107,6 @@ Attribute    | Description                                                      
 enabled      | Whether or not to autotune settings.                                  | Boolean | false
 type         | Type of tuning to apply. One of 'mixed', 'dedicated' and 'shared'.    | String  | mixed
 total_memory | Total system memory to use for autotune calculations.                 | String  | Ohai value
-
-
 
 ### Confluence Tomcat Attributes
 
@@ -116,13 +118,13 @@ port | Tomcat HTTP port | Fixnum | 8090
 
 ## Recipes
 
-* `recipe[confluence]` Installs/configures Atlassian Confluence
-* `recipe[confluence::apache2]` Installs/configures Apache 2 as proxy (ports 80/443)
-* `recipe[confluence::database]` Installs/configures MySQL/Postgres server, database, and user for Confluence
-* `recipe[confluence::linux_installer]` Installs/configures Confluence via Linux installer"
-* `recipe[confluence::linux_standalone]` Installs/configures Confluence via Linux standalone archive"
-* `recipe[confluence::tomcat_configuration]` Configures Confluence's built-in Tomcat
-* `recipe[confluence::crowd_sso]` Configures user authentication with Crowd single sign-on
+- `recipe[confluence]` Installs/configures Atlassian Confluence
+- `recipe[confluence::apache2]` Installs/configures Apache 2 as proxy (ports 80/443)
+- `recipe[confluence::database]` Installs/configures MySQL/Postgres server, database, and user for Confluence
+- `recipe[confluence::linux_installer]` Installs/configures Confluence via Linux installer"
+- `recipe[confluence::linux_standalone]` Installs/configures Confluence via Linux standalone archive"
+- `recipe[confluence::tomcat_configuration]` Configures Confluence's built-in Tomcat
+- `recipe[confluence::crowd_sso]` Configures user authentication with Crowd single sign-on
 
 ## Usage
 
@@ -136,6 +138,7 @@ You can override any attributes from the `['confluence']` namespace using the
 encrypted by your choice.
 
 Example:
+
 ```json
 {
   "id": "confluence",
@@ -149,6 +152,7 @@ Example:
   }
 }
 ```
+
 _(Note - `"confluence"` nesting level is required!)_
 
 These credentials will be used for your Confluence installation instead of
@@ -161,48 +165,41 @@ attributes `['confluence']['data_bag_name']` and `['confluence']['data_bag_item'
 
 The simplest method is via the default recipe, which uses `node['confluence']['install_type']` to determine best method.
 
-* Optionally (un)encrypted data bag or set attributes
-  * `knife data bag create confluence`
-  * `knife data bag edit confluence confluence --secret-file=path/to/secret`
-* Add `recipe[confluence]` to your node's run list.
+- Optionally (un)encrypted data bag or set attributes
+  - `knife data bag create confluence`
+  - `knife data bag edit confluence confluence --secret-file=path/to/secret`
+- Add `recipe[confluence]` to your node's run list.
 
 ### Custom Confluence Configurations
 
 Using individual recipes, you can use this cookbook to configure Confluence to fit your environment.
 
-* Optionally (un)encrypted data bag or set attributes
-  * `knife data bag create confluence`
-  * `knife data bag edit confluence confluence --secret-file=path/to/secret`
-* Add individual recipes to your node's run list.
+- Optionally (un)encrypted data bag or set attributes
+  - `knife data bag create confluence`
+  - `knife data bag edit confluence confluence --secret-file=path/to/secret`
+- Add individual recipes to your node's run list.
 
-## Sponsors
+## Contributors
 
-Development of this cookbook has been generously supported in part by
-the code contributions of the following organizations:
+This project exists thanks to all the people who [contribute.](https://opencollective.com/sous-chefs/contributors.svg?width=890&button=false)
 
-* [University of Pennsylvania](http://www.upenn.edu/)
-* [Parallels International GmbH](https://www.parallels.com)
-* [Blended Perspectives Inc.](http://www.blendedperspectives.com/)
+### Backers
 
-## License and Author
+Thank you to all our backers!
 
-* Author:: Mikhail Zholobov (legal90@gmail.com, @legal90)
-* Author:: Azat Khadiev (anuriq@gmail.com, @anuriq)
-* Author:: Brian Flad (<bflad417@gmail.com>, @bflad)
-* Author:: Denny Schäfer (<trash4you@online.de>, @tuxinaut)
-* Copyright:: 2013, Brian Flad
-* Copyright:: 2013, University of Pennsylvania
-* Copyright:: 2013, Denny Schäfer
-* Copyright:: 2016-2017, Parallels International GmbH
+![https://opencollective.com/sous-chefs#backers](https://opencollective.com/sous-chefs/backers.svg?width=600&avatarHeight=40)
 
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
+### Sponsors
 
-    http://www.apache.org/licenses/LICENSE-2.0
+Support this project by becoming a sponsor. Your logo will show up here with a link to your website.
 
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
+![https://opencollective.com/sous-chefs/sponsor/0/website](https://opencollective.com/sous-chefs/sponsor/0/avatar.svg?avatarHeight=100)
+![https://opencollective.com/sous-chefs/sponsor/1/website](https://opencollective.com/sous-chefs/sponsor/1/avatar.svg?avatarHeight=100)
+![https://opencollective.com/sous-chefs/sponsor/2/website](https://opencollective.com/sous-chefs/sponsor/2/avatar.svg?avatarHeight=100)
+![https://opencollective.com/sous-chefs/sponsor/3/website](https://opencollective.com/sous-chefs/sponsor/3/avatar.svg?avatarHeight=100)
+![https://opencollective.com/sous-chefs/sponsor/4/website](https://opencollective.com/sous-chefs/sponsor/4/avatar.svg?avatarHeight=100)
+![https://opencollective.com/sous-chefs/sponsor/5/website](https://opencollective.com/sous-chefs/sponsor/5/avatar.svg?avatarHeight=100)
+![https://opencollective.com/sous-chefs/sponsor/6/website](https://opencollective.com/sous-chefs/sponsor/6/avatar.svg?avatarHeight=100)
+![https://opencollective.com/sous-chefs/sponsor/7/website](https://opencollective.com/sous-chefs/sponsor/7/avatar.svg?avatarHeight=100)
+![https://opencollective.com/sous-chefs/sponsor/8/website](https://opencollective.com/sous-chefs/sponsor/8/avatar.svg?avatarHeight=100)
+![https://opencollective.com/sous-chefs/sponsor/9/website](https://opencollective.com/sous-chefs/sponsor/9/avatar.svg?avatarHeight=100)
