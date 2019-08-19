@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: confluence
+# Cookbook:: confluence
 # Library:: helpers
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -322,7 +322,7 @@ module Confluence
         '6.8.2' => {
           'x64' => 'cb2bbd9298ac0c31054d8e64ddb045e896e3fbe11d8ab48482d436647567f195',
           'tar' => '5a1baccc4fe0701beac020d3e4095d5a7b6b6a038766d4da373bf4d127020312',
-        }
+        },
       }
     end
 
