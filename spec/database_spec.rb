@@ -15,7 +15,7 @@ describe 'confluence::database' do
 
   context 'When data bag does not exit' do
     before do
-      chef_run.node.set['confluence']['database']['type'] = 'mysql'
+      chef_run.node.default['confluence']['database']['type'] = 'mysql'
     end
 
     let(:connection) do
