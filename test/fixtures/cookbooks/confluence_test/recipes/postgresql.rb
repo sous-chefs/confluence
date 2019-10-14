@@ -2,14 +2,14 @@ node.default['confluence']['database']['type'] = 'postgresql'
 node.default['postgresql']['version'] = '9.3'
 node.default['postgresql']['password']['postgres'] = 'iloverandompasswordsbutthiswilldo'
 
-if platform_family?('rhel')
+if platform_family?('ubuntu')
   node.default['postgresql']['enable_pgdg_apt'] = true
   node.default['postgresql']['client']['packages'] = ['postgresql-client-9.3', 'libpq-dev']
   node.default['postgresql']['server']['packages'] = ['postgresql-9.3']
   node.default['postgresql']['contrib']['packages'] = ['postgresql-contrib-9.3']
   node.default['postgresql']['dir'] = '/etc/postgresql/9.3/main'
   node.default['postgresql']['server']['service_name'] = 'postgresql'
-elsif platform_family?('rhel')
+elsif platform_family?('centos')
   node.default['postgresql']['enable_pgdg_yum'] = true
   node.default['postgresql']['client']['packages'] = %w(postgresql93 postgresql93-devel)
   node.default['postgresql']['server']['packages'] = ['postgresql93-server']
