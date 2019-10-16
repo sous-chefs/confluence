@@ -2,6 +2,7 @@
 
 ## 2.5.1 (2019/08/16)
 
+- Update the owner information in metadata.rb
 - Update CircleCI version
 - Run cookstyle on repo (fixes #187)
 - ISO-8601 date format for the CHANGLOG
