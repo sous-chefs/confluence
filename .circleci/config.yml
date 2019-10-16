@@ -14,5 +14,3 @@ workflows:
       - kitchen/danger:
           name: danger
           context: Danger
-      # - kitchen/delivery:
-      #     name: delivery

@@ -10,33 +10,21 @@ driver:
       auto_correct: true
 
 platforms:
-- name: centos-6
-  driver:
-    box: bento/centos-6.7  # vagrant
-    image: centos-6-5-x64 # digitalocean
-
-- name: centos-7
-  driver:
-    box: bento/centos-7.1
-    image: centos-7-0-x64
-
-- name: ubuntu-14.04
-  run_list:
-    - recipe[apt]
-  driver:
-    box: bento/ubuntu-14.04
-    image: ubuntu-14-04-x64
-
-- name: ubuntu-16.04
-  run_list:
-    - recipe[apt]
-  driver:
-    box: bento/ubuntu-16.04
-    image: ubuntu-16-04-x64
+  - name: amazonlinux-2
+    driver_config:
+      box: ywatase/amzn2
+  - name: centos-6
+  - name: centos-7
+  - name: debian-8
+  - name: debian-9
+  - name: ubuntu-16.04
+  - name: ubuntu-18.04
 
 provisioner:
   name: chef_zero
-  require_chef_omnibus: "12"
+  product_name: chef
+  product_version: <%= ENV['CHEF_VERSION'] || 'latest' %>
+  install_strategy: once
   attributes:
     java:
       install_flavor: oracle
@@ -45,26 +33,26 @@ provisioner:
         accept_oracle_download_terms: true
 
 suites:
-- name: installer-mysql
-  run_list:
-  - recipe[confluence_test::mysql]
+  - name: installer-mysql
+    run_list:
+      - recipe[confluence_test::mysql]
 
-- name: installer-postgresql
-  run_list:
-  - recipe[confluence_test::postgresql]
+  - name: installer-postgresql
+    run_list:
+      - recipe[confluence_test::postgresql]
 
-- name: standalone-mysql
-  run_list:
-  - recipe[java]
-  - recipe[confluence_test::mysql]
-  attributes:
-    confluence:
-      install_type: standalone
+  - name: standalone-mysql
+    run_list:
+      - recipe[java]
+      - recipe[confluence_test::mysql]
+    attributes:
+      confluence:
+        install_type: standalone
 
-- name: standalone-postgresql
-  run_list:
-  - recipe[java]
-  - recipe[confluence_test::postgresql]
-  attributes:
-    confluence:
-      install_type: standalone
+  - name: standalone-postgresql
+    run_list:
+      - recipe[java]
+      - recipe[confluence_test::postgresql]
+    attributes:
+      confluence:
+        install_type: standalone

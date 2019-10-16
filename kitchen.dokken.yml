@@ -1,0 +1,51 @@
+---
+driver:
+  name: dokken
+  privileged: true
+
+transport:
+  name: dokken
+
+provisioner:
+  name: dokken
+  attributes:
+    java:
+      install_flavor: oracle
+      jdk_version: 8
+      oracle:
+        accept_oracle_download_terms: true
+  client_rb:
+    diff_disabled: true
+
+platforms:
+  - name: centos-6
+    driver:
+      image: centos:6
+      platform: rhel
+      pid_one_command: /sbin/init
+      intermediate_instructions:
+        - RUN yum -y install openssl which initscripts net-tools wget sudo
+
+  - name: centos-7
+    driver:
+      image: centos:7
+      platform: rhel
+      pid_one_command: /usr/lib/systemd/systemd
+      intermediate_instructions:
+        - RUN yum -y install openssl lsof which systemd-sysv initscripts wget net-tools sudo
+
+  - name: ubuntu-14.04
+    driver:
+      image: ubuntu-upstart:14.04
+      pid_one_command: /sbin/init
+      intermediate_instructions:
+        - RUN /usr/bin/apt-get update
+        - RUN /usr/bin/apt-get install openssl apt-transport-https lsb-release procps net-tools sudo -y
+
+  - name: ubuntu-16.04
+    driver:
+      image: ubuntu:16.04
+      pid_one_command: /bin/systemd
+      intermediate_instructions:
+        - RUN /usr/bin/apt-get update
+        - RUN /usr/bin/apt-get install openssl apt-transport-https lsb-release procps net-tools sudo -y
