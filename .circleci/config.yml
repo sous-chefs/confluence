@@ -1,3 +1,4 @@
+---
 version: 2.1
 
 orbs:
@@ -13,5 +14,5 @@ workflows:
       - kitchen/danger:
           name: danger
           context: Danger
-      - kitchen/delivery:
-          name: delivery
+      # - kitchen/delivery:
+      #     name: delivery
