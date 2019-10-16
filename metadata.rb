@@ -1,9 +1,9 @@
 name 'confluence'
-maintainer 'Azat Khadiev'
-maintainer_email 'anuriq@gmail.com'
+maintainer 'Sous-Chef'
+maintainer_email 'help@sous-chefs.org'
 license 'Apache-2.0'
 description 'Installs/Configures Atlassian Confluence'
-
+chef_version '< 13.0.0'
 version '2.5.1'
 
 issues_url 'https://github.com/sous-chefs/confluence/issues'
@@ -23,5 +23,3 @@ depends 'mysql', '< 8.0.0'
 depends 'mysql_connector'
 depends 'mysql2_chef_gem', '< 2.0.0'
 depends 'postgresql'
-
-chef_version '< 13.0.0'

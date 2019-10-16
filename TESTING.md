@@ -5,7 +5,7 @@
 Chef cookbooks require either a working ChefDK installation set as your system's
 default ruby or Ruby 2.0+ with bundler installed. Using ChefDK provides
 a consistent Ruby install, and is the suggested method.
-ChefDK can be downloaded at https://downloads.chef.io/chef-dk/
+ChefDK can be downloaded at <https://downloads.chef.io/chef-dk/>
 
 Integration testing relies on Hashicorp's [Vagrant](https://www.vagrantup.com/downloads.html)
 and local virtualization system Oracle's [Virtualbox](https://www.virtualbox.org/wiki/Downloads),
@@ -39,8 +39,7 @@ individually, or in groups. Typing "rake" by itself will perform the default
 checks: style checks (Rubocop and Foodcritic), and unit tests (Chefspec).
 To see a complete list of available tasks run `rake -T`
 
-
-```
+```shell
 $ rake -T
 rake integration:             # Run kitchen integration tests
 rake spec                     # Run ChefSpec examples
@@ -49,7 +48,6 @@ rake style:chef               # Run Chef style checks
 rake style:ruby               # Run Ruby style checks
 rake style:ruby:auto_correct  # Auto-correct RuboCop offenses
 ```
-
 
 ## Spec Testing
 
