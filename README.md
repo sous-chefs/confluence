@@ -91,7 +91,7 @@ bundled_jre | prefer JRE bundled with linux installer | Boolean | true
 ### Confluence Autotune Attributes
 
 These attributes are under the `node['confluence']['autotune']` namespace. Autotune automatically determines appropriate settings for certain
-attributes. This feature is inspired by the `autotune` recipe in the https://github.com/afklm/jira cookbook. This
+attributes. This feature is inspired by the `autotune` recipe in the <https://github.com/afklm/jira> cookbook. This
 initial version only supports JVM min and max memory size tuning.
 
 There are several tuning types that can be set:
@@ -153,7 +153,7 @@ Example:
 }
 ```
 
-_(Note - `"confluence"` nesting level is required!)_
+*Note - `"confluence"` nesting level is required!*
 
 These credentials will be used for your Confluence installation instead of
 appropriate attribute values.
