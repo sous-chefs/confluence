@@ -1,5 +1,10 @@
 # Confluence Cookbook Changelog
 
+## Unreleased
+
+- Cookstyle fixes
+- Change builds to be parallel
+
 ## 2.5.1 (2019/08/16)
 
 - Update the owner information in metadata.rb

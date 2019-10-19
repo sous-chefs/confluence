@@ -1,9 +1,12 @@
 ---
+lint_and_unit: &lint_and_unit
+  - delivery
+  - danger
+  - lint-yaml
+  - lint-markdown
 version: 2.1
-
 orbs:
   kitchen: sous-chefs/kitchen@2
-
 workflows:
   kitchen:
     jobs:
@@ -14,3 +17,69 @@ workflows:
       - kitchen/danger:
           name: danger
           context: Danger
+      - kitchen/delivery:
+          name: delivery
+      - kitchen/dokken-single:
+          name: installer-mysql-centos-6
+          suite: installer-mysql-centos-6
+          requires: *lint_and_unit
+      - kitchen/dokken-single:
+          name: installer-mysql-centos-7
+          suite: installer-mysql-centos-7
+          requires: *lint_and_unit
+      - kitchen/dokken-single:
+          name: installer-mysql-ubuntu-1404
+          suite: installer-mysql-ubuntu-1404
+          requires: *lint_and_unit
+      - kitchen/dokken-single:
+          name: installer-mysql-ubuntu-1604
+          suite: installer-mysql-ubuntu-1604
+          requires: *lint_and_unit
+      - kitchen/dokken-single:
+          name: installer-postgresql-centos-6
+          suite: installer-postgresql-centos-6
+          requires: *lint_and_unit
+      - kitchen/dokken-single:
+          name: installer-postgresql-centos-7
+          suite: installer-postgresql-centos-7
+          requires: *lint_and_unit
+      - kitchen/dokken-single:
+          name: installer-postgresql-ubuntu-1404
+          suite: installer-postgresql-ubuntu-1404
+          requires: *lint_and_unit
+      - kitchen/dokken-single:
+          name: installer-postgresql-ubuntu-1604
+          suite: installer-postgresql-ubuntu-1604
+          requires: *lint_and_unit
+      - kitchen/dokken-single:
+          name: standalone-mysql-centos-6
+          suite: standalone-mysql-centos-6
+          requires: *lint_and_unit
+      - kitchen/dokken-single:
+          name: standalone-mysql-centos-7
+          suite: standalone-mysql-centos-7
+          requires: *lint_and_unit
+      - kitchen/dokken-single:
+          name: standalone-mysql-ubuntu-1404
+          suite: standalone-mysql-ubuntu-1404
+          requires: *lint_and_unit
+      - kitchen/dokken-single:
+          name: standalone-mysql-ubuntu-1604
+          suite: standalone-mysql-ubuntu-1604
+          requires: *lint_and_unit
+      - kitchen/dokken-single:
+          name: standalone-postgresql-centos-6
+          suite: standalone-postgresql-centos-6
+          requires: *lint_and_unit
+      - kitchen/dokken-single:
+          name: standalone-postgresql-centos-7
+          suite: standalone-postgresql-centos-7
+          requires: *lint_and_unit
+      - kitchen/dokken-single:
+          name: standalone-postgresql-ubuntu-1404
+          suite: standalone-postgresql-ubuntu-1404
+          requires: *lint_and_unit
+      - kitchen/dokken-single:
+          name: standalone-postgresql-ubuntu-1604
+          suite: standalone-postgresql-ubuntu-1604
+          requires: *lint_and_unit
