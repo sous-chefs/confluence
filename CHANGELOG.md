@@ -1,5 +1,9 @@
 # Confluence Cookbook Changelog
 
+## Unreleased
+
+- Fix a legacy ChefSpec
+
 ## 2.5.1 (2019/08/16)
 
 - Update the owner information in metadata.rb
