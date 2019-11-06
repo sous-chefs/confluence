@@ -383,6 +383,6 @@ module Confluence
   end
 end
 
-::Chef::Recipe.send(:include, Confluence::Helpers)
-::Chef::Resource.send(:include, Confluence::Helpers)
+::Chef::DSL::Recipe.send(:include, Confluence::Helpers)
+::Chef::DSL::Resource.send(:include, Confluence::Helpers)
 ::Chef::Mixin::Template::TemplateContext.send(:include, Confluence::Helpers)
