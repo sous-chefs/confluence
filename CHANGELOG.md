@@ -4,6 +4,7 @@
 
 - Fix a legacy ChefSpec
 - Moved all templates out of the default directory
+- Migrate to actions
 
 ## 2.5.1 (2019/08/16)
 
