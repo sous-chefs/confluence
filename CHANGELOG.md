@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+- resolved cookstyle error: attributes/default.rb:50:1 refactor: `ChefStyle/UnnecessaryPlatformCaseStatement`
+- resolved cookstyle error: libraries/helpers.rb:386:1 refactor: `ChefCorrectness/IncorrectLibraryInjection`
+- resolved cookstyle error: libraries/helpers.rb:387:1 refactor: `ChefCorrectness/IncorrectLibraryInjection`
+
 - Fix a legacy ChefSpec
 - Moved all templates out of the default directory
 - Migrate to actions

@@ -47,8 +47,7 @@ default['confluence']['apache2']['ssl']['chain_file'] = ''
 default['confluence']['apache2']['ssl']['error_log'] = ''
 default['confluence']['apache2']['ssl']['port'] = 443
 
-case node['platform_family']
-when 'rhel'
+if platform_family?('rhel')
   default['confluence']['apache2']['ssl']['certificate_file'] = '/etc/pki/tls/certs/localhost.crt'
   default['confluence']['apache2']['ssl']['key_file'] = '/etc/pki/tls/private/localhost.key'
 else
