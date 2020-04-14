@@ -26,7 +26,7 @@ total_memory = node['memory']['total']
 if node['confluence'].attribute?('autotune') && node['confluence']['autotune'].attribute?('total_memory')
   total_memory = node['confluence']['autotune']['total_memory']
   if total_memory.match(/\A\d*kB\Z/).nil?
-    Chef::Application.fatal!([
+    raise([
       "Bad value (#{total_memory}) for node['confluence']['autotune']['total_memory'] attribute.",
       'Valid values are non-zero integers followed by kB (e.g., 49416564kB).',
     ].join(' '))
