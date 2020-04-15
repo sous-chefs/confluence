@@ -42,7 +42,7 @@ if confluence_version != node['confluence']['version']
     only_if { ::File.exist?("#{node['confluence']['install_path']}/.install4j/response.varfile") }
   end
 
-  Chef::Resource::RemoteFile.send(:include, Confluence::Helpers)
+  Chef::Resource::RemoteFile.include Confluence::Helpers
 
   remote_file "#{Chef::Config[:file_cache_path]}/atlassian-confluence-#{node['confluence']['version']}.bin" do
     source confluence_artifact_url

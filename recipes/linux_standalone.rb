@@ -34,7 +34,7 @@ user node['confluence']['user'] do
   action :create
 end
 
-Chef::Resource::Ark.send(:include, Confluence::Helpers)
+Chef::Resource::Ark.include Confluence::Helpers
 
 ark 'confluence' do
   url confluence_artifact_url

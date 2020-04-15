@@ -32,7 +32,7 @@ module Confluence
         return Regexp.last_match(1) if File.read(pom_file) =~ /^version=(.*)$/
       rescue Errno::ENOENT
         # Confluence is not installed
-        return nil
+        nil
       end
     end
 
@@ -383,6 +383,6 @@ module Confluence
   end
 end
 
-::Chef::DSL::Recipe.send(:include, Confluence::Helpers)
-::Chef::DSL::Resource.send(:include, Confluence::Helpers)
-::Chef::Mixin::Template::TemplateContext.send(:include, Confluence::Helpers)
+::Chef::DSL::Recipe.include Confluence::Helpers
+::Chef::DSL::Resource.include Confluence::Helpers
+::Chef::Mixin::Template::TemplateContext.include Confluence::Helpers

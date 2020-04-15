@@ -2,6 +2,13 @@
 
 ## Unreleased
 
+- resolved cookstyle error: libraries/helpers.rb:35:9 convention: `Style/RedundantReturn`
+- resolved cookstyle error: libraries/helpers.rb:386:21 warning: `Lint/SendWithMixinArgument`
+- resolved cookstyle error: libraries/helpers.rb:387:23 warning: `Lint/SendWithMixinArgument`
+- resolved cookstyle error: libraries/helpers.rb:388:42 warning: `Lint/SendWithMixinArgument`
+- resolved cookstyle error: recipes/autotune.rb:29:5 refactor: `ChefCorrectness/ChefApplicationFatal`
+- resolved cookstyle error: recipes/linux_installer.rb:45:30 warning: `Lint/SendWithMixinArgument`
+- resolved cookstyle error: recipes/linux_standalone.rb:37:21 warning: `Lint/SendWithMixinArgument`
 - resolved cookstyle error: attributes/default.rb:50:1 refactor: `ChefStyle/UnnecessaryPlatformCaseStatement`
 - resolved cookstyle error: libraries/helpers.rb:386:1 refactor: `ChefCorrectness/IncorrectLibraryInjection`
 - resolved cookstyle error: libraries/helpers.rb:387:1 refactor: `ChefCorrectness/IncorrectLibraryInjection`
