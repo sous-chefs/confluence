@@ -1,7 +1,10 @@
 # Confluence Cookbook Changelog
 
-## Unreleased
+## 2.6.0 (2020/05/05)
 
+- Fix a legacy ChefSpec
+- Moved all templates out of the default directory
+- Migrate to Github Actions
 - resolved cookstyle error: libraries/helpers.rb:35:9 convention: `Style/RedundantReturn`
 - resolved cookstyle error: libraries/helpers.rb:386:21 warning: `Lint/SendWithMixinArgument`
 - resolved cookstyle error: libraries/helpers.rb:387:23 warning: `Lint/SendWithMixinArgument`
@@ -12,10 +15,6 @@
 - resolved cookstyle error: attributes/default.rb:50:1 refactor: `ChefStyle/UnnecessaryPlatformCaseStatement`
 - resolved cookstyle error: libraries/helpers.rb:386:1 refactor: `ChefCorrectness/IncorrectLibraryInjection`
 - resolved cookstyle error: libraries/helpers.rb:387:1 refactor: `ChefCorrectness/IncorrectLibraryInjection`
-
-- Fix a legacy ChefSpec
-- Moved all templates out of the default directory
-- Migrate to actions
 
 ## 2.5.1 (2019/08/16)
 
