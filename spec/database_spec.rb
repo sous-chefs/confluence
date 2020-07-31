@@ -3,13 +3,13 @@ require 'spec_helper'
 describe 'confluence::database' do
   let(:chef_run) do
     ChefSpec::SoloRunner.new do |node|
-      node.set['confluence']['data_bag_name'] = 'apps'
-      node.set['confluence']['data_bag_item'] = 'test_confluence'
-      node.set['confluence']['database']['name'] = 'test_database'
-      node.set['confluence']['database']['user'] = 'foo'
-      node.set['confluence']['database']['password'] = 'bar'
-      node.set['mysql']['server_root_password'] = 'mysql_root_pass'
-      node.set['postgresql']['password']['postgres'] = 'postgres_pass'
+      node.default['confluence']['data_bag_name'] = 'apps'
+      node.default['confluence']['data_bag_item'] = 'test_confluence'
+      node.default['confluence']['database']['name'] = 'test_database'
+      node.default['confluence']['database']['user'] = 'foo'
+      node.default['confluence']['database']['password'] = 'bar'
+      node.default['mysql']['server_root_password'] = 'mysql_root_pass'
+      node.default['postgresql']['password']['postgres'] = 'postgres_pass'
     end.converge(described_recipe)
   end
 
