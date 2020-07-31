@@ -1,5 +1,10 @@
 # Confluence Cookbook Changelog
 
+## Unreleased
+
+- resolved cookstyle error: test/fixtures/cookbooks/confluence_test/recipes/postgresql.rb:5:21 refactor: `ChefCorrectness/InvalidPlatformFamilyHelper`
+- resolved cookstyle error: test/fixtures/cookbooks/confluence_test/recipes/postgresql.rb:12:24 refactor: `ChefCorrectness/InvalidPlatformFamilyHelper`
+
 ## 2.6.0 (2020/05/05)
 
 - Fix a legacy ChefSpec
