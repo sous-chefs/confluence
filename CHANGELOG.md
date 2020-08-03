@@ -2,8 +2,8 @@
 
 ## Unreleased
 
-- resolved cookstyle error: test/fixtures/cookbooks/confluence_test/recipes/postgresql.rb:5:21 refactor: `ChefCorrectness/InvalidPlatformFamilyHelper`
-- resolved cookstyle error: test/fixtures/cookbooks/confluence_test/recipes/postgresql.rb:12:24 refactor: `ChefCorrectness/InvalidPlatformFamilyHelper`
+- Fixed ChefSpecs by replacing `node.set` with `node.default`
+- Fixed Platform Family checks in the attributes that resulted in incorrect attributes being set
 
 ## 2.6.0 (2020/05/05)
 

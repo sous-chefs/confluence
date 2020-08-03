@@ -3,8 +3,8 @@ require 'spec_helper'
 describe 'confluence::configuration' do
   let(:chef_run) do
     ChefSpec::SoloRunner.new do |node|
-      node.set['confluence']['install_path'] = '/opt/atlassian/confluence'
-      node.set['confluence']['home_path'] = '/var/atlassian/application-data/confluence'
+      node.default['confluence']['install_path'] = '/opt/atlassian/confluence'
+      node.default['confluence']['home_path'] = '/var/atlassian/application-data/confluence'
     end.converge(described_recipe)
   end
 
