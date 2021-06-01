@@ -1,6 +1,6 @@
 # Confluence Cookbook Changelog
 
-## Unreleased
+## 2.6.1 - *2021-06-01*
 
 - Fixed ChefSpecs by replacing `node.set` with `node.default`
 - Fixed Platform Family checks in the attributes that resulted in incorrect attributes being set
