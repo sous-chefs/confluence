@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Standardise files with files in sous-chefs/repo-management
+
 ## 2.6.1 - *2021-06-01*
 
 - Fixed ChefSpecs by replacing `node.set` with `node.default`
