@@ -38,7 +38,7 @@ if settings['database']['type'] == 'mysql'
   mysql_connector_j "#{node['confluence']['install_path']}/confluence/WEB-INF/lib"
 end
 
-if node['init_package'] == 'systemd'
+if systemd?
   execute 'systemctl-daemon-reload' do
     command '/bin/systemctl --system daemon-reload'
     action :nothing
