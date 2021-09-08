@@ -1,5 +1,7 @@
 # Confluence Cookbook Changelog
 
+## Unreleased
+
 ## 2.6.3 - *2021-09-08*
 
 - resolved cookstyle error: recipes/configuration.rb:41:4 refactor: `Chef/Modernize/UseChefLanguageSystemdHelper`
