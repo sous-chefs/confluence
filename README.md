@@ -49,15 +49,15 @@ include_recipe 'java'
 
 These attributes are under the `node['confluence']` namespace.
 
-Attribute | Description | Type | Default
-----------|-------------|------|--------
-checksum | SHA256 checksum for Confluence install | String | auto-detected by library method
-home_path | home directory for Confluence user | String | /var/atlassian/application-data/confluence
-install_path | location to install Confluence | String | /opt/atlassian/confluence
-install_type | Confluence install type - "installer", "standalone" | String | installer
-url | URL for Confluence install | String | auto-detected by library method
-user | user running Confluence | String | confluence
-version | Confluence version to install | String | 6.1.2
+| Attribute    | Description                                         | Type   | Default                                    |
+| ------------ | --------------------------------------------------- | ------ | ------------------------------------------ |
+| checksum     | SHA256 checksum for Confluence install              | String | auto-detected by library method            |
+| home_path    | home directory for Confluence user                  | String | /var/atlassian/application-data/confluence |
+| install_path | location to install Confluence                      | String | /opt/atlassian/confluence                  |
+| install_type | Confluence install type - "installer", "standalone" | String | installer                                  |
+| url          | URL for Confluence install                          | String | auto-detected by library method            |
+| user         | user running Confluence                             | String | confluence                                 |
+| version      | Confluence version to install                       | String | 6.1.2                                      |
 
 --Notice:-- If `['confluence']['install_type']` is set to `installer`, then the installer will try to upgrade your Confluence instance located in `['confluence']['install_path']` (if it exists) to the `['confluence']['version']`.
 
@@ -67,26 +67,26 @@ If you want to avoid an unexpected upgrade, just set or override `['confluence']
 
 These attributes are under the `node['confluence']['database']` namespace.
 
-Attribute | Description | Type | Default
-----------|-------------|------|--------
-host | FQDN or IP of database server ("127.0.0.1" automatically installs `['database']['type']` server) | String | "127.0.0.1"
-name | Confluence database name | String | confluence
-password | Confluence database user password | String | changeit
-port | Confluence database port | Fixnum | 3306 for MySQL, 5432 for PostgreSQL
-type | Confluence database type - "mysql", "postgresql", or "hsqldb" | String | mysql
-user | Confluence database user | String | confluence
+| Attribute | Description                                                                                      | Type   | Default                             |
+| --------- | ------------------------------------------------------------------------------------------------ | ------ | ----------------------------------- |
+| host      | FQDN or IP of database server ("127.0.0.1" automatically installs `['database']['type']` server) | String | "127.0.0.1"                         |
+| name      | Confluence database name                                                                         | String | confluence                          |
+| password  | Confluence database user password                                                                | String | changeit                            |
+| port      | Confluence database port                                                                         | Fixnum | 3306 for MySQL, 5432 for PostgreSQL |
+| type      | Confluence database type - "mysql", "postgresql", or "hsqldb"                                    | String | mysql                               |
+| user      | Confluence database user                                                                         | String | confluence                          |
 
 ### Confluence JVM Attributes
 
 These attributes are under the `node['confluence']['jvm']` namespace.
 
-Attribute | Description | Type | Default
-----------|-------------|------|--------
-minimum_memory | JVM minimum memory | String | 512m
-maximum_memory | JVM maximum memory | String | 768m
-maximum_permgen | JVM maximum PermGen memory | String | 256m
-java_opts | additional JAVA_OPTS to be passed to Confluence JVM during startup | String | ""
-bundled_jre | prefer JRE bundled with linux installer | Boolean | true
+| Attribute       | Description                                                        | Type    | Default |
+| --------------- | ------------------------------------------------------------------ | ------- | ------- |
+| minimum_memory  | JVM minimum memory                                                 | String  | 512m    |
+| maximum_memory  | JVM maximum memory                                                 | String  | 768m    |
+| maximum_permgen | JVM maximum PermGen memory                                         | String  | 256m    |
+| java_opts       | additional JAVA_OPTS to be passed to Confluence JVM during startup | String  | ""      |
+| bundled_jre     | prefer JRE bundled with linux installer                            | Boolean | true    |
 
 ### Confluence Autotune Attributes
 
@@ -102,19 +102,19 @@ There are several tuning types that can be set:
 
 Total available memory is auto discovered using Ohai but can be overridden by setting your own value in kB.
 
-Attribute    | Description                                                           | Type    | Default
--------------|-----------------------------------------------------------------------|---------|------------
-enabled      | Whether or not to autotune settings.                                  | Boolean | false
-type         | Type of tuning to apply. One of 'mixed', 'dedicated' and 'shared'.    | String  | mixed
-total_memory | Total system memory to use for autotune calculations.                 | String  | Ohai value
+| Attribute    | Description                                                        | Type    | Default    |
+| ------------ | ------------------------------------------------------------------ | ------- | ---------- |
+| enabled      | Whether or not to autotune settings.                               | Boolean | false      |
+| type         | Type of tuning to apply. One of 'mixed', 'dedicated' and 'shared'. | String  | mixed      |
+| total_memory | Total system memory to use for autotune calculations.              | String  | Ohai value |
 
 ### Confluence Tomcat Attributes
 
 These attributes are under the `node['confluence']['tomcat']` namespace.
 
-Attribute | Description | Type | Default
-----------|-------------|------|--------
-port | Tomcat HTTP port | Fixnum | 8090
+| Attribute | Description      | Type   | Default |
+| --------- | ---------------- | ------ | ------- |
+| port      | Tomcat HTTP port | Fixnum | 8090    |
 
 ## Recipes
 
@@ -166,8 +166,8 @@ attributes `['confluence']['data_bag_name']` and `['confluence']['data_bag_item'
 The simplest method is via the default recipe, which uses `node['confluence']['install_type']` to determine best method.
 
 - Optionally (un)encrypted data bag or set attributes
-  - `knife data bag create confluence`
-  - `knife data bag edit confluence confluence --secret-file=path/to/secret`
+   - `knife data bag create confluence`
+   - `knife data bag edit confluence confluence --secret-file=path/to/secret`
 - Add `recipe[confluence]` to your node's run list.
 
 ### Custom Confluence Configurations
@@ -175,8 +175,8 @@ The simplest method is via the default recipe, which uses `node['confluence']['i
 Using individual recipes, you can use this cookbook to configure Confluence to fit your environment.
 
 - Optionally (un)encrypted data bag or set attributes
-  - `knife data bag create confluence`
-  - `knife data bag edit confluence confluence --secret-file=path/to/secret`
+   - `knife data bag create confluence`
+   - `knife data bag edit confluence confluence --secret-file=path/to/secret`
 - Add individual recipes to your node's run list.
 
 ## Contributors
