@@ -1,6 +1,6 @@
 # Confluence Cookbook Changelog
 
-## Unreleased
+## 2.6.4 - *2022-12-15*
 
 - Standardise files with files in sous-chefs/repo-management
 - Remove delivery folder
