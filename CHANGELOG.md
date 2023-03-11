@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+Standardise files with files in sous-chefs/repo-management
+
 ## 2.6.9 - *2023-03-02*
 
 ## 2.6.8 - *2023-02-23*
