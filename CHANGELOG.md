@@ -1,6 +1,6 @@
 # Confluence Cookbook Changelog
 
-## Unreleased
+## 2.6.14 - *2023-04-01*
 
 ## 2.6.13 - *2023-04-01*
 
