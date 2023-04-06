@@ -1,51 +1,113 @@
----
 driver:
   name: dokken
   privileged: true
+  chef_version: <%= ENV['CHEF_VERSION'] || 'current' %>
 
-transport:
-  name: dokken
-
-provisioner:
-  name: dokken
-  attributes:
-    java:
-      install_flavor: oracle
-      jdk_version: 8
-      oracle:
-        accept_oracle_download_terms: true
-  client_rb:
-    diff_disabled: true
+transport: { name: dokken }
+provisioner: { name: dokken }
 
 platforms:
-  - name: centos-6
+  - name: almalinux-8
     driver:
-      image: centos:6
-      platform: rhel
-      pid_one_command: /sbin/init
-      intermediate_instructions:
-        - RUN yum -y install openssl which initscripts net-tools wget sudo
+      image: dokken/almalinux-8
+      pid_one_command: /usr/lib/systemd/systemd
+
+  - name: almalinux-9
+    driver:
+      image: dokken/almalinux-9
+      pid_one_command: /usr/lib/systemd/systemd
+
+  - name: amazonlinux-2023
+    driver:
+      image: dokken/amazonlinux-2023
+      pid_one_command: /usr/lib/systemd/systemd
 
   - name: centos-7
     driver:
-      image: centos:7
-      platform: rhel
+      image: dokken/centos-7
       pid_one_command: /usr/lib/systemd/systemd
-      intermediate_instructions:
-        - RUN yum -y install openssl lsof which systemd-sysv initscripts wget net-tools sudo
 
-  - name: ubuntu-14.04
+  - name: centos-stream-8
     driver:
-      image: ubuntu-upstart:14.04
-      pid_one_command: /sbin/init
-      intermediate_instructions:
-        - RUN /usr/bin/apt-get update
-        - RUN /usr/bin/apt-get install openssl apt-transport-https lsb-release procps net-tools sudo -y
+      image: dokken/centos-stream-8
+      pid_one_command: /usr/lib/systemd/systemd
 
-  - name: ubuntu-16.04
+  - name: centos-stream-9
     driver:
-      image: ubuntu:16.04
+      image: dokken/centos-stream-9
+      pid_one_command: /usr/lib/systemd/systemd
+
+  - name: debian-9
+    driver:
+      image: dokken/debian-9
       pid_one_command: /bin/systemd
-      intermediate_instructions:
-        - RUN /usr/bin/apt-get update
-        - RUN /usr/bin/apt-get install openssl apt-transport-https lsb-release procps net-tools sudo -y
+
+  - name: debian-10
+    driver:
+      image: dokken/debian-10
+      pid_one_command: /bin/systemd
+
+  - name: debian-11
+    driver:
+      image: dokken/debian-11
+      pid_one_command: /bin/systemd
+
+  - name: debian-12
+    driver:
+      image: dokken/debian-12
+      pid_one_command: /bin/systemd
+
+  - name: fedora-latest
+    driver:
+      image: dokken/fedora-latest
+      pid_one_command: /usr/lib/systemd/systemd
+
+  - name: opensuse-leap-15
+    driver:
+      image: dokken/opensuse-leap-15
+      pid_one_command: /usr/lib/systemd/systemd
+
+  - name: oraclelinux-7
+    driver:
+      image: dokken/oraclelinux-7
+      pid_one_command: /usr/lib/systemd/systemd
+
+  - name: oraclelinux-8
+    driver:
+      image: dokken/oraclelinux-8
+      pid_one_command: /usr/lib/systemd/systemd
+
+  - name: oraclelinux-9
+    driver:
+      image: dokken/oraclelinux-9
+      pid_one_command: /usr/lib/systemd/systemd
+
+  - name: rockylinux-8
+    driver:
+      image: dokken/rockylinux-8
+      pid_one_command: /usr/lib/systemd/systemd
+
+  - name: rockylinux-9
+    driver:
+      image: dokken/rockylinux-9
+      pid_one_command: /usr/lib/systemd/systemd
+
+  - name: ubuntu-18.04
+    driver:
+      image: dokken/ubuntu-18.04
+      pid_one_command: /bin/systemd
+
+  - name: ubuntu-20.04
+    driver:
+      image: dokken/ubuntu-20.04
+      pid_one_command: /bin/systemd
+
+  - name: ubuntu-22.04
+    driver:
+      image: dokken/ubuntu-22.04
+      pid_one_command: /bin/systemd
+
+  - name: ubuntu-23.04
+    driver:
+      image: dokken/ubuntu-23.04
+      pid_one_command: /bin/systemd
