@@ -1,5 +1,5 @@
 name 'confluence'
-maintainer 'Sous-Chef'
+maintainer 'Sous Chefs'
 maintainer_email 'help@sous-chefs.org'
 license 'Apache-2.0'
 description 'Installs/Configures Atlassian Confluence'
