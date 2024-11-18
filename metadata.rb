@@ -3,7 +3,7 @@ maintainer 'Sous Chefs'
 maintainer_email 'help@sous-chefs.org'
 license 'Apache-2.0'
 description 'Installs/Configures Atlassian Confluence'
-version '2.6.21'
+version '2.6.22'
 
 issues_url 'https://github.com/sous-chefs/confluence/issues'
 source_url 'https://github.com/sous-chefs/confluence'
