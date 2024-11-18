@@ -1,5 +1,7 @@
 # Confluence Cookbook Changelog
 
+## Unreleased
+
 ## 2.6.22 - *2024-11-18*
 
 Standardise files with files in sous-chefs/repo-management
