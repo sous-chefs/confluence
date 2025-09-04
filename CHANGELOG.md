@@ -1,5 +1,7 @@
 # Confluence Cookbook Changelog
 
+## Unreleased
+
 ## 2.6.23 - *2025-09-04*
 
 ## 2.6.22 - *2024-11-18*
