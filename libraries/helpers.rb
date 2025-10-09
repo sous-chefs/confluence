@@ -29,7 +29,7 @@ module Confluence
       )
 
       begin
-        return Regexp.last_match(1) if File.read(pom_file) =~ /^version=(.*)$/
+        Regexp.last_match(1) if File.read(pom_file) =~ /^version=(.*)$/
       rescue Errno::ENOENT
         # Confluence is not installed
         nil

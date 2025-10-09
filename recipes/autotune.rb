@@ -34,7 +34,7 @@ if node['confluence'].attribute?('autotune') && node['confluence']['autotune'].a
 end
 
 # Ohai reports node[:memory][:total] in kB, as in "921756kB"
-mem = total_memory.split('kB')[0].to_i / 1024 # in MB
+mem = total_memory.split('kB').first.to_i / 1024 # in MB
 
 maximum_memory =
   { 'mixed' => (mem / 100) * 70,
