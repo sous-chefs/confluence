@@ -1,5 +1,12 @@
 # Confluence Cookbook Changelog
 
+## [2.6.24](https://github.com/sous-chefs/confluence/compare/2.6.23...v2.6.24) (2025-10-15)
+
+
+### Bug Fixes
+
+* **ci:** Update workflows to use release pipeline ([#263](https://github.com/sous-chefs/confluence/issues/263)) ([3a53376](https://github.com/sous-chefs/confluence/commit/3a533761952c6f730e61dc8a62f64438934dd27f))
+
 ## 2.6.23 - *2025-09-04*
 
 ## 2.6.22 - *2024-11-18*
