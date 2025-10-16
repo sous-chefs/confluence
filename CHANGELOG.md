@@ -1,5 +1,10 @@
 # Confluence Cookbook Changelog
 
+## Unreleased
+
+Standardise files with files in sous-chefs/repo-management
+
+
 ## [2.6.24](https://github.com/sous-chefs/confluence/compare/2.6.23...v2.6.24) (2025-10-15)
 
 
