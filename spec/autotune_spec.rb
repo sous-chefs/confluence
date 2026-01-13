@@ -4,8 +4,8 @@ describe 'confluence::autotune' do
   context 'When autotune type is dedicated' do
     let(:chef_run) do
       ChefSpec::SoloRunner.new do |node|
-        node.default['confluence']['autotune']['enabled'] = true
-        node.default['confluence']['autotune']['type'] = 'dedicated'
+        node.override['confluence']['autotune']['enabled'] = true
+        node.override['confluence']['autotune']['type'] = 'dedicated'
         node.automatic['memory']['total'] = '8011076kB'
       end.converge(described_recipe)
     end
@@ -21,8 +21,8 @@ describe 'confluence::autotune' do
   context 'When autotune type is shared' do
     let(:chef_run) do
       ChefSpec::SoloRunner.new do |node|
-        node.default['confluence']['autotune']['enabled'] = true
-        node.default['confluence']['autotune']['type'] = 'shared'
+        node.override['confluence']['autotune']['enabled'] = true
+        node.override['confluence']['autotune']['type'] = 'shared'
         node.automatic['memory']['total'] = '8011076kB'
       end.converge(described_recipe)
     end
@@ -38,8 +38,8 @@ describe 'confluence::autotune' do
   context 'When autotune type is mixed' do
     let(:chef_run) do
       ChefSpec::SoloRunner.new do |node|
-        node.default['confluence']['autotune']['enabled'] = true
-        node.default['confluence']['autotune']['type'] = 'mixed'
+        node.override['confluence']['autotune']['enabled'] = true
+        node.override['confluence']['autotune']['type'] = 'mixed'
         node.automatic['memory']['total'] = '8011076kB'
       end.converge(described_recipe)
     end
