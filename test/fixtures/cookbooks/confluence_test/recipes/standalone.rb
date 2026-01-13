@@ -7,6 +7,8 @@
 
 apt_update 'update' if platform_family?('debian')
 
+package 'tar'
+
 # Install Confluence standalone
 confluence_install 'confluence' do
   version '8.5.4'
