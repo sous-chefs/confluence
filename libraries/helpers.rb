@@ -101,7 +101,7 @@ module Confluence
           'confluence/META-INF/maven/com.atlassian.confluence/confluence-webapp/pom.properties'
         )
 
-        return nil unless ::File.exist?(pom_file)
+        return unless ::File.exist?(pom_file)
 
         content = ::File.read(pom_file)
         match = content.match(/^version=(.*)$/)

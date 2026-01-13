@@ -9,7 +9,6 @@ source_url 'https://github.com/sous-chefs/confluence'
 
 chef_version '>= 16.0'
 
-
 supports 'almalinux'
 supports 'amazon'
 supports 'centos'
