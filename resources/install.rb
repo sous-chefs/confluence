@@ -19,29 +19,11 @@ unified_mode true
 
 provides :confluence_install
 
-property :instance_name, String,
-         name_property: true,
-         description: 'Name of the Confluence instance'
+use '_partial/_common_properties'
 
 property :version, String,
          required: true,
          description: 'Version of Confluence to install'
-
-property :install_path, String,
-         default: lazy { default_install_path },
-         description: 'Installation directory for Confluence'
-
-property :home_path, String,
-         default: lazy { default_home_path },
-         description: 'Home directory for Confluence data'
-
-property :user, String,
-         default: lazy { default_confluence_user },
-         description: 'System user to run Confluence'
-
-property :group, String,
-         default: lazy { default_confluence_group },
-         description: 'System group for Confluence user'
 
 property :url, String,
          default: lazy { confluence_download_url(version, 'standalone') },

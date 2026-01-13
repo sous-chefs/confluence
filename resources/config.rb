@@ -19,25 +19,7 @@ unified_mode true
 
 provides :confluence_config
 
-property :instance_name, String,
-         name_property: true,
-         description: 'Name of the Confluence instance'
-
-property :install_path, String,
-         default: lazy { default_install_path },
-         description: 'Installation directory for Confluence'
-
-property :home_path, String,
-         default: lazy { default_home_path },
-         description: 'Home directory for Confluence data'
-
-property :user, String,
-         default: lazy { default_confluence_user },
-         description: 'System user to run Confluence'
-
-property :group, String,
-         default: lazy { default_confluence_group },
-         description: 'System group for Confluence user'
+use '_partial/_common_properties'
 
 property :jvm_minimum_memory, String,
          default: lazy { default_jvm_minimum_memory },
