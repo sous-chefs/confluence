@@ -66,12 +66,3 @@ platforms:
     driver:
       image: dokken/ubuntu-24.04
       pid_one_command: /bin/systemd
-
-suites:
-  - name: default
-    run_list:
-      - recipe[confluence_test::default]
-
-  - name: standalone
-    run_list:
-      - recipe[confluence_test::standalone]

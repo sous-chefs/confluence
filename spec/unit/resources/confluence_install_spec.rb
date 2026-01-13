@@ -20,7 +20,7 @@ describe 'confluence_install' do
       expect(chef_run).to create_user('confluence').with(
         comment: 'Confluence Service Account',
         home: '/var/atlassian/application-data/confluence',
-        shell: '/bin/bash',
+        shell: '/usr/sbin/nologin',
         gid: 'confluence',
         system: true
       )
@@ -53,14 +53,19 @@ describe 'confluence_install' do
       )
     end
 
-    it 'downloads and extracts confluence using ark' do
-      expect(chef_run).to install_ark('confluence').with(
-        url: 'https://www.atlassian.com/software/confluence/downloads/binary/atlassian-confluence-8.5.4.tar.gz',
-        prefix_root: '/opt/atlassian',
-        home_dir: '/opt/atlassian/confluence',
-        version: '8.5.4',
+    it 'downloads the confluence tarball' do
+      expect(chef_run).to create_remote_file("#{Chef::Config[:file_cache_path]}/confluence-8.5.4.tar.gz").with(
+        source: 'https://www.atlassian.com/software/confluence/downloads/binary/atlassian-confluence-8.5.4.tar.gz',
         owner: 'root',
-        group: 'root'
+        group: 'root',
+        mode: '0644'
+      )
+    end
+
+    it 'extracts the confluence tarball' do
+      expect(chef_run).to extract_archive_file("#{Chef::Config[:file_cache_path]}/confluence-8.5.4.tar.gz").with(
+        destination: '/opt/atlassian/confluence',
+        strip_components: 1
       )
     end
 
@@ -105,9 +110,8 @@ describe 'confluence_install' do
     end
 
     it 'extracts to custom install path' do
-      expect(chef_run).to install_ark('confluence').with(
-        prefix_root: '/opt',
-        home_dir: '/opt/confluence'
+      expect(chef_run).to extract_archive_file("#{Chef::Config[:file_cache_path]}/confluence-8.5.4.tar.gz").with(
+        destination: '/opt/confluence'
       )
     end
   end
@@ -122,8 +126,8 @@ describe 'confluence_install' do
     end
 
     it 'uses the custom URL' do
-      expect(chef_run).to install_ark('confluence').with(
-        url: 'https://mirror.example.com/confluence-8.5.4.tar.gz',
+      expect(chef_run).to create_remote_file("#{Chef::Config[:file_cache_path]}/confluence-8.5.4.tar.gz").with(
+        source: 'https://mirror.example.com/confluence-8.5.4.tar.gz',
         checksum: 'a' * 64
       )
     end

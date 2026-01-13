@@ -18,5 +18,3 @@ supports 'oracle'
 supports 'redhat'
 supports 'rocky'
 supports 'ubuntu'
-
-depends 'ark'

@@ -32,7 +32,7 @@ This cookbook is maintained by the Sous Chefs. The Sous Chefs are a community of
 
 ### Cookbooks
 
-- [ark](https://github.com/sous-chefs/ark)
+None - this cookbook has no external cookbook dependencies.
 
 ## Resources
 

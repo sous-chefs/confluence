@@ -43,7 +43,7 @@ action :install do
   user new_resource.user do
     comment 'Confluence Service Account'
     home new_resource.home_path
-    shell '/bin/bash'
+    shell '/usr/sbin/nologin'
     gid new_resource.group
     manage_home false
     system true
@@ -76,15 +76,34 @@ action :install do
     action :create
   end
 
-  # Download and extract Confluence using ark
-  ark 'confluence' do
-    url new_resource.url
+  # Download Confluence tarball
+  archive_path = ::File.join(Chef::Config[:file_cache_path], "confluence-#{new_resource.version}.tar.gz")
+
+  remote_file archive_path do
+    source new_resource.url
     checksum new_resource.checksum if new_resource.checksum
-    prefix_root ::File.dirname(new_resource.install_path)
-    home_dir new_resource.install_path
-    version new_resource.version
     owner 'root'
     group 'root'
+    mode '0644'
+    action :create
+  end
+
+  # Create install directory
+  directory new_resource.install_path do
+    owner 'root'
+    group 'root'
+    mode '0755'
+    recursive true
+    action :create
+  end
+
+  # Extract Confluence tarball
+  archive_file archive_path do
+    destination new_resource.install_path
+    overwrite true
+    strip_components 1
+    action :extract
+    not_if { ::File.exist?(::File.join(new_resource.install_path, 'bin', 'start-confluence.sh')) }
   end
 
   # Set ownership on runtime directories

@@ -15,15 +15,14 @@ Creates and manages the Confluence systemd service.
 
 ## Properties
 
-| Property            | Type   | Default                                      | Description                           |
-|---------------------|--------|----------------------------------------------|---------------------------------------|
-| `instance_name`     | String | Resource name                                | Name of the Confluence instance       |
-| `install_path`      | String | `/opt/atlassian/confluence`                  | Installation directory for Confluence |
-| `home_path`         | String | `/var/atlassian/application-data/confluence` | Home directory for Confluence data    |
-| `user`              | String | `confluence`                                 | System user to run Confluence         |
-| `group`             | String | `confluence`                                 | System group for Confluence user      |
-| `service_name`      | String | `confluence`                                 | Name of the systemd service           |
-| `template_cookbook` | String | `confluence`                                 | Cookbook to source templates from     |
+| Property        | Type   | Default                                      | Description                           |
+|-----------------|--------|----------------------------------------------|---------------------------------------|
+| `instance_name` | String | Resource name                                | Name of the Confluence instance       |
+| `install_path`  | String | `/opt/atlassian/confluence`                  | Installation directory for Confluence |
+| `home_path`     | String | `/var/atlassian/application-data/confluence` | Home directory for Confluence data    |
+| `user`          | String | `confluence`                                 | System user to run Confluence         |
+| `group`         | String | `confluence`                                 | System group for Confluence user      |
+| `service_name`  | String | `confluence`                                 | Name of the systemd service           |
 
 ## Examples
 

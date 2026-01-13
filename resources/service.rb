@@ -25,59 +25,58 @@ property :service_name, String,
          default: lazy { confluence_service_name },
          description: 'Name of the systemd service'
 
-property :template_cookbook, String,
-         default: 'confluence',
-         description: 'Cookbook to source templates from'
-
 action :create do
-  # Create systemd service unit
-  template ::File.join(systemd_unit_path, "#{new_resource.service_name}.service") do
-    source 'confluence.service.erb'
-    cookbook new_resource.template_cookbook
-    owner 'root'
-    group 'root'
-    mode '0644'
-    variables(
-      user: new_resource.user,
-      group: new_resource.group,
-      install_path: new_resource.install_path,
-      home_path: new_resource.home_path
-    )
-    notifies :run, 'execute[systemctl-daemon-reload]', :immediately
-  end
-
-  execute 'systemctl-daemon-reload' do
-    command 'systemctl daemon-reload'
-    action :nothing
+  systemd_unit "#{new_resource.service_name}.service" do
+    content({
+      'Unit' => {
+        'Description' => 'Atlassian Confluence',
+        'After' => 'network.target',
+      },
+      'Service' => {
+        'Type' => 'forking',
+        'User' => new_resource.user,
+        'Group' => new_resource.group,
+        'Environment' => "CONFLUENCE_HOME=#{new_resource.home_path}",
+        'PIDFile' => "#{new_resource.install_path}/work/catalina.pid",
+        'ExecStart' => "#{new_resource.install_path}/bin/start-confluence.sh",
+        'ExecStop' => "#{new_resource.install_path}/bin/stop-confluence.sh",
+        'TimeoutStartSec' => 300,
+        'TimeoutStopSec' => 60,
+      },
+      'Install' => {
+        'WantedBy' => 'multi-user.target',
+      },
+    })
+    action :create
   end
 end
 
 action :start do
-  service new_resource.service_name do
+  systemd_unit "#{new_resource.service_name}.service" do
     action :start
   end
 end
 
 action :stop do
-  service new_resource.service_name do
+  systemd_unit "#{new_resource.service_name}.service" do
     action :stop
   end
 end
 
 action :restart do
-  service new_resource.service_name do
+  systemd_unit "#{new_resource.service_name}.service" do
     action :restart
   end
 end
 
 action :enable do
-  service new_resource.service_name do
+  systemd_unit "#{new_resource.service_name}.service" do
     action :enable
   end
 end
 
 action :disable do
-  service new_resource.service_name do
+  systemd_unit "#{new_resource.service_name}.service" do
     action :disable
   end
 end
