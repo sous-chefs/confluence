@@ -11,7 +11,7 @@ package 'tar'
 
 # Install Confluence
 confluence_install 'confluence' do
-  version '8.5.4'
+  version '10.2.2'
   install_path '/opt/atlassian/confluence'
   home_path '/var/atlassian/application-data/confluence'
   user 'confluence'

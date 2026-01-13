@@ -8,7 +8,7 @@ describe 'confluence_install' do
   context 'with default properties' do
     recipe do
       confluence_install 'confluence' do
-        version '8.5.4'
+        version '10.2.2'
       end
     end
 
@@ -54,8 +54,8 @@ describe 'confluence_install' do
     end
 
     it 'downloads the confluence tarball' do
-      expect(chef_run).to create_remote_file("#{Chef::Config[:file_cache_path]}/confluence-8.5.4.tar.gz").with(
-        source: 'https://www.atlassian.com/software/confluence/downloads/binary/atlassian-confluence-8.5.4.tar.gz',
+      expect(chef_run).to create_remote_file("#{Chef::Config[:file_cache_path]}/confluence-10.2.2.tar.gz").with(
+        source: 'https://www.atlassian.com/software/confluence/downloads/binary/atlassian-confluence-10.2.2.tar.gz',
         owner: 'root',
         group: 'root',
         mode: '0644'
@@ -63,7 +63,7 @@ describe 'confluence_install' do
     end
 
     it 'extracts the confluence tarball' do
-      expect(chef_run).to extract_archive_file("#{Chef::Config[:file_cache_path]}/confluence-8.5.4.tar.gz").with(
+      expect(chef_run).to extract_archive_file("#{Chef::Config[:file_cache_path]}/confluence-10.2.2.tar.gz").with(
         destination: '/opt/atlassian/confluence',
         strip_components: 1
       )
@@ -83,7 +83,7 @@ describe 'confluence_install' do
   context 'with custom properties' do
     recipe do
       confluence_install 'confluence' do
-        version '8.5.4'
+        version '10.2.2'
         install_path '/opt/confluence'
         home_path '/data/confluence'
         user 'atlassian'
@@ -110,7 +110,7 @@ describe 'confluence_install' do
     end
 
     it 'extracts to custom install path' do
-      expect(chef_run).to extract_archive_file("#{Chef::Config[:file_cache_path]}/confluence-8.5.4.tar.gz").with(
+      expect(chef_run).to extract_archive_file("#{Chef::Config[:file_cache_path]}/confluence-10.2.2.tar.gz").with(
         destination: '/opt/confluence'
       )
     end
@@ -119,15 +119,15 @@ describe 'confluence_install' do
   context 'with custom URL and checksum' do
     recipe do
       confluence_install 'confluence' do
-        version '8.5.4'
-        url 'https://mirror.example.com/confluence-8.5.4.tar.gz'
+        version '10.2.2'
+        url 'https://mirror.example.com/confluence-10.2.2.tar.gz'
         checksum 'a' * 64
       end
     end
 
     it 'uses the custom URL' do
-      expect(chef_run).to create_remote_file("#{Chef::Config[:file_cache_path]}/confluence-8.5.4.tar.gz").with(
-        source: 'https://mirror.example.com/confluence-8.5.4.tar.gz',
+      expect(chef_run).to create_remote_file("#{Chef::Config[:file_cache_path]}/confluence-10.2.2.tar.gz").with(
+        source: 'https://mirror.example.com/confluence-10.2.2.tar.gz',
         checksum: 'a' * 64
       )
     end

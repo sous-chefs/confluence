@@ -11,7 +11,7 @@ package 'tar'
 
 # Install Confluence standalone
 confluence_install 'confluence' do
-  version '8.5.4'
+  version '10.2.2'
 end
 
 # Configure for reverse proxy (nginx/apache in front)
