@@ -23,13 +23,19 @@ jobs:
     strategy:
       matrix:
         os:
-          - "centos-7"
-          - "ubuntu-1604"
+          - "almalinux-8"
+          - "almalinux-9"
+          - "amazonlinux-2023"
+          - "centos-stream-9"
+          - "debian-12"
+          - "fedora-latest"
+          - "rockylinux-8"
+          - "rockylinux-9"
+          - "ubuntu-2204"
+          - "ubuntu-2404"
         suite:
-          - "installer-mysql"
-          - "installer-postgresql"
-          - "standalone-mysql"
-          - "standalone-postgresql"
+          - "default"
+          - "standalone"
       fail-fast: false
 
     steps:

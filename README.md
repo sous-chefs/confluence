@@ -1,183 +1,156 @@
 # Confluence Cookbook
 
 [![Cookbook Version](https://img.shields.io/cookbook/v/confluence.svg)](https://supermarket.chef.io/cookbooks/confluence)
-[![Build Status](https://img.shields.io/circleci/project/github/sous-chefs/confluence/master.svg)](https://circleci.com/gh/sous-chefs/confluence)
+[![CI State](https://github.com/sous-chefs/confluence/workflows/ci/badge.svg)](https://github.com/sous-chefs/confluence/actions?query=workflow%3Aci)
 [![OpenCollective](https://opencollective.com/sous-chefs/backers/badge.svg)](#backers)
 [![OpenCollective](https://opencollective.com/sous-chefs/sponsors/badge.svg)](#sponsors)
 [![License](https://img.shields.io/badge/License-Apache%202.0-green.svg)](https://opensource.org/licenses/Apache-2.0)
 
-## Description
-
-Installs/Configures an instance of [Atlassian Confluence](https://www.atlassian.com/software/confluence/).
+Installs and configures [Atlassian Confluence](https://www.atlassian.com/software/confluence/) using custom resources.
 
 ## Maintainers
 
-This cookbook is maintained by the Sous Chefs. The Sous Chefs are a community of Chef cookbook maintainers working together to maintain important cookbooks. If you’d like to know more please visit [sous-chefs.org](https://sous-chefs.org/) or come chat with us on the Chef Community Slack in [#sous-chefs](https://chefcommunity.slack.com/messages/C2V7B88SF).
+This cookbook is maintained by the Sous Chefs. The Sous Chefs are a community of Chef cookbook maintainers working together to maintain important cookbooks. If you'd like to know more please visit [sous-chefs.org](https://sous-chefs.org/) or come chat with us on the Chef Community Slack in [#sous-chefs](https://chefcommunity.slack.com/messages/C2V7B88SF).
 
 ## Requirements
 
 ### Platforms
 
-- RHEL/CentOS 6, 7
-- Ubuntu 14.04, 16.04
+- AlmaLinux 8, 9
+- Amazon Linux 2023
+- CentOS Stream 9
+- Debian 12
+- Fedora (latest)
+- Oracle Linux 8, 9
+- Red Hat Enterprise Linux 8, 9
+- Rocky Linux 8, 9
+- Ubuntu 22.04, 24.04
+
+### Chef
+
+- Chef 16+
 
 ### Cookbooks
 
-- [apache2](https://github.com/sous-chefs/apache2)
-- [ark](https://github.com/burtlo/ark)
-- [database](https://github.com/chef-cookbooks/database)
-- [java](https://github.com/sous-chefs/java)
-- [mysql](https://github.com/sous-chefs/mysql)
-- [mysql_connector](https://github.com/bflad/chef-mysql_connector)
-- [mysql2_chef_gem](https://github.com/chef-cookbooks/mysql_chef_gem)
-- [postgresql](https://github.com/sous-chefs/postgresql)
+None - this cookbook has no external cookbook dependencies.
 
-### JDK/JRE
+## Resources
 
-The Atlassian Confluence Linux installer will automatically configure a bundled JRE.
+- [confluence_install](documentation/confluence_install.md) - Downloads and installs Confluence
+- [confluence_config](documentation/confluence_config.md) - Configures JVM and Tomcat settings
+- [confluence_service](documentation/confluence_service.md) - Manages the systemd service
 
-If you prefer Confluence standalone installation, then you have to manage JDK/JRE 8
-([Supported Platforms](https://confluence.atlassian.com/display/DOC/Supported+Platforms))
-on this node. It can be done with `java` cookbook and appropricate attributes:
+## Quick Start
 
 ```ruby
-node.default['java']['jdk_version'] = "8"
-include_recipe 'java'
+# Install Confluence
+confluence_install 'confluence' do
+  version '8.5.4'
+end
+
+# Configure Confluence
+confluence_config 'confluence' do
+  jvm_minimum_memory '1g'
+  jvm_maximum_memory '4g'
+end
+
+# Create and start the service
+confluence_service 'confluence' do
+  action [:create, :enable, :start]
+end
 ```
 
-## Attributes
+## Usage Examples
 
-These attributes are under the `node['confluence']` namespace.
+### Basic Installation
 
-| Attribute    | Description                                         | Type   | Default                                    |
-| ------------ | --------------------------------------------------- | ------ | ------------------------------------------ |
-| checksum     | SHA256 checksum for Confluence install              | String | auto-detected by library method            |
-| home_path    | home directory for Confluence user                  | String | /var/atlassian/application-data/confluence |
-| install_path | location to install Confluence                      | String | /opt/atlassian/confluence                  |
-| install_type | Confluence install type - "installer", "standalone" | String | installer                                  |
-| url          | URL for Confluence install                          | String | auto-detected by library method            |
-| user         | user running Confluence                             | String | confluence                                 |
-| version      | Confluence version to install                       | String | 6.1.2                                      |
+```ruby
+confluence_install 'confluence' do
+  version '8.5.4'
+end
 
---Notice:-- If `['confluence']['install_type']` is set to `installer`, then the installer will try to upgrade your Confluence instance located in `['confluence']['install_path']` (if it exists) to the `['confluence']['version']`.
+confluence_config 'confluence' do
+  jvm_minimum_memory '512m'
+  jvm_maximum_memory '2g'
+  tomcat_port '8090'
+end
 
-If you want to avoid an unexpected upgrade, just set or override `['confluence']['version']` attribute value to that of your current confluence version.
-
-### Confluence Database Attributes
-
-These attributes are under the `node['confluence']['database']` namespace.
-
-| Attribute | Description                                                                                      | Type   | Default                             |
-| --------- | ------------------------------------------------------------------------------------------------ | ------ | ----------------------------------- |
-| host      | FQDN or IP of database server ("127.0.0.1" automatically installs `['database']['type']` server) | String | "127.0.0.1"                         |
-| name      | Confluence database name                                                                         | String | confluence                          |
-| password  | Confluence database user password                                                                | String | changeit                            |
-| port      | Confluence database port                                                                         | Fixnum | 3306 for MySQL, 5432 for PostgreSQL |
-| type      | Confluence database type - "mysql", "postgresql", or "hsqldb"                                    | String | mysql                               |
-| user      | Confluence database user                                                                         | String | confluence                          |
-
-### Confluence JVM Attributes
-
-These attributes are under the `node['confluence']['jvm']` namespace.
-
-| Attribute       | Description                                                        | Type    | Default |
-| --------------- | ------------------------------------------------------------------ | ------- | ------- |
-| minimum_memory  | JVM minimum memory                                                 | String  | 512m    |
-| maximum_memory  | JVM maximum memory                                                 | String  | 768m    |
-| maximum_permgen | JVM maximum PermGen memory                                         | String  | 256m    |
-| java_opts       | additional JAVA_OPTS to be passed to Confluence JVM during startup | String  | ""      |
-| bundled_jre     | prefer JRE bundled with linux installer                            | Boolean | true    |
-
-### Confluence Autotune Attributes
-
-These attributes are under the `node['confluence']['autotune']` namespace. Autotune automatically determines appropriate settings for certain
-attributes. This feature is inspired by the `autotune` recipe in the <https://github.com/afklm/jira> cookbook. This
-initial version only supports JVM min and max memory size tuning.
-
-There are several tuning types that can be set:
-
-- 'mixed' - Confluence and DB run on the same system
-- 'dedicated' - Confluence has the system all to itself
-- 'shared' - Confluence shares the system with the DB and other applications
-
-Total available memory is auto discovered using Ohai but can be overridden by setting your own value in kB.
-
-| Attribute    | Description                                                        | Type    | Default    |
-| ------------ | ------------------------------------------------------------------ | ------- | ---------- |
-| enabled      | Whether or not to autotune settings.                               | Boolean | false      |
-| type         | Type of tuning to apply. One of 'mixed', 'dedicated' and 'shared'. | String  | mixed      |
-| total_memory | Total system memory to use for autotune calculations.              | String  | Ohai value |
-
-### Confluence Tomcat Attributes
-
-These attributes are under the `node['confluence']['tomcat']` namespace.
-
-| Attribute | Description      | Type   | Default |
-| --------- | ---------------- | ------ | ------- |
-| port      | Tomcat HTTP port | Fixnum | 8090    |
-
-## Recipes
-
-- `recipe[confluence]` Installs/configures Atlassian Confluence
-- `recipe[confluence::apache2]` Installs/configures Apache 2 as proxy (ports 80/443)
-- `recipe[confluence::database]` Installs/configures MySQL/Postgres server, database, and user for Confluence
-- `recipe[confluence::linux_installer]` Installs/configures Confluence via Linux installer"
-- `recipe[confluence::linux_standalone]` Installs/configures Confluence via Linux standalone archive"
-- `recipe[confluence::tomcat_configuration]` Configures Confluence's built-in Tomcat
-- `recipe[confluence::crowd_sso]` Configures user authentication with Crowd single sign-on
-
-## Usage
-
-### Confluence Data Bag
-
-For security purposes it is recommended to use data bag for storing secrets
-like passwords and database credentials.
-
-You can override any attributes from the `['confluence']` namespace using the
-`confluence/confluence` data bag. It could be either encrypted or not
-encrypted by your choice.
-
-Example:
-
-```json
-{
-  "id": "confluence",
-  "confluence": {
-    "database": {
-      "type": "postgresql",
-      "name": "confluence_db",
-      "user": "confluence_user",
-      "password": "confluence_db_password"
-    }
-  }
-}
+confluence_service 'confluence' do
+  action [:create, :enable]
+end
 ```
 
-*Note - `"confluence"` nesting level is required!*
+### Behind a Reverse Proxy (HTTPS)
 
-These credentials will be used for your Confluence installation instead of
-appropriate attribute values.
+When running Confluence behind nginx, Apache, or HAProxy:
 
-Data bag's and item's names are optional and can be changed by overriding
-attributes `['confluence']['data_bag_name']` and `['confluence']['data_bag_item']`
+```ruby
+confluence_install 'confluence' do
+  version '8.5.4'
+end
 
-### Confluence Server Installation
+confluence_config 'confluence' do
+  jvm_minimum_memory '1g'
+  jvm_maximum_memory '4g'
+  tomcat_port '8090'
+  tomcat_proxy_name 'confluence.example.com'
+  tomcat_proxy_port '443'
+  tomcat_scheme 'https'
+  tomcat_secure true
+end
 
-The simplest method is via the default recipe, which uses `node['confluence']['install_type']` to determine best method.
+confluence_service 'confluence' do
+  action [:create, :enable, :start]
+end
+```
 
-- Optionally (un)encrypted data bag or set attributes
-   - `knife data bag create confluence`
-   - `knife data bag edit confluence confluence --secret-file=path/to/secret`
-- Add `recipe[confluence]` to your node's run list.
+### Custom Paths
 
-### Custom Confluence Configurations
+```ruby
+confluence_install 'confluence' do
+  version '8.5.4'
+  install_path '/opt/confluence'
+  home_path '/data/confluence'
+  user 'atlassian'
+  group 'atlassian'
+end
 
-Using individual recipes, you can use this cookbook to configure Confluence to fit your environment.
+confluence_config 'confluence' do
+  install_path '/opt/confluence'
+  home_path '/data/confluence'
+  user 'atlassian'
+  group 'atlassian'
+  jvm_maximum_memory '4g'
+end
 
-- Optionally (un)encrypted data bag or set attributes
-   - `knife data bag create confluence`
-   - `knife data bag edit confluence confluence --secret-file=path/to/secret`
-- Add individual recipes to your node's run list.
+confluence_service 'confluence' do
+  install_path '/opt/confluence'
+  home_path '/data/confluence'
+  user 'atlassian'
+  group 'atlassian'
+  action [:create, :enable, :start]
+end
+```
+
+## Database Configuration
+
+This cookbook does **not** manage database installation or configuration. You must set up your database separately using your preferred method:
+
+- [postgresql cookbook](https://github.com/sous-chefs/postgresql)
+- [mysql cookbook](https://github.com/sous-chefs/mysql)
+- External managed database (RDS, Cloud SQL, etc.)
+
+Configure the database connection through Confluence's web-based setup wizard after installation.
+
+## Reverse Proxy Configuration
+
+This cookbook does **not** manage reverse proxy configuration. Set up your reverse proxy separately using:
+
+- [nginx cookbook](https://github.com/sous-chefs/nginx)
+- [apache2 cookbook](https://github.com/sous-chefs/apache2)
+- [haproxy cookbook](https://github.com/sous-chefs/haproxy)
+
+Use the `tomcat_proxy_name`, `tomcat_proxy_port`, `tomcat_scheme`, and `tomcat_secure` properties on `confluence_config` to configure Confluence for reverse proxy operation.
 
 ## Contributors
 
