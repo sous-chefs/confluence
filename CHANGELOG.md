@@ -1,5 +1,23 @@
 # Confluence Cookbook Changelog
 
+## [3.0.0](https://github.com/sous-chefs/confluence/compare/v2.6.24...v3.0.0) (2026-01-14)
+
+
+### ⚠ BREAKING CHANGES
+
+* Removed ark cookbook dependency
+
+### Features
+
+* refactor to custom resources ([#273](https://github.com/sous-chefs/confluence/issues/273)) ([f2fda51](https://github.com/sous-chefs/confluence/commit/f2fda511b2493c9fbf08d82002fbc8dc87c156f0))
+
+
+### Bug Fixes
+
+* **ci:** Update workflows to use release pipeline ([#263](https://github.com/sous-chefs/confluence/issues/263)) ([3a53376](https://github.com/sous-chefs/confluence/commit/3a533761952c6f730e61dc8a62f64438934dd27f))
+* resolve vuln issue in tests ([006272a](https://github.com/sous-chefs/confluence/commit/006272a4a00790a795fdb8480ece70d988cc6984))
+* stop pinning chef version ([29e974b](https://github.com/sous-chefs/confluence/commit/29e974b9a42c592617e2232ef5bc431e93061474))
+
 ## [2.6.24](https://github.com/sous-chefs/confluence/compare/2.6.23...v2.6.24) (2025-10-15)
 
 
