@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #
 # Cookbook:: confluence
 # Resource:: service
@@ -78,6 +80,12 @@ end
 action :disable do
   systemd_unit "#{new_resource.service_name}.service" do
     action :disable
+  end
+end
+
+action :delete do
+  systemd_unit "#{new_resource.service_name}.service" do
+    action [:stop, :disable, :delete]
   end
 end
 

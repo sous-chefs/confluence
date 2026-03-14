@@ -12,6 +12,7 @@ Creates and manages the Confluence systemd service.
 | `:restart` | Restarts the Confluence service                 |
 | `:enable`  | Enables the service to start on boot            |
 | `:disable` | Disables the service from starting on boot      |
+| `:delete`  | Stops, disables, and removes the systemd unit   |
 
 ## Properties
 
@@ -70,6 +71,14 @@ end
 ```ruby
 confluence_service 'confluence' do
   action [:stop, :disable]
+end
+```
+
+### Delete Service
+
+```ruby
+confluence_service 'confluence' do
+  action :delete
 end
 ```
 

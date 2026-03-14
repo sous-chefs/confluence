@@ -4,10 +4,10 @@ Downloads and installs Atlassian Confluence standalone tarball.
 
 ## Actions
 
-| Action     | Description                                   |
-|------------|-----------------------------------------------|
-| `:install` | Downloads and installs Confluence (default)   |
-| `:remove`  | Removes the Confluence installation directory |
+| Action     | Description                                              |
+|------------|----------------------------------------------------------|
+| `:install` | Downloads and installs Confluence (default)              |
+| `:remove`  | Removes the Confluence installation and home directories |
 
 ## Properties
 

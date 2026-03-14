@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 #
-# Cookbook:: confluence_test
+# Cookbook:: test
 # Recipe:: standalone
 #
 # Test recipe demonstrating standalone Confluence installation with reverse proxy config

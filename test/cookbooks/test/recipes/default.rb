@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 #
-# Cookbook:: confluence_test
+# Cookbook:: test
 # Recipe:: default
 #
 # Basic test recipe demonstrating confluence custom resources
