@@ -16,17 +16,14 @@ provisioner:
   product_version: <%= ENV['CHEF_VERSION'] || 'latest' %>
   install_strategy: once
 
+verifier:
+  name: inspec
+
 suites:
   - name: default
     run_list:
       - recipe[test::default]
-    verifier:
-      inspec_tests:
-        - path: test/integration/default
 
   - name: standalone
     run_list:
       - recipe[test::standalone]
-    verifier:
-      inspec_tests:
-        - path: test/integration/standalone
