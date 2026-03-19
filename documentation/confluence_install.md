@@ -58,7 +58,7 @@ end
 
 ```ruby
 confluence_install 'confluence' do
-  install_path '/opt/atlassian/confluence'
+  version '8.5.4'
   action :remove
 end
 ```

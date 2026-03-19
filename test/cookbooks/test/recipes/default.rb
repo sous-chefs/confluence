@@ -7,7 +7,7 @@
 # Basic test recipe demonstrating confluence custom resources
 #
 
-apt_update 'update' if platform_family?('debian')
+apt_update
 
 package 'tar'
 
