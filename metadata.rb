@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 name 'confluence'
 maintainer 'Sous Chefs'
 maintainer_email 'help@sous-chefs.org'
