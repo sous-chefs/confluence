@@ -1,5 +1,16 @@
 # Confluence Cookbook Changelog
 
+## [4.0.0](https://github.com/sous-chefs/confluence/compare/v3.0.0...v4.0.0) (2026-03-20)
+
+
+### ⚠ BREAKING CHANGES
+
+* apply chef-custom-resources workflow (delete actions, InSpec, stale templates) ([#274](https://github.com/sous-chefs/confluence/issues/274))
+
+### Code Refactoring
+
+* apply chef-custom-resources workflow (delete actions, InSpec, stale templates) ([#274](https://github.com/sous-chefs/confluence/issues/274)) ([491e8cd](https://github.com/sous-chefs/confluence/commit/491e8cd5255e06ff3e529424552af145df6ea0e1))
+
 ## [3.0.0](https://github.com/sous-chefs/confluence/compare/v2.6.24...v3.0.0) (2026-01-14)
 
 
