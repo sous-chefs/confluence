@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #
 # Cookbook:: confluence
 # Resource:: Partial:: _common_properties

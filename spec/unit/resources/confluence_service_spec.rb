@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe 'confluence_service' do
@@ -103,6 +105,26 @@ describe 'confluence_service' do
 
     it 'enables the service' do
       expect(chef_run).to enable_systemd_unit('confluence.service')
+    end
+  end
+
+  context 'with :delete action' do
+    recipe do
+      confluence_service 'confluence' do
+        action :delete
+      end
+    end
+
+    it 'stops the systemd service' do
+      expect(chef_run).to stop_systemd_unit('confluence.service')
+    end
+
+    it 'disables the systemd service' do
+      expect(chef_run).to disable_systemd_unit('confluence.service')
+    end
+
+    it 'deletes the systemd service unit' do
+      expect(chef_run).to delete_systemd_unit('confluence.service')
     end
   end
 end

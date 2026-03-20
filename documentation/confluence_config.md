@@ -7,6 +7,7 @@ Configures Confluence JVM settings, Tomcat connector, and home directory.
 | Action    | Description                                              |
 |-----------|----------------------------------------------------------|
 | `:create` | Creates/updates Confluence configuration files (default) |
+| `:delete` | Removes all managed configuration files                  |
 
 ## Properties
 
@@ -84,6 +85,14 @@ end
 ```ruby
 confluence_config 'confluence' do
   template_cookbook 'my_wrapper_cookbook'
+end
+```
+
+### Delete Configuration
+
+```ruby
+confluence_config 'confluence' do
+  action :delete
 end
 ```
 

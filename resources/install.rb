@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #
 # Cookbook:: confluence
 # Resource:: install
@@ -119,6 +121,11 @@ end
 
 action :remove do
   directory new_resource.install_path do
+    recursive true
+    action :delete
+  end
+
+  directory new_resource.home_path do
     recursive true
     action :delete
   end

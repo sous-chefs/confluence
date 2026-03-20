@@ -11,16 +11,19 @@ platforms:
   - name: ubuntu-24.04
 
 provisioner:
-  name: chef_zero
+  name: chef_infra
   product_name: chef
   product_version: <%= ENV['CHEF_VERSION'] || 'latest' %>
   install_strategy: once
 
+verifier:
+  name: inspec
+
 suites:
   - name: default
     run_list:
-      - recipe[confluence_test::default]
+      - recipe[test::default]
 
   - name: standalone
     run_list:
-      - recipe[confluence_test::standalone]
+      - recipe[test::standalone]

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe 'confluence_install' do
@@ -129,6 +131,27 @@ describe 'confluence_install' do
       expect(chef_run).to create_remote_file("#{Chef::Config[:file_cache_path]}/confluence-10.2.2.tar.gz").with(
         source: 'https://mirror.example.com/confluence-10.2.2.tar.gz',
         checksum: 'a' * 64
+      )
+    end
+  end
+
+  context 'with :remove action' do
+    recipe do
+      confluence_install 'confluence' do
+        version '10.2.2'
+        action :remove
+      end
+    end
+
+    it 'deletes the install directory' do
+      expect(chef_run).to delete_directory('/opt/atlassian/confluence').with(
+        recursive: true
+      )
+    end
+
+    it 'deletes the home directory' do
+      expect(chef_run).to delete_directory('/var/atlassian/application-data/confluence').with(
+        recursive: true
       )
     end
   end

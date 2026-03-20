@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 #
 # Cookbook:: confluence
 # Resource:: config
@@ -120,6 +122,20 @@ action :create do
       tomcat_scheme: new_resource.tomcat_scheme,
       tomcat_secure: new_resource.tomcat_secure
     )
+  end
+end
+
+action :delete do
+  file ::File.join(new_resource.install_path, 'confluence/WEB-INF/classes/confluence-init.properties') do
+    action :delete
+  end
+
+  file ::File.join(new_resource.install_path, 'bin/setenv.sh') do
+    action :delete
+  end
+
+  file ::File.join(new_resource.install_path, 'conf/server.xml') do
+    action :delete
   end
 end
 

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe 'confluence_config' do
@@ -116,6 +118,26 @@ describe 'confluence_config' do
       expect(chef_run).to create_template('/opt/atlassian/confluence/confluence/WEB-INF/classes/confluence-init.properties').with(
         cookbook: 'my_wrapper'
       )
+    end
+  end
+
+  context 'with :delete action' do
+    recipe do
+      confluence_config 'confluence' do
+        action :delete
+      end
+    end
+
+    it 'deletes confluence-init.properties' do
+      expect(chef_run).to delete_file('/opt/atlassian/confluence/confluence/WEB-INF/classes/confluence-init.properties')
+    end
+
+    it 'deletes setenv.sh' do
+      expect(chef_run).to delete_file('/opt/atlassian/confluence/bin/setenv.sh')
+    end
+
+    it 'deletes server.xml' do
+      expect(chef_run).to delete_file('/opt/atlassian/confluence/conf/server.xml')
     end
   end
 end
