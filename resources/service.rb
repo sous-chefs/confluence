@@ -29,26 +29,28 @@ property :service_name, String,
 
 action :create do
   systemd_unit "#{new_resource.service_name}.service" do
-    content({
-      'Unit' => {
-        'Description' => 'Atlassian Confluence',
-        'After' => 'network.target',
-      },
-      'Service' => {
-        'Type' => 'forking',
-        'User' => new_resource.user,
-        'Group' => new_resource.group,
-        'Environment' => "CONFLUENCE_HOME=#{new_resource.home_path}",
-        'PIDFile' => "#{new_resource.install_path}/work/catalina.pid",
-        'ExecStart' => "#{new_resource.install_path}/bin/start-confluence.sh",
-        'ExecStop' => "#{new_resource.install_path}/bin/stop-confluence.sh",
-        'TimeoutStartSec' => 300,
-        'TimeoutStopSec' => 60,
-      },
-      'Install' => {
-        'WantedBy' => 'multi-user.target',
-      },
-    })
+    content(
+      {
+        'Unit' => {
+          'Description' => 'Atlassian Confluence',
+          'After' => 'network.target',
+        },
+        'Service' => {
+          'Type' => 'forking',
+          'User' => new_resource.user,
+          'Group' => new_resource.group,
+          'Environment' => "CONFLUENCE_HOME=#{new_resource.home_path}",
+          'PIDFile' => "#{new_resource.install_path}/work/catalina.pid",
+          'ExecStart' => "#{new_resource.install_path}/bin/start-confluence.sh",
+          'ExecStop' => "#{new_resource.install_path}/bin/stop-confluence.sh",
+          'TimeoutStartSec' => 300,
+          'TimeoutStopSec' => 60,
+        },
+        'Install' => {
+          'WantedBy' => 'multi-user.target',
+        },
+      }
+    )
     action :create
   end
 end
