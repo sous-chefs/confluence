@@ -21,9 +21,13 @@ verifier:
 
 suites:
   - name: default
+    provisioner:
+      named_run_list: default
     run_list:
       - recipe[test::default]
 
   - name: standalone
+    provisioner:
+      named_run_list: standalone
     run_list:
       - recipe[test::standalone]
